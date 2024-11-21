@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #aaa;
+    margin: 0;
+}
+
+header{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 15px #999;
+    padding-inline: 5rem;
+}
+
+.enlaces_header{
+    margin-inline: 10px;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.contenedor{
+    width: 50%;
+    height: 100vh;
+    box-shadow: 0px 4px 15px #999;
+}
