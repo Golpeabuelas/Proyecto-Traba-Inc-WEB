@@ -50,20 +50,4 @@ userLoader.post('/iniciarSesion', (req, res) => {
     })
 })
 
-userLoader.post('/consultarPermisos', (req, res) => {
-    const id_usuario = req.body.id_usuario
-
-    connection.query('SELECT * FROM usuario WHERE id_usuario = ?', [id_usuario], (error, response, fields) => {
-        if ( error ) {
-            res.status(400).send(console.log('Error al hacer la consulta'))
-        }
-
-        if ( response.length === 0) {
-            res.status(404).send(console.log('Usuario no encontrado'))
-        }
-
-        res.json(response.permisos)
-    })
-})
-
 export default userLoader
