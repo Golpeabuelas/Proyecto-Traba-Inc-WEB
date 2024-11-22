@@ -15,7 +15,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use('/paginas', express.static(join(__dirname, './src/public/html')))
+app.use('/paginas', express.static(join(__dirname, './src/public')))
 app.use('/scripts', express.static(join(__dirname, './src/server_functions/javascript')))
 
 app.use(router)
@@ -26,4 +26,5 @@ app.get('/', (req, res) => {
 
 app.listen(app.get('port'), () => {
     console.log('Server listening on port', app.get('port'));
+    console.log('http://localhost:' + app.get('port'));
 });
