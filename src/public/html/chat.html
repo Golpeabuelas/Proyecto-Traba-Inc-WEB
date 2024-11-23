@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo Provisional</title>
+    
+    <link rel="stylesheet" href="paginas/css/chat_styles.css">
+    <link rel="icon" href="paginas/imagenes/Gatito_Mamalon.ico" type="image/x-icon">
+    
+</head>
+<body>
+    <div class="main-container">
+        <div class="publicacion">
+            <div class="contenedor_izquierda">
+                <div class="contenedeor_imagen_publicacion">
+                    <img src="paginas/imagenes/perroPendejo.jpg" alt="">
+                </div>
+                <div class="contenedor_informacion">
+                    <h2>Perro bonito de Pinterest</h2>
+                    <button onclick="">Interactuar</button>
+                </div>
+            </div>
+            <div class="contenedor_derecha">
+                <ul>
+                    <li>Edad: 2 años</li>
+                    <li>Color: Daltonismo</li>
+                    <li>Solo habla ruso</li>
+                    <li>Distintivo: Huevos MUY grandes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Chat de Ayuda</h2>
+            </div>
+            <div class="chat-messages">
+                <ul id="mensajes"></ul>
+            </div>
+            <div class="chat-input">
+                <form id="form">
+                    <input type="text" placeholder="Escribe un mensaje..." id="input">
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/javascript/users_functions/user_socket.js" type="module"></script>
+</body>
+</html>
