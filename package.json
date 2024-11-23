@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start": "nodemon ./src/server_functions/javascript/FUNCION_IMPORTANTE.js"
+    "start": "node ./src/server_functions/javascript/FUNCION_IMPORTANTE.js"
   },
   "author": "",
   "license": "ISC",
