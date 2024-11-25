@@ -7,7 +7,7 @@ CREATE TABLE if NOT EXISTS usuario(
     nombre varchar(50) NOT NULL,
     correo varchar(50) NOT NULL,
     password varchar(50) NOT NULL,
-    foto_usuario NOT NULL,
+    foto_usuario TEXT NOT NULL,
     permisos boolean NOT NULL
 );
 
@@ -88,7 +88,7 @@ CREATE TABLE if NOT EXISTS usuario_chat_publicacion(
     ON UPDATE CASCADE
 );
 
-INSERT INTO usuario(nombre, correo, password, permisos) VALUES ('Julián', 'chavez.garcia.julian2@gmail.com', 'Tr4b4_1nc_4dm1n1str4d0r', true);
+INSERT INTO usuario(nombre, correo, password, foto_usuario, permisos) VALUES ('Julián', 'chavez.garcia.julian2@gmail.com', 'Tr4b4_1nc_4dm1n1str4d0r', '', true);
 
 INSERT INTO publicacion(titulo_publicacion, id_usuario) VALUES('Primer test de publicaciones', 1);
 INSERT INTO informacion_mascota(id_publicacion, imagen_mascota, nombre_mascota, especie_mascota, color_mascota, distintivo_mascota) VALUES(1, '', 'Claw', 'Osito', 'Café', 'Tiene su propio prepucio de Ravenclaw');
@@ -144,4 +144,4 @@ LEFT JOIN
 WHERE 
     p.id_publicacion = 3;
     
-DELETE FROM publicacion WHERE id_publicacion = 2;
+DELETE FROM id_usuario WHERE id_usuario = 2;
