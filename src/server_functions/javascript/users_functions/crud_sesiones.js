@@ -1,5 +1,5 @@
-import { response, Router } from "express";
-import connection from "../../connection_sql";
+import { Router } from "express";
+import connection from "../../connection_sql.js"
 
 const sesiones = Router()
 
@@ -24,7 +24,7 @@ sesiones.post('/editarUsuario', (req, res) => {
     const password = req.body.password
     const permisos = req.body.permisos
 
-    connection.query('UPDATE usuario WHERE id_usuario = ? SET (nombre = ?, password = ?, permisos = ?)', [id_usuario, nombre, password, permisos], (error, response) => {
+    connection.query('UPDATE usuario SET (nombre = ?, password = ?, permisos = ? WHERE id_usuario = ?)', [nombre, password, permisos, id_usuario], (error, response) => {
         if ( error ) {
             res.status(400).send(console.log('Error al editar datos del usuario', error))
         }

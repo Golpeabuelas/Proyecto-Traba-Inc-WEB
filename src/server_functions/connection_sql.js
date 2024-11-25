@@ -3,7 +3,7 @@ import mysql from "mysql2"
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'n0m3l0',
     database: 'TrabaInc'
 })
 
@@ -15,4 +15,4 @@ connection.connect(err => {
     console.log('Database connection established.');
 });
 
-export default connection 
+export default connection;

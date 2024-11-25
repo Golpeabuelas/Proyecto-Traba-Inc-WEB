@@ -7,8 +7,17 @@ const router = Router()
 
 //-------------------------RUTAS-DE-CONEXION------------------------
 
-router.get('/*ruta*', (req, res) => {
-    res.sendFile(join(__dirname, '*RUTA-DE-ARCHIVO-RELATIVA-AL-ARCHIVO-ROUTER*'))
+router.get('/index', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/index.html'))
 });
+
+router.get('/chat', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/chat.html'))
+});
+
+router.get('/perfil', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/perfil.html'))
+});
+
 
 export default router;

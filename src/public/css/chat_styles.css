@@ -15,6 +15,10 @@ body {
     margin: auto;
 }
 
+span {
+    margin-bottom: 5em;
+}
+
 .publicacion {
     display: flex;
     justify-content: space-between;
@@ -23,7 +27,7 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    width: 90%;
     overflow: hidden;
 }
 
