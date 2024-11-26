@@ -1,7 +1,7 @@
 # Proyecto-Traba-Inc-WEB
 
 Hasta este momento solo se ha avanzado en la arquitectura del servidor 
-y algunas validaciones menores para ejecutar el servidor. Se deben de seguir 
+y algunas validaciones menores. Para ejecutar el servidor se deben de seguir 
 los siguientes pasos:
 
     I. Instalar los node_modules que se necesitarán para ejecutar el programa
@@ -22,3 +22,4 @@ los siguientes pasos:
 
     v. Para ejecutar el servidor con nodemon se deberá ejecutar el comando 
     npm run dev que dará un link que se podrá seguir con ctrl + click  
+
