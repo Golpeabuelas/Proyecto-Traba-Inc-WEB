@@ -117,7 +117,7 @@ header{
     z-index: 1000;
 }
 
-.modal-content {
+.modal_content {
     background-color: #D9D9D9;
     width: 70%;
     height: 70%;
@@ -157,10 +157,18 @@ header{
     padding: 15px;
 }
 
+.contenedor_imagen img{
+    height: 100%;
+}
+
 .label_for_imagen {
-    width: calc(100% - 30px);
-    height: calc(100% - 30px);
-    background-color: #032B30;
+    width: 100%;
+    box-sizing: border-box;
+    margin-block: 10px;
+    font-size: 20px;
+    background-color: #FFF;
+    border: 1px solid #888;
+    color: #888;
 }
 
 .contenedor_informacion_destacada {

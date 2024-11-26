@@ -45,17 +45,17 @@
     <div id="modal" class="modal">
         <span class="close">&times;</span>
 
-        <div class="modal-content">
+        <div class="modal_content">
             
-            <form action="" id="formulario_publicacion" class="formulario_publicacion">
+            <form id="formulario_publicacion" class="formulario_publicacion">
                 <div class="publicacion">
                     <div class="contenedor_izquierda">
                         <div class="contenedor_imagen">
-                            <label for="imagen_mascota" class="label_for_imagen">Elegir imagen</label>
+                            <img src="/imagenes/Logo.png" id="cargar_imagen">
                         </div>
 
                         <div class="contenedor_informacion_destacada">
-                            <input type="text" class="input_titulo" id="titulo_publicacion">
+                            <input type="text" class="input_titulo" class="require" id="titulo_publicacion" oninput="soloLetras(this, 3)">
                             
                             <textarea class="input_descripcion" id="descripcion_desaparicion"></textarea>
 
@@ -68,10 +68,11 @@
                         </div>
 
                         <div class="contenedor_informacion">
-                            <input type="text" placeholder="Nombre de tu mascota" id="nombre_mascota">
-                            <input type="text" placeholder="¿A qué especie pertenece tu mascota" id="especie_mascota">
-                            <input type="text" placeholder="Color de tu mascota" id="color_mascota">
-                            <input type="text" placeholder="¿Alguna característica específica?" id="distintivo_mascota">
+                            <input type="text" class="require" placeholder="Nombre de tu mascota" id="nombre_mascota">
+                            <input type="text" class="require" placeholder="¿A qué especie pertenece tu mascota" id="especie_mascota" oninput="soloLetras(this, 0)">
+                            <input type="text" class="require" placeholder="Color de tu mascota" id="color_mascota" oninput="soloLetras(this, 0)">
+                            <input type="text" class="require" placeholder="¿Alguna característica específica?" id="distintivo_mascota" oninput="soloLetras(this, 5)">
+                            <label for="imagen_mascota" class="label_for_imagen">Imagen de tu mascota</label>
 
                             <input type="date" id="fecha_desaparicion">
                         </div>
@@ -79,17 +80,21 @@
                         <div class="contenedor_api_maps">
                             <input type="text" id="latitud">
                             <input type="text" id="longitud">
+                            <button type="submit" class="enviar" id="new_post">Crear publicación</button>
                         </div>
                     </div>
                 </div>
                 
-                <input type="file" id="imagen_mascota" style="display: none;">
+                <input type="file" class="require" id="imagen_mascota" style="display: none;">
+                
             </form>
                 
                 
         </div>
     </div>
 
-    <script src="/scripts/javascript/post_functions/addPost.js"></script>
+    <script src="/scripts/javascript/post_functions/modal_post.js"></script>
+
+    <script type="module" src="/scripts/javascript/post_functions/consts_post.js"></script>
 </body>
 </html>

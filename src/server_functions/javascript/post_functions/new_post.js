@@ -1,17 +1,16 @@
-const btnAñadirPost = document.getElementById('new_post')
+export function getImage (image64x, cargarImagen, imageDefault, e) {
+    if(e.target.files[0]){
+        const reader = new FileReader()
+        reader.onload = function (e){
+            image64x = e.target.result;
+            cargarImagen.src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0])
+    } else{
+        cargarImagen.src = imageDefault
+    }
+}
 
-btnAñadirPost.addEventListener('submit', (event) => {
-    event.preventDefault()
-
-    const id_usuario = document.getElementById('')
-    const titulo_publicacion = document.getElementById('')
-    const imagen_mascota = document.getElementById('')
-    const nombre_mascota = document.getElementById('')
-    const especie_mascota = document.getElementById('')
-    const color_mascota = document.getElementById('')
-    const distintivo_mascota = document.getElementById('')
-    const fecha_desaparicion = document.getElementById('')
-    const descripcion_desaparicion = document.getElementById('')
-    const latitud = document.getElementById('')
-    const longitud = document.getElementById('')
-})
+export function fullRegister() {
+    
+}
