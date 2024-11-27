@@ -1,5 +1,5 @@
 import { Router } from "express";
-import connection from "../../connection_sql";
+import connection from "../../connection_sql.js";
 
 const publicaciones = Router()
 
@@ -43,6 +43,37 @@ publicaciones.post('/crearPublicacion', (req, res) => {
     })
 })
 
+publicaciones.post('/readPublicacion', (req,res) => {
+    const id_publicacion = req.body.id
+
+    connection.query('SELECT * FROM publicacion WHERE id_publicacion = ?', [id_publicacion], (error, response) => {
+        if ( error ) {
+            res.status(400).send(console.log('No pudimos traer esa publicación', error))
+        }
+
+        if ( response.length === 0 ) {
+            res.status(404).send(console.log('Publicación no encontrada'))
+        }
+
+        const respuesta = response.json()
+
+        connection.query('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion], (error, response) => {
+            if ( error ) {
+                res.status(400).send(console.log('No pudimos traer esa publicación', error))
+            }
+    
+            if ( response.length === 0 ) {
+                res.status(404).send(console.log('Publicación no encontrada'))
+            }
+    
+            
+            res.json(response[0])
+        })
+        
+        res.json(response[0])
+    })
+}) 
+
 publicaciones.post('/crearChat', (req, res) => {
     const id_publicacion = req.body.id_publicacion
 
@@ -52,3 +83,5 @@ publicaciones.post('/crearChat', (req, res) => {
         }
     })
 })
+
+export default publicaciones

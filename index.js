@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 
 import router from './src/server_functions/router_web.js'
 import sesiones from './src/server_functions/javascript/users_functions/crud_sesiones.js'
+import publicaciones from './src/server_functions/javascript/post_functions/crud_publicaciones.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -20,8 +21,8 @@ iniciarSocketSever(server)
 app.set('port', process.env.PORT || 3000);
 
 app.use(morgan('dev'))
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.urlencoded({ limit: '5mb', extended: true }))
+app.use(express.json({ limit: '5mb' }))
 
 app.use('/imagenes', express.static(join(__dirname, './src/public/imagenes')))
 app.use('/css', express.static(join(__dirname, './src/public/css')))
@@ -30,6 +31,7 @@ app.use('/scripts', express.static(join(__dirname, './src/server_functions/')))
 
 app.use(router)
 app.use(sesiones)
+app.use(publicaciones)
 
 app.get('/', (req, res) => {
     res.sendFile(join(__dirname, './src/public/html/perfil.html'))

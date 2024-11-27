@@ -59,7 +59,7 @@ CREATE TABLE if NOT EXISTS informacion_mascota(
 
 CREATE TABLE if NOT EXISTS informacion_desaparicion(
     id_publicacion INT PRIMARY KEY,
-    fecha_desparicion DATE NOT NULL,
+    fecha_desaparicion DATE NOT NULL,
     descripcion_desaparicion varchar(300),
     estatus_desaparicion BOOLEAN NOT NULL,
     FOREIGN KEY (id_publicacion) REFERENCES publicacion(id_publicacion)
@@ -131,7 +131,9 @@ SELECT
     im.especie_mascota,
     im.color_mascota,
     im.distintivo_mascota,
-    id.fecha_desparicion,
+    id.fecha_desaparicion,
+    id.descripcion_desaparicion,
+    id.estatus_desaparicion,
     c.id_chat
 FROM 
 	publicacion p
@@ -142,8 +144,8 @@ LEFT JOIN
 LEFT JOIN 
     chat_publicacion c ON p.id_publicacion = c.id_publicacion
 WHERE 
-    p.id_publicacion = 3;
+    p.id_publicacion = 1;
     
-SELECT * FROM usuario;
+SELECT * FROM publicacion;
 
 DROP DATABASE TrabaInc

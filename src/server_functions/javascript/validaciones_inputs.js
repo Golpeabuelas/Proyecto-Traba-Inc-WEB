@@ -4,12 +4,14 @@ export function soloLetras (idInput) {
     let auxiliar = "";
 
     for (let i = 0; i < valorInput.length; i++) {
-        if (/[^a-zA-ZáéíóúñÁÉÍÓÚÑ]/.test(valorInput.charAt(i))) {
+        if (/[^a-zA-ZáéíóúñÁÉÍÓÚÑ ]/.test(valorInput.charAt(i))) {
             idInput.setCustomValidity('Solo caracteres alfabéticos (A-Z)');
             idInput.reportValidity();
             break
         } 
         else {
+            idInput.setCustomValidity('');
+            idInput.reportValidity();
             auxiliar += valorInput.charAt(i)
         }
     }
@@ -28,6 +30,8 @@ function soloNumeros (idInput) {
             break
         }
         else {
+            idInput.setCustomValidity('');
+            idInput.reportValidity();
             auxiliar += valorInput.charAt(i)
         }
     }
@@ -40,12 +44,14 @@ export function etiquetasFixer (idInput) {
     let auxiliar = "";
 
     for (let i = 0; i < valorInput.length; i++) {
-        if (/[<>`$]/.test(valorInput.charAt(i))) {
+        if (/[^0-9a-zA-ZáéíóúñÁÉÍÓÚÑ¿?¡!"., ]/.test(valorInput.charAt(i))) {
             idInput.setCustomValidity('Caracteres peligrosos no permitidos (<`$>)');
             idInput.reportValidity();
             break
         }
         else {
+            idInput.setCustomValidity('');
+            idInput.reportValidity();
             auxiliar += valorInput.charAt(i)
         }
     }
@@ -71,9 +77,13 @@ export function fechaPosterior (idFecha) {
 
 export function fechaAnterior (fecha, hoy, idFecha) {
     if( !(hoy.getTime() - fecha.getTime() >= 1296000000) ) {
+        idFecha.setCustomValidity('');
+        idFecha.reportValidity();
         return true
     }
 
-    idFecha.setCustomValidity('Al pasar el tiempo es menos probable que podamos encontrar a tu mascota, lo sentimos, esperamos que la encuentres')
+    idFecha.setCustomValidity('Esperamos que encuentres a tu amigo')
     idFecha.reportValidity()
+    idFecha.setCustomValidity('');
+    idFecha.reportValidity();
 }
