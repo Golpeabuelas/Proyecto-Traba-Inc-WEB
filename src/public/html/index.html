@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Follow pet</title>
-    
-    <link rel="icon" href="/imagenes/Gatito_Mamalon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/css/index_styles.css">
+    <title>Lobby de Aplicación</title>
+    <link rel="stylesheet" href="css/index_styles.css">
 </head>
 <body>
     <header>
-        <a href="" class="enlaces_header">Home</a>
-        <a href="" class="enlaces_header">Productos</a>
-        <a href="" class="enlaces_header">Follow Pet</a>
-        <a href="" class="enlaces_header">Traba Inc</a>
+        <div class="logo-container">
+            <img src="/imagenes/Logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="nav-bar">
+            <input type="text" class="search-bar" placeholder="Buscar...">
+            <nav>
+                <a href="/chat">Inicio</a>
+                <a href="#">Crear un reporte</a>
+                <a href="#">Salud</a>
+                <a href="/sign_in">Perfil</a>
+            </nav>
+        </div>
     </header>
-    
-    <div class="contenedor">
-        <h2>Log-in</h2>
-        <input type="text" oninput="etiquetasFixer(this)" id="perro">
-
-    </div>
-
-    <footer>
-
-    </footer>
-
-    <!-------------------------SCRIPTS---------------------------------------------->
-    <script src="scripts/javascript/validaciones_inputs.js"></script>
-    <script src="scripts/javascript/users_functions/user_socket.js" type="module"></script>
+    <main>
+        
+        <section class="main-content">
+            <h1>La mejor app para <span>cuidar</span> y <span>encontrar</span> a tu mejor amigo.</h1>
+            <div class="buttons">
+                <button>¿Qué es?</button>
+                <button>¿Cómo funciona?</button>
+                <button>Mobile</button>
+                <a href="/perfil"><button class="highlight">Inicio sesión</button></a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

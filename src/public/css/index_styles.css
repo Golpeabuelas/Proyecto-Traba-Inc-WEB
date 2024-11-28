@@ -1,30 +1,95 @@
-*{
-    box-sizing: border-box;
-}
-
-body{
-    background-color: #aaa;
+/* styles.css */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-header{
-    height: 100px;
+body {
+    background: url('/imagenes/Fondo-Provisional.png');
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffc870;
+    padding: 10px 20px;
+}
+
+.logo-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 4px 15px #999;
-    padding-inline: 5rem;
 }
 
-.enlaces_header{
-    margin-inline: 10px;
+.logo {
+    width: 60px;
+    height: auto;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+nav a {
     text-decoration: none;
-    letter-spacing: 2px;
+    color: black;
+    font-weight: bold;
+    margin: 0 10px;
 }
 
-.contenedor{
-    width: 50%;
-    height: 100vh;
-    box-shadow: 0px 4px 15px #999;
+main {
+    display: flex;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 80vh;
 }
 
+.main-content h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.main-content span {
+    color: orange;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #003d2c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button.highlight {
+    background-color: orange;
+    color: black;
+}
+
+button:hover {
+    opacity: 0.8;
+}

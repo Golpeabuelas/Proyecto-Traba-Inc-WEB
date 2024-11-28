@@ -64,7 +64,6 @@ descripcion_desaparicion.addEventListener('input', () => {
 
 imagen_mascota.addEventListener('change', async (e) => {
     newPost.imagenMascota = await getImage(cargarImagen, imageDefault, e)
-    console.log(newPost.imagenMascota)
 });
 
 btnNewPost.addEventListener('click', async (e) => {

@@ -3,15 +3,16 @@ import connection from "../../connection_sql.js"
 
 const sesiones = Router()
 
-sesiones.post('/añadirUsuario', (req, res) => {
+sesiones.post('/aniadirUsuario', (req, res) => {
     const nombre = req.body.nombre
     const correo = req.body.correo
     const password = req.body.password
+    const foto_usuario = req.body.foto_usuario
     const permisos = req.body.permisos
 
-    connection.query('INSERT INTO usuario (nombre, correo, password, permisos) VALUES (nombre = ?, correo = ?, password = ?, permisos = ?)', [nombre, correo, password, permisos], (error, response) => {
+    connection.query('INSERT INTO usuario (nombre, correo, password, foto_usuario, permisos) VALUES (?, ?, ?, ?, ?)', [nombre, correo, password, foto_usuario, permisos], (error, response) => {
         if ( error ) {
-            res.status(400).send(console.log('Error al añadir nueva sesión'))
+            return res.status(400).send(console.log('Error al añadir nueva sesión'))
         }
 
         res.json(response)

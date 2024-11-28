@@ -7,10 +7,10 @@ import { iniciarSocketSever } from './index_socket.js';
 import { join, dirname} from 'path';
 import { fileURLToPath } from 'url';
 
-
 import router from './src/server_functions/router_web.js'
-import sesiones from './src/server_functions/javascript/users_functions/crud_sesiones.js'
+import sesiones from './src/server_functions/javascript/user_functions/crud_sesiones.js'
 import publicaciones from './src/server_functions/javascript/post_functions/crud_publicaciones.js';
+import userLoader from './src/server_functions/javascript/user_functions/user_loader.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -32,9 +32,10 @@ app.use('/scripts', express.static(join(__dirname, './src/server_functions/')))
 app.use(router)
 app.use(sesiones)
 app.use(publicaciones)
+app.use(userLoader)
 
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, './src/public/html/perfil.html'))
+    res.sendFile(join(__dirname, './src/public/html/index.html'))
 });
 
 server.listen(app.get('port'), () => {

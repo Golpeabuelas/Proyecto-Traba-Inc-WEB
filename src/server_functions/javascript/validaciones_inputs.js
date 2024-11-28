@@ -59,6 +59,26 @@ export function etiquetasFixer (idInput) {
     idInput.value = auxiliar
 }
 
+export function etiquetasFixerEmail (idInput) {
+    const valorInput = idInput.value;
+    let auxiliar = "";
+
+    for (let i = 0; i < valorInput.length; i++) {
+        if (/[^0-9a-zA-ZáéíóúñÁÉÍÓÚÑ¿?¡!.,@_-]/.test(valorInput.charAt(i))) {
+            idInput.setCustomValidity('Caracteres peligrosos no permitidos (<`$>)');
+            idInput.reportValidity();
+            break
+        }
+        else {
+            idInput.setCustomValidity('');
+            idInput.reportValidity();
+            auxiliar += valorInput.charAt(i)
+        }
+    }
+
+    idInput.value = auxiliar
+}
+
 export function fechaPosterior (idFecha) {
     const fecha = new Date(idFecha.value)
     const hoy = new Date(Date.now())

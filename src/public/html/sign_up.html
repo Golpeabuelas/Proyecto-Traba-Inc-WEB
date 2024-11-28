@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
 
-  <link rel="stylesheet" href="/css/sign_up_styles.css">
+    <link rel="stylesheet" href="/imagenes/Gatito_Mamalon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/sign_up_styles.css">
 </head>
 <body>
-  <div class="signup-container">
-    <h1 class="signup-title">REGÍSTRATE</h1>
-    <form class="signup-form">
-      <label for="username" class="signup-label">Usuario</label>
-      <input type="text" id="username" class="signup-input">
-      
-      <label for="password" class="signup-label">Contraseña</label>
-      <input type="password" id="password" class="signup-input">
-      
-      <label for="email" class="signup-label">Correo</label>
-      <input type="email" id="email" class="signup-input">
+    <div class="signup-container">
+        <h1 class="signup-title">REGÍSTRATE</h1>
+        
+        <form class="signup-form">
+            <label for="nombre" class="signup-label">Nombre</label>
+            <input type="text" id="nombre" class="signup-input required">
+        
+            <label for="password" class="signup-label">Contraseña</label>
+            <input type="password" id="password" class="signup-input required">
+        
+            <label for="correo" class="signup-label">Correo</label>
+            <input type="email" id="correo" class="signup-input required">
 
-      <div class="upload-container">
-        <div class="upload-section">
-          <label for="profile-pic" class="upload-label">Foto de perfil</label>
-          <input type="file" id="profile-pic" class="upload-input">
-        </div>
-        <div class="upload-section">
-          <label for="banner-pic" class="upload-label">Banner del perfil</label>
-          <input type="file" id="banner-pic" class="upload-input">
-        </div>
-      </div>
+            <div class="upload-container">
+                <div class="upload-section">
+                    <label for="profile-pic" class="upload-label">Foto de perfil</label>
+                    <input type="file" id="foto_usuario" class="upload-input required">
+                </div>
+            </div>
 
-      <button type="submit" class="signup-button">REGISTRARSE</button>
-    </form>
-    <p class="login-text">
-      ¿Ya tienes cuenta? <a href="#" class="login-link">Inicia sesión</a>
-    </p>
+            <button type="submit" class="signup-button" id="btn_sign_up">REGISTRARSE</button>
+        </form>
+
+        <p class="login-text">
+            ¿Ya tienes cuenta? <a href="/sign_in" class="login-link">Inicia sesión</a>
+        </p>
   </div>
+  
+    
+  <script type="module" src="/scripts/javascript/user_functions/sign_up/consts_user_su.js"></script>
 </body>
 </html>
 

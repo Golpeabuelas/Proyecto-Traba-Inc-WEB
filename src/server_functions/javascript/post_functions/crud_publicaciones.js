@@ -45,6 +45,8 @@ publicaciones.post('/crearPublicacion', (req, res) => {
     })
 })
 
+
+//--------------------------------------------tiene que esperar-----------------------------------------------------
 publicaciones.get('/readPublicacion', async (req, res) => {
     try {
         const [publicacionResponse, mascotaResponse, desaparicionResponse] = await Promise.all([

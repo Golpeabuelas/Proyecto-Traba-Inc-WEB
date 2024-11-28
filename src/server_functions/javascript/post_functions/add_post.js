@@ -67,7 +67,7 @@ export async function addPost() {
             headers: {
                 'Content-Type': 'application/json',
             },
-                body: JSON.stringify({ id_usuario, titulo_publicacion, imagen_mascota, nombre_mascota, especie_mascota, color_mascota, distintivo_mascota, fecha_desaparicion, descripcion_desaparicion, latitud, longitud }),
+            body: JSON.stringify({ id_usuario, titulo_publicacion, imagen_mascota, nombre_mascota, especie_mascota, color_mascota, distintivo_mascota, fecha_desaparicion, descripcion_desaparicion, latitud, longitud }),
         });
 
         if (!response.ok) {
