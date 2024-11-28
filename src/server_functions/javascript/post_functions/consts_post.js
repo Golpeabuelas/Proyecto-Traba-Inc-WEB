@@ -64,7 +64,7 @@ descripcion_desaparicion.addEventListener('input', () => {
 
 imagen_mascota.addEventListener('change', async (e) => {
     newPost.imagenMascota = await getImage(cargarImagen, imageDefault, e)
-    alert(newPost.imagenMascota)
+    console.log(newPost.imagenMascota)
 });
 
 btnNewPost.addEventListener('click', async (e) => {
@@ -91,35 +91,33 @@ const btnBuscar = document.getElementById('btnBuscar')
 const idPublicacionBuscar = document.getElementById('idPublicacionBuscar')
 const publicacion_encontrada = document.getElementById('publicacionEncontrada')
 
-btnBuscar.addEventListener('click', async () => {
-    await cargarPost(idPublicacionBuscar.value)
-})
+cargarPost()
 
-async function cargarPost(id) {
+async function cargarPost() {
     try {
         const response = await fetch('/readPublicacion', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id }),
+            }
         });
 
         const respuesta = await response.json()
 
-        publicacion_encontrada.innerHTML = `
-            
+        for(let i = 0; i < respuesta.length; i++ ) {
+            publicacion_encontrada.innerHTML = `
+                
             <form class="formulario_publicacion">
                 <div class="publicacion">
                     <div class="contenedor_izquierda">
                         <div class="contenedor_imagen">
-                            <img src="">
+                            <img src="${respuesta[i].informacion_mascota.imagen_mascota}">
                         </div>
 
                         <div class="contenedor_informacion_destacada">
-                            <input placeholder="${respuesta.titulo_publicacion}" >
+                            <input placeholder="${respuesta[i].informacion_publicacion.titulo_publicacion}" >
                             
-                            <textarea placeholder="{response.descripcion_desaparicion}"></textarea>
+                            <textarea placeholder="${respuesta[i].informacion_desaparicion.descripcion_desaparicion}"></textarea>
                         </div>
                     </div>
 
@@ -129,12 +127,12 @@ async function cargarPost(id) {
                         </div>
 
                         <div class="contenedor_informacion">
-                            <input placeholder="{response.nombre_mascota}">
-                            <input placeholder="{response.especie_mascota}">
-                            <input placeholder="{response.color_mascota}">
-                            <input placeholder="{response.distintivo_mascota}">
+                            <input placeholder="${respuesta[i].informacion_mascota.nombre_mascota}">
+                            <input placeholder="${respuesta[i].informacion_mascota.especie_mascota}">
+                            <input placeholder="${respuesta[i].informacion_mascota.color_mascota}">
+                            <input placeholder="${respuesta[i].informacion_mascota.distintivo_mascota}">
 
-                            <input type="date" >
+                            <input type="date" value="${respuesta[i].informacion_desaparicion.fecha_desaparicion}">
                         </div>
 
                         <div class="contenedor_api_maps">
@@ -145,7 +143,7 @@ async function cargarPost(id) {
                 </div>
                 
             </form>`
-
+        }
     } catch (error) {
         console.error('Error al iniciar sesión:', error);
     }

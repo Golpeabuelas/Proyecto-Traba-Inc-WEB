@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/index.js",
+    "dev": "nodemon ./index.js",
     "start": "node ./src/server_functions/javascript/FUNCION_IMPORTANTE.js"
   },
   "author": "",

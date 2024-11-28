@@ -19,5 +19,14 @@ router.get('/perfil', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/perfil.html'))
 });
 
+router.get('/sign_in', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/sign_in.html'))
+});
+
+router.get('/sign_up', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/sign_up.html'))
+});
+
+
 
 export default router;

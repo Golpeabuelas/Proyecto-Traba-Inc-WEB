@@ -136,6 +136,7 @@ header{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     padding: auto;
+    overflow-y: scroll;
 }
 
 .formulario_publicacion {
@@ -202,7 +203,7 @@ header{
 .input_descripcion {
     border-radius: 10px;
     width: calc(100% - 30px);
-    height: 100px;
+    height: 40px;
     border: none;
     margin-top: 2em;
     resize: none;
@@ -243,7 +244,7 @@ header{
     box-sizing: border-box;
     margin-block: 10px;
     width: 100%;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 .contenedor_informacion input:focus{
@@ -289,3 +290,7 @@ header{
     color: #032B30;
 }
   
+.contenedor_api_maps {
+    display: flex;
+    flex-direction: column;
+}
