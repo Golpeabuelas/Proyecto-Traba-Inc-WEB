@@ -11,12 +11,13 @@ userLoader.post('/buscarSesionExistente', (req, res) => {
             return res.status(400).send(console.log('Error al buscar sesión', error))
         }
         
-        if ( response.length === 0) {    
+        if ( response.length === 0) { 
             return res.json({ correoDisponible: true })
         }
 
-        console.log('va a retornan false')
-        return res.json({ correoDisponible: false })
+        if ( response.length !== 0) {
+            return res.json({ correoDisponible: false })
+        }
     })
 })
 
@@ -31,21 +32,41 @@ userLoader.post('/otorgarPermisos', (req, res) => {
 })
 
 userLoader.post('/iniciarSesion', (req, res) => {
-    const correo = req.body.Correo
-    const password = req.body.Password
+    const correo = req.body.correo
+    const password = req.body.password
 
     connection.query('SELECT * FROM usuario WHERE correo = ?', [correo], (error, response) => {
         if ( error ) {
-            res.status(400).send(console.log('Error al iniciar sesión', error))
+            return res.status(400).send(console.log('Error al iniciar sesión', error))
         }
 
         if ( response.length === 0 ) {
-            res.status(404).send(console.log('Usuario no encontrado'))
+            return res.status(404).send(console.log('Usuario no encontrado'))
         }
 
         if ( password === response[0].password) {
-            res.send(response[0])
+            res.json({ Response: response[0], Acceso: true })
         }
+
+        if ( password !== response[0].password) {
+            res.json({ Acceso: false })
+        }
+    })
+})
+
+userLoader.post('/getUserID', (req, res) => {
+    const correo = req.body.correo
+
+    connection.query('SELECT * FROM usuario WHERE correo = ?', [correo], (error, response) => {
+        if ( error ) {
+            return res.status(400).send(console.log('Error al buscar la información del usuario', error))
+        }
+
+        if ( response.length === 0 ) {
+            return res.status(404).send(console.log('Usuario no encontrado'))
+        }
+
+        return res.json({ id_usuario: response[0].id_usuario })
     })
 })
 

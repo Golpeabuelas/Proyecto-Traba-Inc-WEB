@@ -47,56 +47,69 @@ publicaciones.post('/crearPublicacion', (req, res) => {
 
 
 //--------------------------------------------tiene que esperar-----------------------------------------------------
-publicaciones.get('/readPublicacion', async (req, res) => {
-    try {
-        const [publicacionResponse, mascotaResponse, desaparicionResponse] = await Promise.all([
-            new Promise((resolve, reject) => {
-                connection.query('SELECT * FROM publicacion WHERE id_usuario = ?', (error, response) => {
-                    if (error) {
-                        return reject('No pudimos traer esa publicación (publicacion)');
-                    }
-                    if (response.length === 0) {
-                        return reject('No tienes publicaciones');
-                    }
-                    resolve(response);
-                });
-            }),
-            new Promise((resolve, reject) => {
-                connection.query('SELECT * FROM informacion_mascota', (error, response) => {
-                    if (error) {
-                        return reject('No pudimos traer esa información de mascota');
-                    }
-                    if (response.length === 0) {
-                        return reject('No tienes publicaciones');
-                    }
-                    resolve(response);
-                });
-            }),
-            new Promise((resolve, reject) => {
-                connection.query('SELECT * FROM informacion_desaparicion', (error, response) => {
-                    if (error) {
-                        return reject('No pudimos traer esa información de desaparición');
-                    }
-                    if (response.length === 0) {
-                        return reject('No tienes publicaciones');
-                    }
-                    resolve(response);
-                });
-            })
-        ]);
-
-        const result = {
-            informacion_publicacion: publicacionResponse,
-            informacion_mascota: mascotaResponse,
-            informacion_desaparicion: desaparicionResponse
-        };
-
-        console.log(result[0])
-        res.json(result);
-
-    } catch (error) {
-        res.status(400).json({ error: error });
+publicaciones.post('/readPublicacion', (req, res) => {
+    const id_usuario = req.body.id_usuario
+    
+    const respuesta = {
+        informacionPublicacion: "",
+        informacionMascota: "",
+        informacionDesaparicion: ""
     }
+
+    connection.query('SELECT * FROM publicacion WHERE id_usuario = ?', [id_usuario], async (error, response) => {
+        if (error) {
+            return res.send(console.log('No pudimos traer tus publicaciones'));
+        }
+
+        if (response.length === 0) {
+            return res.send(console.log('No tienes publicaciones'));
+        }
+
+        for(let i = 0; i < response.length; i++) {
+            const informacionPublicacion = response.json()
+            const id_publicacion = response[i].id_publicacion
+
+            try {
+                const [informacionMascota, informacionDesaparicion] = await Promise.all([
+                    new Promise((resolve, reject) => {
+                        connection.query('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion], (errorIM, responseIM) => {
+                            if (error) {
+                                return reject('No pudimos traer esa información de desaparición');
+                            }
+                            if (response.length === 0) {
+                                return reject('No tienes publicaciones');
+                            }
+                            resolve(response);
+                        })
+                    }), 
+
+                    new Promise((resolve, reject) => {
+                        connection.query('SELECT * FROM informacion_desaparicion WHERE id_publicacion = ?', [id_publicacion], (error, response) => {
+                            if (error) {
+                                return reject('No pudimos traer esa información de desaparición');
+                            }
+                            if (response.length === 0) {
+                                return reject('No tienes publicaciones');
+                            }
+                            resolve(response);
+                        });
+                    })
+                ])
+                
+                respuesta += {
+                    informacionPublicacion: informacionPublicacion,
+                    informacionMascota: informacionMascota,
+                    informacionDesaparicion: informacionDesaparicion
+                }
+
+            } catch (error) {
+                console.log('No pudimos traer la información de tu publicación')
+            }
+        }
+        
+        console.log(respuesta)
+        return res.json(respuesta)
+    })
 });
 
 publicaciones.post('/crearChat', (req, res) => {

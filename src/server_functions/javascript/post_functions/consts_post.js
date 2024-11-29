@@ -90,7 +90,27 @@ const btnBuscar = document.getElementById('btnBuscar')
 const idPublicacionBuscar = document.getElementById('idPublicacionBuscar')
 const publicacion_encontrada = document.getElementById('publicacionEncontrada')
 
-cargarPost()
+const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: "" };
+
+export async function entrarPerfil () {
+    const correo = usedUser.correo
+
+    const response = await fetch('/getUserID', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo })
+    })
+
+    const respuesta = await response.json()
+
+    const id_usuario = respuesta.id_usuario
+
+    const publicaciones = await fetch('readPublicacion', {})
+}
+
+/*cargarPost()
 
 async function cargarPost() {
     try {
@@ -146,4 +166,4 @@ async function cargarPost() {
     } catch (error) {
         console.error('Error al iniciar sesión:', error);
     }
-}
+}*/

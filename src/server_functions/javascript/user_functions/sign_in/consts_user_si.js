@@ -13,8 +13,10 @@ password.addEventListener('input', () => {
     etiquetasFixerEmail(password)
 })
 
-btnSignIn.addEventListener('click', () => {
+btnSignIn.addEventListener('click', (event) => {
+    event.preventDefault()
+
     if ( !(correo.value === correo.defaultValue)  && !(password.value === password.defaultValue) ) {
-        iniciarSesion(correo.value, password.value)    
+        iniciarSesion(correo, password)    
     }
 })

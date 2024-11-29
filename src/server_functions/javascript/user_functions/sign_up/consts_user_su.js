@@ -36,13 +36,14 @@ btnSignUp.addEventListener('click', async (event) => {
         newUser.correo = correo.value
         newUser.password = password.value
 
-        const correoDisponible = await verificarCorreo()
+        const correoDisponible = await verificarCorreo(correo)
         newUser.permisos = await otorgarPermisos()
 
-        if( correoDisponible ) {   
+        if( correoDisponible === true ) {   
             await signUp()
         } else {
-            alert('correo no disponible')
+            correo.setCustomValidity('Ya se ha iniciado sesión con este correo')
+            correo.reportValidity()
         }
     } 
 })

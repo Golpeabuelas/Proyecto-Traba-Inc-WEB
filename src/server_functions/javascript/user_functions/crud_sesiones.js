@@ -15,7 +15,7 @@ sesiones.post('/aniadirUsuario', (req, res) => {
             return res.status(400).send(console.log('Error al añadir nueva sesión'))
         }
 
-        res.json(response)
+        res.status(200).send(console.log('perramadre acabate'))
     })
 })
 

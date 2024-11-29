@@ -76,5 +76,4 @@ export async function addPost() {
     } catch (error) {
         console.error('Error al crear publicación:', error);
     }
-    
 }

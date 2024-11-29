@@ -30,7 +30,7 @@ export function fullRegister(inputs) {
     return true
 }
 
-export async function verificarCorreo() {   
+export async function verificarCorreo(Correo) {   
     const correo = newUser.correo
 
     const response = await fetch('/buscarSesionExistente', {
@@ -69,16 +69,23 @@ export async function signUp() {
     const foto_usuario = newUser.fotoUsuario
     const permisos = newUser.permisos
 
-    try {
-        const response = await fetch('/aniadirUsuario', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ nombre, correo, password, foto_usuario, permisos }),
-        })
-    } catch (error) {
-        console.error('Error al registrarse, intentelo más tarde', error)
+    const response = await fetch('/aniadirUsuario', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nombre, correo, password, foto_usuario, permisos }),
+    })
+
+    const usedUser = {
+        nombre: nombre,
+        correo: correo,
+        password: password,
+        fotoUsuario: foto_usuario,
+        permisos: permisos
     }
-          
+
+    localStorage.setItem('usedUser', JSON.stringify(usedUser));
+
+    window.location.href = 'index'     
 }
