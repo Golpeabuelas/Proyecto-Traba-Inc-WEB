@@ -275,7 +275,7 @@ body{
 }
 
 .chat__buttonEnviar{
-    width: 90%;
+    width: 100%;
     text-transform: uppercase;
     padding: 3vh 0;
     font-size: 1vw;
@@ -306,6 +306,35 @@ body{
     background-color: var(--grisclaro);
     margin-left: auto; 
 }
+
+.chat__form{
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.chat__input{
+    width: 100%;
+    border: none;
+    resize: none;
+    overflow-y: auto;
+    overflow-x: auto;
+    font-family: 'Montserrat';
+    height: 10vh;
+    font-size: 1vw;
+    padding: 2vh;
+}
+
+.chat__input:focus{
+    outline: none;
+    border: none;
+}
+
+
 
 footer {
     width: 100dvw;
@@ -413,5 +442,6 @@ footer {
     width: calc(75% - 116px);            
     gap: 20px; 
 }
+
 
 
