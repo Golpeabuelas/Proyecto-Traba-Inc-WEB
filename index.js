@@ -32,7 +32,7 @@ app.use(router)
 app.use(sesiones)
 
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, './src/public/html/index.html'))
+    res.sendFile(join(__dirname, './src/public/html/chat.html'))
 });
 
 server.listen(app.get('port'), () => {
