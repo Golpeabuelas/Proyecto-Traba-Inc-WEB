@@ -11,7 +11,7 @@ router.get('/index', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/index.html'))
 });
 
-router.get('/chat', (req, res) => {
+router.get('/chat/:id', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/chat.html'))
 });
 
@@ -27,6 +27,16 @@ router.get('/sign_up', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/sign_up.html'))
 });
 
+router.get('/inicio', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/inicio.html'))
+})
 
+router.get('/report', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/create_report.html'))
+})
+
+router.get('/respuestas', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/respuestas.html'))
+})
 
 export default router;

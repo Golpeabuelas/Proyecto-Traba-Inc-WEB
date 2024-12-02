@@ -70,4 +70,20 @@ userLoader.post('/getUserID', (req, res) => {
     })
 })
 
+userLoader.post('/getUserInformation', (req, res) => {
+    const id_usuario = req.body.id_usuario
+    
+    connection.query('SELECT * FROM usuario WHERE id_usuario = ?', [id_usuario], (error, response) => {
+        if ( error ) {
+            return res.status(400).send(console.log('No pudimos traer tu información', error))
+        }
+
+        if ( response.length === 0 ) {
+            return res.status(400).send(console.log('Usuario no encontrado'))            
+        }
+
+        return res.json({ nombre: response[0].nombre, foto: response[0].foto_usuario, id_dueño: id_usuario })
+    })
+})
+
 export default userLoader

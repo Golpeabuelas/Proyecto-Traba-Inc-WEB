@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Mascotas</title>
+
+  <link rel="stylesheet" href="/css/inicio_styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__image">
+            <a href="/index"><img src="/imagenes/logo.png" alt=""></a>
+        </div>
+        <div class="navbar__buscador">
+            <input type="text" class="navbar__buscador--input" >
+        </div>
+        <div class="navbar__link"><a href="/inicio">Inicio</a></div>
+        <div class="navbar__link"><a href="/report">Crear un reporte</a></div>
+        <div class="navbar__link"><a href="#">Salud</a></div>
+        <div class="navbar__link"><a href="#" id="enlace_perfil">Perfil</a></div>
+    </nav>
+
+    <main class="container">
+        <h2>¿Los has visto?</h2>
+
+        <div class="filters">
+            <button class="filter-button">Reciente</button>
+            <button class="filter-button">Más cercanos</button>
+            <button class="filter-button">Perros</button>
+            <button class="filter-button">Gatos</button>
+        </div>
+
+        <div class="cards" id="contenedor_publicaciones">
+            
+        </div>
+    </main>
+
+    <script type="module" src="/scripts/javascript/web_loader/inicio_loader/consts_inicio.js"></script>
+</body>
+</html>

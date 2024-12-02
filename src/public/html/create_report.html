@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Reporte</title>
+    <link rel="icon" href="/imagenes/Gatito_Mamalon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/mk_reporte_styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__image">
+            <a href="/index"><img src="/imagenes/logo.png" alt=""></a>
+        </div>
+        <div class="navbar__buscador">
+            <input type="text" class="navbar__buscador--input" >
+        </div>
+        <div class="navbar__link"><a href="/inicio">Inicio</a></div>
+        <div class="navbar__link"><a href="#">Crear un reporte</a></div>
+        <div class="navbar__link"><a href="#">Salud</a></div>
+        <div class="navbar__link"><a href="/perfil" id="enlace_perfil">Perfil</a></div>
+    </nav>
+    
+    <div class="fondo__reporte">
+        <div class="wrapper__reporte">
+            <div class="previsualizacion">
+                <div class="prevtitle__wrapper">
+                    <h2 class="prev__title">PREVISUALIZACIÓN</h2>
+                </div>
+
+                <div class="prev__infoperro1">
+                    <img src="/imagenes/logo.png" alt="" class="prev__infoperro1--image" id="cargar_imagen">
+                    <form action="" class="prev__infoperro1--content">
+                        <textarea name="" id="" class="prev__infoperro1--input" placeholder="Nombre: Pugberto" disabled></textarea>
+                        <textarea name="" id="" class="prev__infoperro1--input" placeholder="Lugar donde se encontró: Ciudad Peluche" disabled></textarea>
+                        <textarea name="" id="" class="prev__infoperro1--input" placeholder="Especie: Perro mandril" disabled></textarea>
+                        <textarea name="" id="" class="prev__infoperro1--input" placeholder="Color: Negro con blanco" disabled></textarea>
+                        <textarea name="" id="" class="prev__infoperro1--input" placeholder="Distintivos: Collar azul, con un pañuelo azul en el cuello" disabled></textarea>
+                    </form>
+                </div>
+
+                <div class="prev__infoperro2">
+                    <div class="prev__infoperro2--descriptiontitle1">
+                        <h2 class="prev__infoperro2--descriptiontitle">Descripción:</h2>
+                    </div>
+
+                    <form action="">
+                        <textarea name="" id="" class="prev__infoperro2--description" disabled placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu justo turpis. Morbi eget orci hendrerit, commodo"></textarea>
+                    </form>
+                </div>
+            </div>
+
+            <div class="makereporte">
+                <div class="mkreporte__content">
+                    <div class="mkreporte__wrapper--chat">
+                        <h2 class="mkreporte__title--chat">CREACIÓN DEL REPORTE</h2>
+                    </div>
+                    <div class="mkreporte__wrapper">
+                        <form action="" class="mkreporte__wrapper--fondo" id="contenedor_formulario">
+                            <h2>¿De qué tipo es tu reporte?</h2>
+                            <div style="display: flex;">
+                                <label for="radio1" style="margin-inline: 15px;">
+                                    <input type="radio" name="mascota" id="radio1"> Mascota desaparecida
+                                </label>
+                                <label for="radio2">
+                                    <input type="radio" name="mascota" id="radio2"> Encontraste una mascota
+                                </label>
+                            </div> 
+                        </form>
+
+                        
+                        <input type="submit" class="mkreporte__buttonEnviar" value="CREAR" id="crear_publicacion"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer__icons">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+        </div>
+        <div class="footer__content">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon--white">
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Follow Pet</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Introducción</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Características</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-¿Cómo funciona?</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Aplicación Mobile</a></li>
+                    </ul>
+                </div>
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Inicio</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Inicio</a></li>
+                        <li class="footer__links--itemtitle">Hacer un registro de una mascota:</li>
+                        <li class="footer__links--item linkreporte"><a href="#introduccion">Perdida</a></li>
+                        <li class="footer__links--item linkreporte"><a href="#introduccion">Encontrada</a></li>
+                    </ul>
+                </div>
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Salud</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Datos médicos</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Próximas revisiones médicas.</a></li>
+                    </ul>
+                </div>
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Perfil</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Ver perfil</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Modificar perfil</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Modificar reportes</a></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="footer__copyright">Copyright © 2024 <span class="footer__copyright--subrayado"> Traba Inc </span></div>
+    </footer>
+
+    <script type="module" src="/scripts/javascript/post_functions/create_post/consts_create_post.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</body>
+</html>

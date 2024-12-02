@@ -1,52 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Provisional Tests</title>
-    
-    <link rel="stylesheet" href="/css/chat_styles.css">
+    <title>Post</title>
     <link rel="icon" href="/imagenes/Gatito_Mamalon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/chat_styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
-    <div class="main-container">
-        <div class="publicacion">
-            <div class="contenedor_izquierda">
-                <div class="contenedeor_imagen_publicacion">
-                    <img src="/imagenes/perroPendejo.jpg" alt="">
-                </div>
-                <div class="contenedor_informacion">
-                    <h2>Perro bonito de Pinterest</h2>
-                    <button onclick="">Interactuar</button>
-                </div>
-            </div>
-            <div class="contenedor_derecha">
-                <ul>
-                    <li>Edad: 2 años</li>
-                    <li>Color: Daltonismo</li>
-                    <li>Solo habla ruso</li>
-                    <li>Distintivo: Huevos MUY grandes</li>
-                </ul>
-            </div>
+    <nav class="navbar">
+        <div class="navbar__image">
+            <a href="/index"><img src="/imagenes/logo.png" alt=""></a>
         </div>
+        <div class="navbar__buscador">
+            <input type="text" class="navbar__buscador--input" >
+        </div>
+        <div class="navbar__link"><a href="/inicio">Inicio</a></div>
+        <div class="navbar__link"><a href="/report">Crear un reporte</a></div>
+        <div class="navbar__link"><a href="#">Salud</a></div>
+        <div class="navbar__link"><a href="#" id="enlace_perfil">Perfil</a></div>
+    </nav>
 
-        <div class="chat-container">
-            <div class="chat-header">
-                <h2>Chat de Ayuda</h2>
-            </div>
-            <div class="chat-messages">
-                <ul id="mensajes"></ul>
-            </div>
-            <div class="chat-input">
-                <form id="form">
-                    <input type="text" placeholder="Escribe un mensaje..." id="input">
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
+    <div class="fondo__post">
+        <div class="wrapper__post" id="contenedor_chat_publicacion">
+            
         </div>
     </div>
 
-    <script src="/scripts/javascript/user_functions/user_socket.js" type="module"></script>
+    <footer>
+        <div class="footer__icons">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon">
+        </div>
+        <div class="footer__content">
+            <img src="/imagenes/logo.png" alt="" class="footer__icon--white">
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Follow Pet</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Introducción</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Características</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-¿Cómo funciona?</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Aplicación Mobile</a></li>
+                    </ul>
+                </div>
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Inicio</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Inicio</a></li>
+                        <li class="footer__links--itemtitle">Hacer un registro de una mascota:</li>
+                        <li class="footer__links--item linkreporte"><a href="#introduccion">Perdida</a></li>
+                        <li class="footer__links--item linkreporte"><a href="#introduccion">Encontrada</a></li>
+                    </ul>
+                </div>
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Salud</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Datos médicos</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Próximas revisiones médicas.</a></li>
+                    </ul>
+                </div>
+                <div class="footer__href">
+                    <ul class="footer__links">
+                        <li class="footer__links--itemtitle">Perfil</li>
+                        <li class="footer__links--item"><a href="#introduccion">-Ver perfil</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Modificar perfil</a></li>
+                        <li class="footer__links--item"><a href="#introduccion">-Modificar reportes</a></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="footer__copyright">Copyright © 2024 <span class="footer__copyright--subrayado"> Traba Inc </span></div>
+    </footer>
+
+    <script type="module" src="/scripts/javascript/web_loader/chat_loader/consts_chat.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </body>
 </html>

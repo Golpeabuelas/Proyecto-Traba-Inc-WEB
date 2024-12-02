@@ -81,7 +81,7 @@ export function etiquetasFixerEmail (idInput) {
 
 export function fechaPosterior (idFecha) {
     const fecha = new Date(idFecha.value)
-    const hoy = new Date(Date.now())
+    const hoy = new Date()
     
     fecha.setHours(0,0,0,0)
     hoy.setHours(0,0,0,0)
