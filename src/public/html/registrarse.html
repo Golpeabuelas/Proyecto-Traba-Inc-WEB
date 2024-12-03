@@ -48,8 +48,8 @@
                 </div>
                 <form action="" class="iniciosesion__form">
                     <input type="text" name="" id="" class="iniciosesion__input" placeholder="Usuario">
-                    <input type="text" name="" id="" class="iniciosesion__input" placeholder="Contraseña">
-                    <input type="text" name="" id="" class="iniciosesion__input" placeholder="Correo">
+                    <input type="password" name="" id="" class="iniciosesion__input" placeholder="Contraseña">
+                    <input type="email" name="" id="" class="iniciosesion__input" placeholder="Correo">
                     <h2>Foto de perfil</h2>
                     <div class="decoraciones__bottom"></div>
                     <label for="file-upload" class="file-upload-label">
@@ -62,31 +62,35 @@
                     <div id="image-preview" class="image-preview" style="display:none;">
                         <img id="preview-img" src="" alt="Imagen subida">
                     </div>
-                    <input type="submit" class="iniciosesion__submit" value="REGISTRARSE">
+                    <input type="submit" class="iniciosesion__submit registrarseBtn btnmodalubicacion" value="REGISTRARSE">
                 </form>
-                
                 <div class="iniciosesion__anotherinfo">
                     <p>¿Ya tienes cuenta?<span><a href="">Inicia sesión</a></span></p>
                 </div>
             </div>
         </div>
-        
     </div>
+
+    <div class="modal__ubicacion--wrapper" id="modalUbicacion" style="display: none;">
+        <div class="modal__ubicacion">
+            <p class="modal__ubicacion--text">
+                Un último paso: <br>¡Agrega tu ubicación!
+                <div class="decoraciones">
+                    <div class="decoraciones__top"></div>
+                    <div class="decoraciones__bottom"></div>
+                </div>
+            </p>
+            <div class="modal__ubicacion--mapa">
+                <!-- Aquí puedes insertar un mapa si lo deseas -->
+            </div>
+            <form action="" class="modal__ubicacion--form">
+                <input type="submit" class="iniciosesion__submit btnmodalubicacion" value="REGISTRARSE">
+            </form>
+        </div>
+    </div>
+
     <footer>
         <div class="footer__icons">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
-            <img src="/imagenes/logo.png" alt="" class="footer__icon">
             <img src="/imagenes/logo.png" alt="" class="footer__icon">
             <img src="/imagenes/logo.png" alt="" class="footer__icon">
             <img src="/imagenes/logo.png" alt="" class="footer__icon">
@@ -95,46 +99,47 @@
         </div>
         <div class="footer__content">
             <img src="/imagenes/logo.png" alt="" class="footer__icon--white">
-                <div class="footer__href">
-                    <ul class="footer__links">
-                        <li class="footer__links--itemtitle">Follow Pet</li>
-                        <li class="footer__links--item"><a href="#introduccion">-Introducción</a></li>
-                        <li class="footer__links--item"><a href="#introduccion">-Características</a></li>
-                        <li class="footer__links--item"><a href="#introduccion">-¿Cómo funciona?</a></li>
-                        <li class="footer__links--item"><a href="#introduccion">-Aplicación Mobile</a></li>
-                    </ul>
-                </div>
-                <div class="footer__href">
-                    <ul class="footer__links">
-                        <li class="footer__links--itemtitle">Inicio</li>
-                        <li class="footer__links--item"><a href="#introduccion">-Inicio</a></li>
-                        <li class="footer__links--itemtitle">Hacer un registro de una mascota:</li>
-                        <li class="footer__links--item linkreporte"><a href="#introduccion">Perdida</a></li>
-                        <li class="footer__links--item linkreporte"><a href="#introduccion">Encontrada</a></li>
-                    </ul>
-                </div>
-                <div class="footer__href">
-                    <ul class="footer__links">
-                        <li class="footer__links--itemtitle">Salud</li>
-                        <li class="footer__links--item"><a href="#introduccion">-Datos médicos</a></li>
-                        <li class="footer__links--item"><a href="#introduccion">-Próximas revisiones médicas.</a></li>
-                    </ul>
-                </div>
-                <div class="footer__href">
-                    <ul class="footer__links">
-                        <li class="footer__links--itemtitle">Perfil</li>
-                        <li class="footer__links--item"><a href="#introduccion">-Ver perfil</a></li>
-                        <li class="footer__links--item"><a href="#introduccion">-Modificar perfil</a></li>
-                        <li class="footer__links--item"><a href="#introduccion">-Modificar reportes</a></li>
-                    </ul>
-                </div>
+            <div class="footer__href">
+                <ul class="footer__links">
+                    <li class="footer__links--itemtitle">Follow Pet</li>
+                    <li class="footer__links--item"><a href="#introduccion">-Introducción</a></li>
+                    <li class="footer__links--item"><a href="#introduccion">-Características</a></li>
+                    <li class="footer__links--item"><a href="#introduccion">-¿Cómo funciona?</a></li>
+                    <li class="footer__links--item"><a href="#introduccion">-Aplicación Mobile</a></li>
+                </ul>
+            </div>
+            <div class="footer__href">
+                <ul class="footer__links">
+                    <li class="footer__links--itemtitle">Inicio</li>
+                    <li class="footer__links--item"><a href="#introduccion">-Inicio</a></li>
+                    <li class="footer__links--itemtitle">Hacer un registro de una mascota:</li>
+                    <li class="footer__links--item linkreporte"><a href="#introduccion">Perdida</a></li>
+                    <li class="footer__links--item linkreporte"><a href="#introduccion">Encontrada</a></li>
+                </ul>
+            </div>
+            <div class="footer__href">
+                <ul class="footer__links">
+                    <li class="footer__links--itemtitle">Salud</li>
+                    <li class="footer__links--item"><a href="#introduccion">-Datos médicos</a></li>
+                    <li class="footer__links--item"><a href="#introduccion">-Próximas revisiones médicas.</a></li>
+                </ul>
+            </div>
+            <div class="footer__href">
+                <ul class="footer__links">
+                    <li class="footer__links--itemtitle">Perfil</li>
+                    <li class="footer__links--item"><a href="#introduccion">-Ver perfil</a></li>
+                    <li class="footer__links--item"><a href="#introduccion">-Modificar perfil</a></li>
+                    <li class="footer__links--item"><a href="#introduccion">-Modificar reportes</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer__copyright">Copyright © 2024 <span class="footer__copyright--subrayado"> Traba Inc </span></div>
     </footer>
+
     <script>
         document.getElementById("file-upload").addEventListener("change", function (event) {
             const file = event.target.files[0];
-    
+
             if (file) {
                 const reader = new FileReader();
                 
@@ -142,15 +147,28 @@
                     const previewImg = document.getElementById("preview-img");
                     previewImg.style.display = "block";
                     previewImg.src = e.target.result;
-    
+
                     const uploadStatus = document.getElementById("upload-status");
-                    uploadStatus.style.display = "flex"; // Mostrar mensaje de éxito
+                    uploadStatus.style.display = "flex";
                 };
-    
+
                 reader.readAsDataURL(file);
+            }
+        });
+
+        const registrarseBtn = document.querySelector('.registrarseBtn');
+        const modalUbicacion = document.getElementById('modalUbicacion');
+
+        registrarseBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            modalUbicacion.style.display = 'flex'; // Muestra el modal
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modalUbicacion) {
+                modalUbicacion.style.display = 'none'; // Cierra el modal si se hace clic fuera
             }
         });
     </script>
 </body>
-
 </html>

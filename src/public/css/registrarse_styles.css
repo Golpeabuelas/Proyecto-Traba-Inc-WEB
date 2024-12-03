@@ -1,4 +1,23 @@
 /*GENERALES*/
+/* Definir las fuentes utilizando @font-face */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/Fuentes/Montserrat-Regular.woff2') format('woff2'),
+         url('/Fuentes/Montserrat-Regular.woff') format('woff'),
+         url('/Fuentes/Montserrat-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/Fuentes/Montserrat-Bold.woff2') format('woff2'),
+         url('/Fuentes/Montserrat-Bold.woff') format('woff'),
+         url('/Fuentes/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
 *{
     box-sizing: border-box;
     padding: 0;
@@ -341,6 +360,57 @@ a:hover {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+.modal__ubicacion--wrapper {
+    height: 100dvh;
+    width: 100dvw;
+    background-color: #0006;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__ubicacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+    width: 80%;
+    background-color: var(--naranja);
+    filter: drop-shadow(0 4px 10px #0005);
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.modal__ubicacion--text {
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.1vw;
+    font-size: 2vw;
+    margin-top: 5vh;
+}
+
+.modal__ubicacion--mapa {
+    height: 50%;
+    width: 50%;
+    border: 1px solid #583500;
+}
+
+.modal__ubicacion--form > .iniciosesion__submit {
+    width: 1000%;
+    padding: 1vh;
+    margin: auto;
+    border-radius: 0px;
+    border-bottom-left-radius: 30px;
+    border: none;
+}
+
+.modal__ubicacion--form {
+    width: 100%;
+    height: fit-content;
+    display: flex;
 }
 
 footer {
