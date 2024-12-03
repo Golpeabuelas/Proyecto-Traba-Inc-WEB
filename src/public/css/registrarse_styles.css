@@ -298,10 +298,10 @@ span a {
     color: inherit;
     margin: 0 1vw;
     text-shadow:
-    3px 3px 0px #A0C4CC,  
-    -3px -3px 0px #A0C4CC, 
-    3px -3px 0px #A0C4CC,   
-    -3px 3px 0px #A0C4CC;
+    1px 1px 0px #A0C4CC,  
+    -1px -1px 0px #A0C4CC, 
+    1px -1px 0px #A0C4CC,   
+    -1px 1px 0px #A0C4CC;
 }
 
 a:hover {
@@ -362,41 +362,61 @@ a:hover {
     border-radius: 8px;
 }
 
+
 .modal__ubicacion--wrapper {
-    height: 100dvh;
-    width: 100dvw;
-    background-color: #0006;
+    height: 100dvh; 
+    width: 100dvw; 
+    background-color: rgba(0, 0, 0, 0.4); 
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
 }
+
 
 .modal__ubicacion {
     display: flex;
+    flex-direction: column; 
     justify-content: space-between;
     align-items: center;
-    flex-direction: column;
     height: 80%;
-    width: 80%;
-    background-color: var(--naranja);
-    filter: drop-shadow(0 4px 10px #0005);
+    width: 80%; 
+    background-color: var(--naranja); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
 }
+
 
 .modal__ubicacion--text {
     text-align: center;
     font-weight: 400;
     letter-spacing: 0.1vw;
-    font-size: 2vw;
-    margin-top: 5vh;
+    font-size: 2vw; 
+    margin-top: 5vh; 
 }
+
 
 .modal__ubicacion--mapa {
     height: 50%;
-    width: 50%;
-    border: 1px solid #583500;
+    width: 50%; 
+    border: 1px solid #583500; 
+    background-color: #f4f4f4; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
+
+
+.modal__ubicacion--form {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+}
+
 
 .modal__ubicacion--form > .iniciosesion__submit {
     width: 1000%;
@@ -405,12 +425,17 @@ a:hover {
     border-radius: 0px;
     border-bottom-left-radius: 30px;
     border: none;
+    transition: background-color 0.3s ease;
 }
 
-.modal__ubicacion--form {
-    width: 100%;
-    height: fit-content;
-    display: flex;
+
+.modal__ubicacion--form > .iniciosesion__submit:hover {
+    background-color: var(--naranja-claro); 
+}
+
+
+.modal__ubicacion--wrapper:has(.modal__ubicacion[style*="display: none"]) {
+    display: none; 
 }
 
 footer {

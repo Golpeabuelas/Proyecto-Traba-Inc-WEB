@@ -264,10 +264,10 @@ span a {
     color: inherit;
     margin: 0 1vw;
     text-shadow:
-    3px 3px 0px #A0C4CC,  
-    -3px -3px 0px #A0C4CC, 
-    3px -3px 0px #A0C4CC,   
-    -3px 3px 0px #A0C4CC;
+    1px 1px 0px #A0C4CC,  
+    -1px -1px 0px #A0C4CC, 
+    1px -1px 0px #A0C4CC,   
+    -1px 1px 0px #A0C4CC;
 }
 
 a:hover {

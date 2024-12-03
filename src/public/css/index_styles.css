@@ -11,6 +11,11 @@ body, li, ul, div, footer, nav, table,span, img,a,h1,h2,h3,h4,p{
     margin: 0;
 }
 
+
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: #eee;
     font-family: 'Montserrat', sans-serif;
@@ -21,6 +26,7 @@ body{
     --azul: #A0C4CC;
     --naranjaburbujas: rgba(255, 189, 89, 0.78);
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 /*----*/
 

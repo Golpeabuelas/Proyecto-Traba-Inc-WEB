@@ -16,8 +16,8 @@
     <div class="fondo__iniciosesion">
         <div class="fondo__iniciosesion--burbujas">
             <div class="burbujas littlebubble littlebubble1"></div>
-            <div class="burbujas  midbubble midbubble1"></div>
-            <div class="burbujas  largebubble largebubble1"></div>
+            <div class="burbujas midbubble midbubble1"></div>
+            <div class="burbujas largebubble largebubble1"></div>
             <div class="burbujas largebubble largebubble2"></div>
             <div class="burbujas midbubble midbubble2"></div>
             <div class="burbujas littlebubble littlebubble3"></div>
@@ -47,20 +47,17 @@
                     <div class="decoraciones__bottom"></div>
                 </div>
                 <form action="" class="iniciosesion__form">
-                    <input type="text" name="" id="" class="iniciosesion__input" placeholder="Usuario">
-                    <input type="password" name="" id="" class="iniciosesion__input" placeholder="Contraseña">
-                    <input type="email" name="" id="" class="iniciosesion__input" placeholder="Correo">
+                    <input type="text" class="iniciosesion__input" placeholder="Usuario">
+                    <input type="password" class="iniciosesion__input" placeholder="Contraseña">
+                    <input type="email" class="iniciosesion__input" placeholder="Correo">
                     <h2>Foto de perfil</h2>
                     <div class="decoraciones__bottom"></div>
                     <label for="file-upload" class="file-upload-label">
                         <i class="fas fa-download"></i>
                     </label>
                     <input type="file" id="file-upload" class="file-upload" accept="image/*">
-                    <div id="upload-status" class="upload-status" style="display:none;">
+                    <div class="upload-status" style="display:none;">
                         <i class="fas fa-check-circle"></i> Imagen subida correctamente
-                    </div>
-                    <div id="image-preview" class="image-preview" style="display:none;">
-                        <img id="preview-img" src="" alt="Imagen subida">
                     </div>
                     <input type="submit" class="iniciosesion__submit registrarseBtn btnmodalubicacion" value="REGISTRARSE">
                 </form>
@@ -71,7 +68,7 @@
         </div>
     </div>
 
-    <div class="modal__ubicacion--wrapper" id="modalUbicacion" style="display: none;">
+    <div class="modal__ubicacion--wrapper" style="display: none;">
         <div class="modal__ubicacion">
             <p class="modal__ubicacion--text">
                 Un último paso: <br>¡Agrega tu ubicación!
@@ -80,9 +77,7 @@
                     <div class="decoraciones__bottom"></div>
                 </div>
             </p>
-            <div class="modal__ubicacion--mapa">
-                <!-- Aquí puedes insertar un mapa si lo deseas -->
-            </div>
+            <div class="modal__ubicacion--mapa"></div>
             <form action="" class="modal__ubicacion--form">
                 <input type="submit" class="iniciosesion__submit btnmodalubicacion" value="REGISTRARSE">
             </form>
@@ -137,36 +132,29 @@
     </footer>
 
     <script>
-        document.getElementById("file-upload").addEventListener("change", function (event) {
-            const file = event.target.files[0];
+const fileUpload = document.querySelector('.file-upload');
+const uploadStatus = document.querySelector('.upload-status');
 
-            if (file) {
-                const reader = new FileReader();
-                
-                reader.onload = function (e) {
-                    const previewImg = document.getElementById("preview-img");
-                    previewImg.style.display = "block";
-                    previewImg.src = e.target.result;
-
-                    const uploadStatus = document.getElementById("upload-status");
-                    uploadStatus.style.display = "flex";
-                };
-
-                reader.readAsDataURL(file);
-            }
-        });
+fileUpload.addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        uploadStatus.style.display = 'flex';
+    } else {
+        uploadStatus.style.display = 'none';
+    }
+});
 
         const registrarseBtn = document.querySelector('.registrarseBtn');
-        const modalUbicacion = document.getElementById('modalUbicacion');
+        const modalUbicacion = document.querySelector('.modal__ubicacion--wrapper');
 
         registrarseBtn.addEventListener('click', function(event) {
             event.preventDefault();
-            modalUbicacion.style.display = 'flex'; // Muestra el modal
+            modalUbicacion.style.display = 'flex'; 
         });
 
         window.addEventListener('click', function(event) {
             if (event.target === modalUbicacion) {
-                modalUbicacion.style.display = 'none'; // Cierra el modal si se hace clic fuera
+                modalUbicacion.style.display = 'none';
             }
         });
     </script>
