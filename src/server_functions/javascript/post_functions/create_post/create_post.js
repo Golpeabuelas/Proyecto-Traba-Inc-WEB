@@ -58,7 +58,6 @@ export async function createPost () {
     const id_usuario = await getUserID()
     const titulo_publicacion = newPost.tituloPublicacion
     const fecha_publicacion = new Date().toISOString().split('T')[0]
-    alert(fecha_publicacion)
     const imagen_mascota = newPost.imagenMascota
     const nombre_mascota = newPost.nombreMascota
     const especie_mascota = newPost.especieMascota
@@ -85,6 +84,8 @@ export async function createPost () {
     } catch (error) {
         console.error('Error al crear publicación:', error);
     }
+
+    window.location.href = '/perfil'
 } 
 
 async function getUserID () {

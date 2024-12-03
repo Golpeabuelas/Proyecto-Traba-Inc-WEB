@@ -8,7 +8,7 @@ export async function postLoader(contenedor) {
         const postOwner = await getOwnerName(resPublicaciones.informacion_Publicacion[i].id_usuario) 
 
         contenedor.innerHTML += `
-            <div class="card">
+            <div class="card" style="margin-inline: 40px">
                 <img src="${resPublicaciones.informacion_Mascota[i].imagen_mascota}" alt="Pugberto" class="card-image">
                 
                 <div class="card-content">

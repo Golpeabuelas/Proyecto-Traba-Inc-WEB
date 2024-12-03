@@ -118,7 +118,7 @@ export async function relacionarUsuarios (contenedor) {
     `
 
     const contenedorChat = document.getElementById('mensajes')
-    fillChat(contenedorChat)
+    //fillChat(contenedorChat)
     const form = document.getElementById('form')
     return form
 }

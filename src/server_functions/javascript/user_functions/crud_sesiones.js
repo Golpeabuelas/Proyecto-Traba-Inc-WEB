@@ -17,12 +17,14 @@ sesiones.post('/aniadirUsuario', (req, res) => {
         if ( error ) {
             console.log('Error al añadir nueva sesión')
         }
-    })
 
-    connection.query('INSERT INTO ubicacion_usuario (latitud, longitud) VALUES (?, ?)', [latitud, longitud], (error, response) => {
-        if ( error ) {
-            console.log('Error al añadir su ubicación')
-        }
+        const id_usuario = response.insertId
+        
+        connection.query('INSERT INTO ubicacion_usuario (id_usuario, latitud, longitud) VALUES (?, ?, ?)', [id_usuario, latitud, longitud], (errorU, responseU) => {
+            if ( errorU ) {
+                console.log('Error al añadir su ubicación')
+            }
+        })
     })
 
     res.send(console.log('chido'))
