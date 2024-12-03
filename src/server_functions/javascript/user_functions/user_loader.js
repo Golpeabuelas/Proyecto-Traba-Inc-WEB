@@ -41,7 +41,7 @@ userLoader.post('/iniciarSesion', (req, res) => {
         }
 
         if ( response.length === 0 ) {
-            return res.status(404).send(console.log('Usuario no encontrado'))
+            return res.json({ Correo: false, Acceso: false})
         }
 
         if ( password === response[0].password) {

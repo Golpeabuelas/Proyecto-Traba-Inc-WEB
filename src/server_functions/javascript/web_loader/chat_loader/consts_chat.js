@@ -1,4 +1,4 @@
-import { cargarPublicacion, relacionarUsuarios, userDataLoader} from "./loading_chat.js";
+import { cargarPublicacion, relacionarUsuarios, userDataLoader, guardarMensaje } from "./loading_chat.js";
 import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
 
 const contenedorAcceso = document.getElementById('enlace_perfil')
@@ -31,6 +31,10 @@ btn.addEventListener('click', async () => {
     formulario.addEventListener('submit', (e) => {
         e.preventDefault()
 
+        if ( input.value ) {
+            guardarMensaje(input.value)
+            input.value = null 
+        }
         /*if ( input.value ) {
             socket.emit('chat message', input.value)
             input.value = ''

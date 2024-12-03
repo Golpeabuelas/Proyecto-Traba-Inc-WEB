@@ -29,7 +29,7 @@ export function fullRegister(inputs) {
             inputs[i].reportValidity()
             return false 
         } else if ( newPost.imagenMascota === null ) {
-            inputs[5].setCustomValidity('Pon imagen de tu mascota pendejo >:(')
+            inputs[5].setCustomValidity('Pon imagen de tu mascota >:(')
             inputs[5].reportValidity()
             return false
         }

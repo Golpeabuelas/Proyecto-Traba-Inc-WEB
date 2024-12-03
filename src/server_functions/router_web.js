@@ -39,4 +39,8 @@ router.get('/respuestas', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/respuestas.html'))
 })
 
+router.get('/prueba', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/chat_provisional.html'))
+})
+
 export default router;

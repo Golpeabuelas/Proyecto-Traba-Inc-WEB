@@ -3,64 +3,46 @@ import connection from "../../connection_sql.js";
 
 const chatLoader = Router()
 
-chatLoader.post('/verificarChat', async (req, res) => {
+chatLoader.post('/verificarChat', (req, res) => {
     const id_usuario_reader = req.body.id_usuario_reader
     const id_usuario_owner = req.body.id_usuario_owner
     const id_publicacion = req.body.id_publicacion
 
+    let pasa = true
+    let indice = null
     connection.query('SELECT * FROM chat_publicacion WHERE id_publicacion = ?', [id_publicacion], async (error, response) => {
         if ( error ) {
             return res.status(400).send(console.log('No pudimos traer la información'))
         }
 
-        if ( response.length === 0 ) {
-            return res.status(404).send(console.log('Chats no encontrados'))
+        for (let i = 0; i < response.length; i++) {
+            const Response = await new Promise ((resolve, reject) => {
+                connection.query('SELECT * FROM usuario_chat_publicacion WHERE id_chat = ?', [response[i].id_chat], (errorC, responseC) => {
+                    if ( errorC ) {
+                        reject(console.log('Error al traer la información'))
+                    }
+
+                    if ( responseC.length === 0 ) {
+                        resolve(0)
+                    }
+
+                    resolve(responseC)
+                })
+            }) 
+            
+            if ( ((id_usuario_owner === Response[0].id_usuario) && (id_usuario_reader === Response[1].id_usuario)) || ((id_usuario_owner === Response[1].id_usuario) && (id_usuario_reader === Response[0].id_usuario)) ) {
+                pasa = false
+                indice = i
+                break
+            }
         }
 
-        for (let i = 0; i < response.length; i++) {
-            
-            try {
-                const [idUsuarioReader, idUsuarioOwner] = await Promise.all ([
-                    new Promise((resolve, reject) => {
-                        connection.query('SELECT * FROM usuario_chat_publicacion WHERE id_chat = ?', [response[i].id_chat], (errorR, responseR) => {
-                            if ( error ) {
-                                return reject(res.send(console.log('No pudimos traer la información')))
-                            }
-            
-                            if ( response.length === 0 ) {
-                                resolve(0)
-                            }
-            
-                            resolve(response[1])
-                        })
-                    }),
-
-                    new Promise((resolve, reject) => {
-                        connection.query('SELECT * FROM usuario_chat_publicacion WHERE id_chat = ?', [response[i].id_chat], (errorR, responseR) => {
-                            if ( error ) {
-                                return reject(res.send(console.log('No pudimos traer la información')))
-                            }
-            
-                            if ( response.length === 0 ) {
-                                resolve(0)
-                            }
-            
-                            resolve(response[0])
-                        })
-                    }),
-
-                ])
-            } catch (e) {
-                console.log('Error al traer toda la información')
-            }
-            
-            
-            
-            
+        if ( pasa === true ) {
+            return res.json({ crear: true })
+        } else {
+            return res.json({ id_chat: response[indice].id_chat, crear: false })
         }
     }) 
-
-    return res.json({ crear: true })
 })
 
 chatLoader.post('/crearChat', (req, res) => {
@@ -83,8 +65,54 @@ chatLoader.post('/relacionarUsuarios', (req, res) => {
         if ( error ) {
             return res.send(console.log('No pudimos hacer la relación', error))
         }
+    })
+})
 
-        return res.send(console.log('Falló exitosamente'))
+chatLoader.post('/crearMensaje', (req, res) => {
+    const id_usuario = req.body.id_usuario
+    const id_chat = req.body.id_chat
+    const mensaje = req.body.mensaje
+
+    connection.query('INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (?, ?, ?)', [id_chat, id_usuario, mensaje], (error, response) => {
+        if ( error ) {
+            return res.status(400).send(console.log('No pudimos enviar tu mensaje'))
+        }
+    })
+})
+
+chatLoader.post('/loadChatContent', (req, res) => {
+    const id_usuario_owner = req.body.id_usuario_owner_post
+    const id_usuario_reader = req.body.id_usuario_reader_post
+    const id_chat = req.body.id_chat
+    
+    const mensaje = {
+        mensaje: [],
+        reader: []
+    }
+
+    connection.query('SELECT * FROM mensaje_chat WHERE id_chat = ?', [id_chat], (error, response) => {
+        if ( error )  {
+            return res.status(400).send(console.log('Error al cargar el chat', error))
+        }
+
+        if ( response.length === 0 ) {
+            return res.status(404).send(console.log('No hay mensajes en este chat, comiencen!!'))
+        }
+
+        for (let i = 0; i < response.length; i++) {
+            if ( response[i].id_usuario === id_usuario_owner ) {
+                mensaje.mensaje.push({ Mensaje: response[i].mensaje })
+                mensaje.reader.push({ Propietario: false })
+            }
+
+            if ( response[i].id_usuario === id_usuario_reader ) {
+                mensaje.mensaje.push({ Mensaje: response[i].mensaje })
+                mensaje.reader.push({ Propietario: true })
+            }
+        }
+
+        console.log(mensaje)
+        return res.json(mensaje)
     })
 })
 

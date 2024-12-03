@@ -3,6 +3,16 @@ const id_publicacion = localStorage.getItem('Publicacion') || 0
 
 localStorage.removeItem('Publicacion')
 
+const responseOwner = await cargarInformacionPublicacion(id_publicacion)
+const id_usuario_owner_post = responseOwner.informacion_publicacion.id_usuario 
+
+const responseReader = await cargarIdReader()
+const id_usuario_reader_post = responseReader.id_usuario
+
+const crearChat = await verificarExistencia(id_usuario_reader_post, id_usuario_owner_post, id_publicacion)
+const id_chat = crearChat.id_chat
+const verificacion = crearChat.crear
+
 export async function cargarPublicacion (contenedor) {
     if ( id_publicacion !== 0) {        
         const publicacion = await cargarInformacionPublicacion(id_publicacion)
@@ -19,48 +29,48 @@ export async function cargarPublicacion (contenedor) {
 function fillPost (datosUsuario, datosPublicacion, contenedor) {
     contenedor.innerHTML += `
         <div class="post">
-                <div class="posttitle__wrapper">
-                    <h2 class="post__title">${datosPublicacion.informacion_publicacion.titulo_publicacion}</h2>
-                </div>
-                <div class="post__profile">
-                    <img src="${datosUsuario.foto}" alt="" class="post__profile--img">
-                    <p class="post__profile--name">${datosUsuario.nombre}</p>
-                </div>
-                <div class="post__infoperro1">
-                    <img src="${datosPublicacion.informacion_mascota.imagen_mascota}" alt="" class="post__infoperro1--image">
-                    <div class="post__infoperro1--content">
-                        <div class="post__infoperro1--name">Nombre: ${datosPublicacion.informacion_mascota.nombre_mascota}</div>
-                        <div class="post__infoperro1--place">Lugar donde se encontró: Ciudad Peluche</div>
-                        <div class="post__infoperro1--especie">Especie: ${datosPublicacion.informacion_mascota.especie_mascota}</div>
-                        <div class="post__infoperro1--color">Color: ${datosPublicacion.informacion_mascota.color_mascota}</div>
-                        <div class="post__infoperro1--distintivos">Distintivos: ${datosPublicacion.informacion_mascota.distintivo_mascota}</div>
-                    </div>
-                </div>
-                <div class="post__infoperro2">
-                    <div class="post__infoperro2--descriptiontitle1">
-                        <h2 class="post__infoperro2--descriptiontitle">Descripción:</h2>
-                    </div>
-                    <div class="post__infoperro2--description">
-                        ${datosPublicacion.informacion_desaparicion.descripcion_desaparicion}
-                    </div>
+            <div class="posttitle__wrapper">
+                <h2 class="post__title">${datosPublicacion.informacion_publicacion.titulo_publicacion}</h2>
+            </div>
+            <div class="post__profile">
+                <img src="${datosUsuario.foto}" alt="" class="post__profile--img">
+                <p class="post__profile--name">${datosUsuario.nombre}</p>
+            </div>
+            <div class="post__infoperro1">
+                <img src="${datosPublicacion.informacion_mascota.imagen_mascota}" alt="" class="post__infoperro1--image">
+                <div class="post__infoperro1--content">
+                    <div class="post__infoperro1--name">Nombre: ${datosPublicacion.informacion_mascota.nombre_mascota}</div>
+                    <div class="post__infoperro1--place">Lugar donde se encontró: Ciudad Peluche</div>
+                    <div class="post__infoperro1--especie">Especie: ${datosPublicacion.informacion_mascota.especie_mascota}</div>
+                    <div class="post__infoperro1--color">Color: ${datosPublicacion.informacion_mascota.color_mascota}</div>
+                    <div class="post__infoperro1--distintivos">Distintivos: ${datosPublicacion.informacion_mascota.distintivo_mascota}</div>
                 </div>
             </div>
-            <div class="chat" id="chat">
-                <div class="chat__content">
-                    <div class="posttitle__wrapper--chat">
-                        <h2 class="post__title--chat">CHAT</h2>
-                    </div>
-                    <div class="chat__wrapper">
-                        <div class="chat__wrapper--fondo" id="mensajes">
-                            <div id="mapa">
+            <div class="post__infoperro2">
+                <div class="post__infoperro2--descriptiontitle1">
+                    <h2 class="post__infoperro2--descriptiontitle">Descripción:</h2>
+                </div>
+                <div class="post__infoperro2--description">
+                    ${datosPublicacion.informacion_desaparicion.descripcion_desaparicion}
+                </div>
+            </div>
+        </div>
+        <div class="chat" id="chat">
+            <div class="chat__content">
+                <div class="posttitle__wrapper--chat">
+                    <h2 class="post__title--chat">CHAT</h2>
+                </div>
+                <div class="chat__wrapper">
+                    <div class="chat__wrapper--fondo" id="mensajes">
+                        <div id="mapa">
 
-                            </div>
                         </div>
-
-                        <input type="submit" class="chat__buttonEnviar" value="chatear" id="btn_empezar_chat">
                     </div>
+
+                    <input type="submit" class="chat__buttonEnviar" value="chatear" id="btn_empezar_chat">
                 </div>
             </div>
+        </div>
     `
 
     const mapa = document.getElementById('mapa')
@@ -83,55 +93,47 @@ function cargarMapa(mapa, latitud, longitud) {
 }
 
 export async function relacionarUsuarios (contenedor) {
-    const responseOwner = await cargarInformacionPublicacion(id_publicacion)
-    const id_usuario_owner_post = responseOwner.informacion_publicacion.id_usuario 
-
-    const responseReader = await cargarIdReader()
-    const id_usuario_reader_post = responseReader.id_usuario
-
-    const crearChat = await verificarExistencia(id_usuario_reader_post, id_usuario_owner_post)
-
-    if ( crearChat === true ) {
+    if ( verificacion === true ) {
         const id_chat = await makeChat()
 
         crearRelaciones(id_usuario_owner_post, id_chat)
         crearRelaciones(id_usuario_reader_post, id_chat)
-        alert('we are the champions!!')
-    } else {
-        console.log(crearChat)
-        contenedor.innerHTML = `
-            <div class="chat__content">
-                <div class="posttitle__wrapper--chat">
-                    <h2 class="post__title--chat">CHAT</h2>
-                </div>
-                <div class="chat__wrapper">
-                    <div class="chat__wrapper--fondo" id="mensajes">
-
-                    </div>
-                    <form id="form" class="chat__form">
-                        <textarea id="input" class="chat__input" placeholder="Escriba su mensaje aquí"></textarea>
-                        <input type="submit" class="chat__buttonEnviar">
-                    </form>
-                </div>
-            </div>
-        `
-        const form = document.getElementById('form')
-        return form
     }
+    
+    contenedor.innerHTML = `
+        <div class="chat__content">
+            <div class="posttitle__wrapper--chat">
+                <h2 class="post__title--chat">CHAT</h2>
+            </div>
+            <div class="chat__wrapper">
+                <div class="chat__wrapper--fondo" id="mensajes">
 
+                </div>
+                <form id="form" class="chat__form">
+                    <textarea id="input" class="chat__input" placeholder="Escriba su mensaje aquí"></textarea>
+                    <input type="submit" class="chat__buttonEnviar">
+                </form>
+            </div>
+        </div>
+    `
+
+    const contenedorChat = document.getElementById('mensajes')
+    fillChat(contenedorChat)
+    const form = document.getElementById('form')
+    return form
 }
 
-async function verificarExistencia (id_usuario_reader, id_usuario_owner) {
+async function verificarExistencia (id_usuario_reader, id_usuario_owner, id_publicacion) {
     const response = await fetch('/verificarChat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', 
         },
-        body: JSON.stringify({ id_usuario_reader, id_usuario_owner })
+        body: JSON.stringify({ id_usuario_reader, id_usuario_owner, id_publicacion})
     })
 
-    const crear = await response.json()
-    return crear.crear
+    const respuesta = await response.json()
+    return respuesta
 }
 
 async function makeChat () {
@@ -207,5 +209,43 @@ export function userDataLoader (contenedor, session) {
     } else {
         contenedor.href = '/sign_in'
         contenedor.innerHTML = 'Inicio Sesión'
+    }
+}
+
+export async function guardarMensaje (mensaje) {
+    crearMensaje(id_usuario_reader_post, id_chat, mensaje)
+}
+
+async function crearMensaje (id_usuario, id_chat, mensaje) {
+    const response = await fetch('/crearMensaje', {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id_usuario, id_chat, mensaje }) 
+    })
+}
+
+async function cargarChatContent () {
+    const response = await fetch('/loadChatContent', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id_usuario_owner_post, id_usuario_reader_post, id_chat })
+    })
+
+    const respuesta = await response.json()
+    console.log(respuesta)
+    return respuesta
+}
+
+export async function fillChat (contenedor) {
+    const mensajes = await cargarChatContent()
+    
+    for (let i = 0; i < mensajes.mensaje.length; i++) {
+        contenedor.innerHTML += `
+            <div class="chat__msg ${mensajes.mensaje[i].Propietario === true ? 'msgEnviado' : 'msgRecibido'}">${mensajes.mensaje[i].Mensaje}</div>
+        `
     }
 }

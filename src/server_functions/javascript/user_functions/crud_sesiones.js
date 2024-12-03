@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { response, Router } from "express";
 import connection from "../../connection_sql.js"
 
 const sesiones = Router()
@@ -9,14 +9,23 @@ sesiones.post('/aniadirUsuario', (req, res) => {
     const password = req.body.password
     const foto_usuario = req.body.foto_usuario
     const permisos = req.body.permisos
+    const latitud = req.body.latitud
+    const longitud = req.body.longitud
 
+    console.log('si entra pero no sale')
     connection.query('INSERT INTO usuario (nombre, correo, password, foto_usuario, permisos) VALUES (?, ?, ?, ?, ?)', [nombre, correo, password, foto_usuario, permisos], (error, response) => {
         if ( error ) {
-            return res.status(400).send(console.log('Error al añadir nueva sesión'))
+            console.log('Error al añadir nueva sesión')
         }
-
-        res.status(200).send(console.log('perramadre acabate'))
     })
+
+    connection.query('INSERT INTO ubicacion_usuario (latitud, longitud) VALUES (?, ?)', [latitud, longitud], (error, response) => {
+        if ( error ) {
+            console.log('Error al añadir su ubicación')
+        }
+    })
+
+    res.send(console.log('chido'))
 })
 
 sesiones.post('/editarUsuario', (req, res) => {

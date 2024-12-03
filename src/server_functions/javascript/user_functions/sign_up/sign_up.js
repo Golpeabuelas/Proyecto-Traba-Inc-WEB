@@ -30,7 +30,7 @@ export function fullRegister(inputs) {
     return true
 }
 
-export async function verificarCorreo(Correo) {   
+export async function verificarCorreo() {   
     const correo = newUser.correo
 
     const response = await fetch('/buscarSesionExistente', {
@@ -68,13 +68,15 @@ export async function signUp() {
     const password = newUser.password
     const foto_usuario = newUser.fotoUsuario
     const permisos = newUser.permisos
+    const latitud = newUser.latitud
+    const longitud = newUser.longitud
 
-    const response = await fetch('/aniadirUsuario', {
+    await fetch('/aniadirUsuario', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, correo, password, foto_usuario, permisos }),
+        body: JSON.stringify({ nombre, correo, password, foto_usuario, permisos, latitud, longitud }),
     })
 
     const usedUser = {

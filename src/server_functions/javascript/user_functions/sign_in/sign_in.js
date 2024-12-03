@@ -24,6 +24,9 @@ export async function iniciarSesion (Correo, Password) {
         localStorage.setItem('usuario', JSON.stringify( usedUser ))
 
         window.location.href = '/index'
+    } else if ( respuesta.Correo === false ) {
+        Correo.setCustomValidity('Correo no registrado')
+        Correo.reportValidity()
     } else {
         Password.setCustomValidity('Contraseña incorrecta');
         Password.reportValidity();
