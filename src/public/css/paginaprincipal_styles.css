@@ -121,6 +121,7 @@ body{
     grid-template-columns: repeat(2, 1fr); 
     gap: 5vh; 
     margin: 3vh 0;
+    filter: drop-shadow(0 4px 10px #0005);
 }
 
 .paginaprincipal__aside--card{

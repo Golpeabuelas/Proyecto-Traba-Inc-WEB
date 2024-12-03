@@ -254,6 +254,19 @@ h1 {
     letter-spacing: 0.4vw;
 }
 
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
 
 .iniciosesion__anotherinfo > p {
     font-size: 1.8vw;

@@ -36,24 +36,26 @@
             <div class="iniciosesion__infoextra">
                 <img src="/imagenes/logo.png" alt="" class="iniciosesion__infoextra--logo">
                 <p class="iniciosesion__infoextra--text">
-                    Sabias que: <br>”Una de cada tres mascotas se perderá en algún momento de su vida” <br>Para ello es importante tus reportes para disminuirlo a 0.
+                    Sabías que: <br>”Una de cada tres mascotas se perderá en algún momento de su vida” <br>Para ello es importante tus reportes para disminuirlo a 0.
                 </p>
             </div>
             <div class="iniciosesion__principal">
                 <h1>INICIO DE SESIÓN</h1>
-                    <div class="decoraciones__top"></div>
-                    <div class="decoraciones__bottom"></div>
+                <div class="decoraciones__top"></div>
+                <div class="decoraciones__bottom"></div>
                 <form action="" class="iniciosesion__form">
                     <input type="text" name="" id="" class="iniciosesion__input" placeholder="Usuario">
-                    <input type="password" name="" id="" class="iniciosesion__input" placeholder="Contraseña">
+                    <div class="password-wrapper">
+                        <input type="password" name="password" id="password" class="iniciosesion__input" placeholder="Contraseña">
+                        <span class="material-icons" id="toggle-password">visibility</span>
+                    </div>
                     <input type="submit" class="iniciosesion__submit" value="INICIAR SESIÓN">
                 </form>
                 <div class="iniciosesion__anotherinfo">
-                    <p>¿Aún no tienes cuenta?<span><a href="">Registrate</a></span></p>
+                    <p>¿Aún no tienes cuenta?<span><a href="/html/registrarse.html">Registrate</a></span></p>
                 </div>
             </div>
         </div>
-        
     </div>
     <footer>
         <div class="footer__icons">
@@ -115,5 +117,17 @@
         <div class="footer__copyright">Copyright © 2024 <span class="footer__copyright--subrayado"> Traba Inc </span></div>
     </footer>
 </body>
+<script>
+    const togglePassword = document.getElementById('toggle-password');
+    const passwordField = document.getElementById('password');
 
+    togglePassword.addEventListener('click', function() {
+
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+
+
+        togglePassword.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+    });
+</script>
 </html>
