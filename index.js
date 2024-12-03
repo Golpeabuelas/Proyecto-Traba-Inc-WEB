@@ -32,7 +32,7 @@ app.use(router)
 app.use(sesiones)
 
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, './src/public/html/hacerReporte.html'))
+    res.sendFile(join(__dirname, './src/public/html/editarmascotas.html'))
 });
 
 server.listen(app.get('port'), () => {
