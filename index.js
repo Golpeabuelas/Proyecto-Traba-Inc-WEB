@@ -30,8 +30,7 @@ app.use(express.urlencoded({ limit: '5mb', extended: true }))
 app.use(express.json({ limit: '5mb' }))
 
 app.use('/imagenes', express.static(join(__dirname, './src/public/imagenes')))
-app.use('/css', express.static(join(__dirname, './src/public/css')))
-app.use('/html', express.static(join(__dirname, './src/public/html')))
+app.use('/modulo', express.static(join(__dirname, './src/public/modulos')))
 app.use('/scripts', express.static(join(__dirname, './src/server_functions/')))
 
 app.use(router)
@@ -45,7 +44,7 @@ app.use(postLoader)
 app.use(chatLoader)
 
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, './src/public/html/perfil_publicaciones.html'))
+    res.sendFile(join(__dirname, './src/public/modulos/index/index.html'))
 });
 
 server.listen(app.get('port'), () => {

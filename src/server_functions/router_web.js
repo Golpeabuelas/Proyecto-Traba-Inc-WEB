@@ -8,39 +8,39 @@ const router = Router()
 //-------------------------RUTAS-DE-CONEXION------------------------
 
 router.get('/index', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/index.html'))
-});
-
-router.get('/chat/:id', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/chat.html'))
-});
-
-router.get('/perfil', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/perfil.html'))
+    res.sendFile(join(__dirname, '../public/modulos/index/index.html'))
 });
 
 router.get('/sign_in', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/sign_in.html'))
+    res.sendFile(join(__dirname, '../public/modulos/sesiones/sign_in/sign_in.html'))
 });
 
 router.get('/sign_up', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/sign_up.html'))
+    res.sendFile(join(__dirname, '../public/modulos/sesiones/sign_up/sign_up.html'))
 });
 
 router.get('/inicio', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/inicio.html'))
+    res.sendFile(join(__dirname, '../public/modulos/inicio/inicio.html'))
 })
 
+router.get('/chat/:id', (req, res) => {
+    res.sendFile(join(__dirname, '../public/modulos/perfil/publicaciones/chat/chat.html'))
+});
+
+router.get('/perfil', (req, res) => {
+    res.sendFile(join(__dirname, '../public/modulos/perfil/usuario/perfil.html'))
+});
+
 router.get('/report', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/create_report.html'))
+    res.sendFile(join(__dirname, '../public/modulos/perfil/publicaciones/create/create_report.html'))
 })
 
 router.get('/respuestas', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/respuestas.html'))
+    res.sendFile(join(__dirname, '../public/modulos/perfil/publicaciones/read/perfil_publicaciones.html'))
 })
 
 router.get('/prueba', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/chat_provisional.html'))
+    res.sendFile(join(__dirname, '../public/modulos/perfil/publicaciones/chat/chat_provisional.html'))
 })
 
 export default router;
