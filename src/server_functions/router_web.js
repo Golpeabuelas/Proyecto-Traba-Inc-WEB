@@ -19,5 +19,26 @@ router.get('/perfil', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/perfil.html'))
 });
 
+router.get('/busqueda', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/busqueda.html'))
+});
+
+router.get('/busqueda', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/busqueda.html'))
+});
+
+router.get('/editpet', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/editarmascotas.html'))
+});
+
+router.get('/editreporte', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/editarreportes.html'))
+});
+
+router.get('/makereporte', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/hacerReporte.html'))
+});
+
+
 
 export default router;

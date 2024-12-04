@@ -386,4 +386,54 @@ footer {
 }
 
 
+/** ANIMACIONES **/
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateY(4vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aparecer--normal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes movimiento-y {
+    0% {
+        transform: translateY(-4vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.aparecer {
+    opacity: 0;
+    animation: aparecer 1s ease-out forwards;
+}
+
+.movimiento-y {
+    animation: movimiento-y 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.aparecer-delay{
+    animation: aparecer 1s ease-in forwards;
+    opacity: 1;
+}
+
+.box.visible {
+    opacity: 1;
+    transform: translateY(-4vh); 
+}
 

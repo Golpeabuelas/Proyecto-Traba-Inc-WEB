@@ -314,6 +314,7 @@ body{
     border: none;
     font-size: 1vw;
     resize: none;
+    margin: 1vh 0;
 }
 
 .prev__infoperro1--input:focus {
