@@ -3,7 +3,7 @@ import connection from "../../connection_sql.js";
 
 const chatLoader = Router()
 
-chatLoader.post('/verificarChat', (req, res) => {
+chatLoader.post('/verificarExistenciaChat', (req, res) => {
     const id_usuario_reader = req.body.id_usuario_reader
     const id_usuario_owner = req.body.id_usuario_owner
     const id_publicacion = req.body.id_publicacion
@@ -38,9 +38,9 @@ chatLoader.post('/verificarChat', (req, res) => {
         }
 
         if ( pasa === true ) {
-            return res.json({ crear: true })
+            return res.json({ existe: false })
         } else {
-            return res.json({ id_chat: response[indice].id_chat, crear: false })
+            return res.json({ existe: true, id_chat: response[indice].id_chat })
         }
     }) 
 })
@@ -80,7 +80,7 @@ chatLoader.post('/crearMensaje', (req, res) => {
     })
 })
 
-chatLoader.post('/loadChatContent', (req, res) => {
+chatLoader.post('/cargarMensajes', (req, res) => {
     const id_usuario_owner = req.body.id_usuario_owner_post
     const id_usuario_reader = req.body.id_usuario_reader_post
     const id_chat = req.body.id_chat
@@ -92,11 +92,7 @@ chatLoader.post('/loadChatContent', (req, res) => {
 
     connection.query('SELECT * FROM mensaje_chat WHERE id_chat = ?', [id_chat], (error, response) => {
         if ( error )  {
-            return res.status(400).send(console.log('Error al cargar el chat', error))
-        }
-
-        if ( response.length === 0 ) {
-            return res.status(404).send(console.log('No hay mensajes en este chat, comiencen!!'))
+            res.status(400).send(console.log('Error al cargar el chat', error))
         }
 
         for (let i = 0; i < response.length; i++) {
@@ -111,7 +107,6 @@ chatLoader.post('/loadChatContent', (req, res) => {
             }
         }
 
-        console.log(mensaje)
         return res.json(mensaje)
     })
 })
