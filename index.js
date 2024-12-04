@@ -45,7 +45,7 @@ app.use(postLoader)
 app.use(chatLoader)
 
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, './src/public/html/index.html'))
+    res.sendFile(join(__dirname, './src/public/html/perfil_publicaciones.html'))
 });
 
 server.listen(app.get('port'), () => {
