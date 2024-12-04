@@ -376,6 +376,22 @@ a:hover {
     z-index: 1000; 
 }
 
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 2vw;
+    user-select: none;
+}
+
+
 
 .modal__ubicacion {
     display: flex;

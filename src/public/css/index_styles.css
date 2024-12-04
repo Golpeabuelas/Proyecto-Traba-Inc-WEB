@@ -35,7 +35,7 @@ body{
     width: 100dvw;
     display: flex;
     justify-content: center; 
-    
+    scroll-timeline: --burbujas;
 }
 
 .mainpagelogo {
@@ -57,6 +57,8 @@ body{
     clip-path: circle(50% at 50% 50%);
     position: absolute;
     z-index: 10;
+    animation: burbujitas both;
+    animation-timeline: view();
 }
 
 .littlebubble {
@@ -218,6 +220,9 @@ body{
 
 .wrapper__subtitle--subtitle{
     margin: auto;
+    animation: aparecer--normal both;
+    animation-timeline: view();
+    animation-range: cover 18% cover 48%;
 }
 
 .wrapper__descriptions {
@@ -226,6 +231,9 @@ body{
     margin: 50px 400px;
     background-color: inherit;
     gap: 50px;
+    animation: aparecer--normal both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 48%;
 
 }
 
@@ -257,6 +265,9 @@ body{
 .wrapper__funcionamiento--content, .wrapper__funcionamientomobile--content {
     height: fit-content;
     width: 100%;
+    animation: aparecer--normal both;
+    animation-timeline: view();
+    animation-range: cover 18% cover 48%;
 }
 
 .wrapper__funcionamiento--title, .wrapper__funcionamientomobile--title{
@@ -265,6 +276,9 @@ body{
     font-size: 40px;
     margin: auto;
     text-wrap: pretty;
+    animation: aparecer--normal both;
+    animation-timeline: view();
+    animation-range: cover 18% cover 48%;
 }
 
 .wrapper__funcionamiento--text, .wrapper__funcionamientomobile--text{
@@ -272,6 +286,9 @@ body{
     width: 60%;
     margin: auto;
     text-wrap: pretty;
+    animation: aparecer--normal both;
+    animation-timeline: view();
+    animation-range: cover 18% cover 48%;
 }
 
 .wrapper__funcionamiento--img, .wrapper__funcionamientomobile--img {
@@ -280,6 +297,9 @@ body{
     height: 100%;
     display: block;  
     position: relative;
+    animation: aparecer--normal both;
+    animation-timeline: view();
+    animation-range: cover 18% contain 48%;
 }
 
 .wrapper__funcionamiento--img img{
@@ -438,3 +458,46 @@ footer {
     width: calc(75% - 116px);            
     gap: 20px; 
 }
+
+/** ANIMACIONES **/
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateY(4vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aparecer--normal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes burbujitas {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-4vh);
+    }
+}
+
+.aparecer {
+    opacity: 0;
+    animation: aparecer 1s ease-out forwards;
+}
+
+.box.visible {
+    opacity: 1;
+    transform: translateY(-4vh); 
+}
+

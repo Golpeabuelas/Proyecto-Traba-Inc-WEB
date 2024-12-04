@@ -125,21 +125,26 @@ body{
 }
 
 .paginaprincipal__aside--card{
-    height: 50vh;
-    width: 43vw;
+    height: 75vh;
+    width: 31vw;
     border-bottom-right-radius: 30px;
     border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     position: relative; 
     display: flex;
     flex-direction: column; 
-    height: auto;
 }
 
 .card__wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 1.5vh 3vh;
+}
+
+.card__wrapper--text{
+    
 }
 
 .desaparecido{
@@ -163,22 +168,27 @@ body{
     height: 9vh;
     overflow-y: auto;
     overflow-x: auto;
+
+}
+
+.card__wrapperimg{
+    height: 23vh; 
 }
 
 .card__wrapperimg--img{
-    height: 28vh;         
-    width: 12vw;             
+    height: 23vh;         
+    width: 100%;             
     object-fit: cover; 
-    border-radius: 30px;
-    margin: 0 1vh;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .card__wrapper--content{
     background-color: white;
     border-radius: 20px;
     font-size: 1vw;
-    width: 26vw;
-    height: 28vh;
+    width: 25vw;
+    height: 32vh;
     overflow-y: auto;
     overflow-x: auto;
     display: flex;
@@ -186,7 +196,11 @@ body{
     justify-content: space-around;
     align-items: start;
     padding: 4vh;
-    margin: 3vh 0;
+    margin-top: 1vh 0;
+}
+
+.card__wrapper--content > p {
+    margin: 1vh 0;
 }
 
 .card__wrapper--content--footer{
