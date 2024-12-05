@@ -24,10 +24,10 @@
         <div class="navbar__buscador">
             <input type="text" class="navbar__buscador--input" >
         </div>
-        <div class="navbar__link"><a href="#">Inicio</a></div>
-        <div class="navbar__link"><a href="#">Crear un reporte</a></div>
+        <div class="navbar__link"><a href="/inicio">Inicio</a></div>
+        <div class="navbar__link"><a href="/report">Crear un reporte</a></div>
         <div class="navbar__link"><a href="#">Salud</a></div>
-        <div class="navbar__link"><a href="#">Perfil</a></div>
+        <div class="navbar__link"><a href="/perfil">Perfil</a></div>
     </nav>
     <div class="navbar--secondary">
         <div class="navbar--secondary__wrapper">
@@ -48,41 +48,16 @@
                 <div class="reportestitle__wrapper">
                     <h2 class="reporte__title">REPORTES</h2>
                 </div>
-                <div class="reportes__wrapper">
-                    <div class="reporte__content">
-                        <div class="reporte__content--img">
-                            <img src="/imagenes/uploads/perroPendejo.jpg" alt="" >
-                        </div>
-                        <div class="reporte__content--name">
-                            Curly
-                        </div>
-                    </div>
-                    <div class="reporte__content">
-                        <div class="reporte__content--img">
-                            <img src="/imagenes/uploads/perroPendejo.jpg" alt="" >
-                        </div>
-                        <div class="reporte__content--name">
-                            Curly
-                        </div>
-                    </div>
+                <div class="reportes__wrapper" id="contenedor_publicaciones">
+                
                 </div>
             </div>
             <div class="chats">
                 <div class="chatstitle__wrapper">
                     <h2 class="chats__title">CHATS</h2>
                 </div>
-                <div class="chats__wrapper">
-                    <div class="reporte__content reporte__contentchat">
-                        <div class="reporte__content--img">
-                            <img src="/imagenes/uploads/perroPendejo.jpg" alt="" >
-                        </div>
-                        <div class="reporte__content--name">
-                            Curly
-                        </div>
-                        <div class="chat__form">
-                            <a href="/html/chat.html" class="iniciosesion__submit">VER CHAT</a>
-                        </div>
-                    </div>
+                <div class="chats__wrapper" id="contenedor_chats">
+                    
                 </div>
             </div>
         </div>
@@ -148,5 +123,6 @@
         <div class="footer__copyright">Copyright © 2024 <span class="footer__copyright--subrayado"> Traba Inc </span></div>
     </footer>
     
+    <script type="module" src="/scripts/javascript/web_loader/perfil_loader/posts_loader/const_publicaciones_propias.js"></script>
 </body>
 </html>

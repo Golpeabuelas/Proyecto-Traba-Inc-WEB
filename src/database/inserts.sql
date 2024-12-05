@@ -27,6 +27,9 @@ INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (1, 1, 'No me and
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (2, 1, 'Iralaaaaa, pierdes todooo');
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (2, 2, 'Cállateeeee :(');
 
+INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (3, 2, 'Te lo acabo de regalaaaar >:(');
+INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (3, 1, 'Ya no me pegues');
+
 DROP DATABASE TrabaInc;
 
 SELECT 

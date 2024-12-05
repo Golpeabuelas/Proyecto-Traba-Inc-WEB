@@ -12,6 +12,12 @@ export async function procesoAbrirChat(id_publicacion, correo, contenedor) {
 
         mostrarMensajes(contenedorMensajes, mensajes)
 
+        const datos = {
+            idUser: id_usuario_reader,
+            idChat: id_chat
+        }
+    
+        return datos
     } else if ( existe === false ) {
         const id_chat = await crearChat(id_publicacion)
 
@@ -19,6 +25,13 @@ export async function procesoAbrirChat(id_publicacion, correo, contenedor) {
         relacionarUsuarios(id_usuario_reader, id_chat)
 
         mostrarChat(contenedor)
+
+        const datos = {
+            idUser: id_usuario_reader,
+            idChat: id_chat
+        }
+    
+        return datos
     } 
 }
 
@@ -115,7 +128,7 @@ function mostrarChat(contenedor) {
                 </div>
                 <form id="form" class="chat__form">
                     <textarea id="input" class="chat__input" placeholder="Escriba su mensaje aquí"></textarea>
-                    <button class="send-button">
+                    <button class="send-button" id="btnSendMessage">
                         <img src="/imagenes/uploads/send_message.png" alt="Enviar" class="send-icon normal">
                         <img src="/imagenes/uploads/send_message_hover.png" alt="Enviar" class="send-icon hover">
                     </button>

@@ -45,6 +45,24 @@ chatLoader.post('/verificarExistenciaChat', (req, res) => {
     }) 
 })
 
+chatLoader.post('/verificarChat', (req, res) => {
+    const id_owner = req.body.id_owner 
+    const id_reader = req.body.id_reader
+    const id_chat = req.body.id_chat
+
+    connection.query('SELECT * FROM usuario_chat_publicacion WHERE id_chat = ?', [id_chat], (error, response) => {
+        if ( error ) {
+            return res.send(console.log('Error al traer los usuarios participantes'))
+        }
+
+        if ( ((id_owner === response[0].id_usuario) && (id_reader === response[1].id_usuario)) || ((id_owner === response[1].id_usuario) && (id_reader === response[0].id_usuario)) ) {
+            return res.json({ existe: true })
+        } else {
+            return res.json({ existe: false })
+        }
+    })
+})
+
 chatLoader.post('/crearChat', (req, res) => {
     const id_publicacion = req.body.id_publicacion
 
@@ -77,6 +95,8 @@ chatLoader.post('/crearMensaje', (req, res) => {
         if ( error ) {
             return res.status(400).send(console.log('No pudimos enviar tu mensaje'))
         }
+
+        res.send(console.log('acaba w'))
     })
 })
 
@@ -108,6 +128,35 @@ chatLoader.post('/cargarMensajes', (req, res) => {
         }
 
         return res.json(mensaje)
+    })
+})
+
+chatLoader.post('/obtenerChatsPublicacion', (req, res) => {
+    const id_publicacion = req.body.id_publicacion
+
+    connection.query('SELECT * FROM chat_publicacion WHERE id_publicacion = ?', [id_publicacion], (error, response) => {
+        if ( error ) {
+            return res.send(console.log('No pudimos traerte los chats'))
+        }
+
+        res.json(response)
+    })
+})
+
+chatLoader.post('/obtenerParticipantesChat', (req, res) => {
+    const id_usuario = req.body.id_usuario
+    const id_chat = req.body.id_chat
+
+    connection.query('SELECT * FROM usuario_chat_publicacion WHERE id_chat = ?', [id_chat], (error, response) => {
+        if ( error ) {
+            return res.send(console.log('Error al encontrar los participantes del chat'))
+        }
+
+        if ( response[0].id_usuario === id_usuario ) {
+            return res.json({ id_reader: response[1].id_usuario })
+        } else if ( response[1].id_usuario === id_usuario ) {
+            return res.json({ id_reader: response[0].id_usuario })
+        }
     })
 })
 
