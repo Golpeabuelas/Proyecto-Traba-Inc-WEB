@@ -17,16 +17,17 @@
 <body>
     <nav class="navbar">
         <div class="navbar__image">
-            <img src="/imagenes/logo.png" alt="">
+            <a href="/index"><img src="/imagenes/logo.png" alt=""></a>
         </div>
         <div class="navbar__buscador">
             <input type="text" class="navbar__buscador--input" >
         </div>
-        <div class="navbar__link"><a href="#">Inicio</a></div>
-        <div class="navbar__link"><a href="#">Crear un reporte</a></div>
+        <div class="navbar__link"><a href="/inicio">Inicio</a></div>
+        <div class="navbar__link"><a href="/report">Crear un reporte</a></div>
         <div class="navbar__link"><a href="#">Salud</a></div>
-        <div class="navbar__link"><a href="#" id="enlace_perfil">Perfil</a></div>
+        <div class="navbar__link"><a href="/perfil" id="enlace_perfil">Perfil</a></div>
     </nav>
+
     <div class="paginaprincipal__title">
         <p class="paginaprincipal__title--text">
             ¿Los has visto?
@@ -46,9 +47,11 @@
             </button>
         </form>
     </div>
+
     <div class="paginaprincipal__aside" id="contenedor_publicaciones">
         
     </div>
+
     <footer>
         <div class="footer__icons">
             <img src="/imagenes/logo.png" alt="" class="footer__icon">

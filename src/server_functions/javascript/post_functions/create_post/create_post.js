@@ -21,7 +21,6 @@ export function getImage (cargarImagen, imageDefault, e) {
     })
 }
 
-
 export function fullRegister(inputs) {
     for (let i = 0; i < inputs.length; i++){
         if( inputs[i].value == inputs[i].defaultValue ) { 

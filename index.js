@@ -16,6 +16,9 @@ import publicaciones from './src/server_functions/javascript/post_functions/crud
 import postLoader from './src/server_functions/javascript/post_functions/post_loader.js';
 
 import chatLoader from './src/server_functions/javascript/chat_functions/chat_loader.js';
+import mensajeLoader from './src/server_functions/javascript/chat_functions/mensaje_loader.js';
+
+import mascotasLoader from './src/server_functions/javascript/mascotas_functions/mascotas_loader.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -42,6 +45,9 @@ app.use(publicaciones)
 app.use(postLoader)
 
 app.use(chatLoader)
+app.use(mensajeLoader)
+
+app.use(mascotasLoader)
 
 app.get('/', (req, res) => {
     res.sendFile(join(__dirname, './src/public/modulos/index/index.html'))

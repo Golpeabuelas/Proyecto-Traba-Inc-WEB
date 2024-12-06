@@ -11,10 +11,11 @@ localStorage.removeItem('Publicacion')
 localStorage.removeItem('Chat')
 
 const contenedorAcceso = document.getElementById('enlace_perfil')
+
     if ( usedUser.correo !== "" ) {
         userDataLoader(contenedorAcceso, true)
     } else {
-        userDataLoader(contenedorAcceso, false)
+        window.location.href = 'sign_in'
     }
 
 const contenedor = document.getElementById('contenedor_chat_publicacion')

@@ -13,9 +13,13 @@ CREATE TABLE if NOT EXISTS usuario(
 
 CREATE TABLE if NOT EXISTS mascota(
 	id_mascota INT PRIMARY KEY auto_increment,
+    id_usuario INT, 
     nombre_mascota varchar(50) NOT NULL,
     especie_mascota varchar(50) NOT NULL,
-    foto_mascota MEDIUMTEXT NOT NULL
+    foto_mascota MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 CREATE TABLE if NOT EXISTS ubicacion_usuario(

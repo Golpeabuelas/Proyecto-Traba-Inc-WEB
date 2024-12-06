@@ -43,4 +43,8 @@ router.get('/prueba', (req, res) => {
     res.sendFile(join(__dirname, '../public/modulos/perfil/publicaciones/chat/chat_provisional.html'))
 })
 
+router.get('/mascotas', (req, res) => {
+    res.sendFile(join(__dirname, '../public/modulos/perfil/mascotas/mascotas.html'))
+})
+
 export default router;

@@ -19,7 +19,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar__image">
-            <img src="/imagenes/logo.png" alt="">
+            <a href="/index"><img src="/imagenes/logo.png" alt=""></a>
         </div>
         <div class="navbar__buscador">
             <input type="text" class="navbar__buscador--input" >
@@ -27,21 +27,23 @@
         <div class="navbar__link"><a href="/inicio">Inicio</a></div>
         <div class="navbar__link"><a href="/report">Crear un reporte</a></div>
         <div class="navbar__link"><a href="#">Salud</a></div>
-        <div class="navbar__link"><a href="/perfil">Perfil</a></div>
+        <div class="navbar__link"><a href="/perfil" id="enlace_perfil">Perfil</a></div>
     </nav>
+
     <div class="navbar--secondary">
         <div class="navbar--secondary__wrapper">
-            <a href="/html/verperfil.html" class="navbar--secondary__profile">
+            <a href="perfil" class="navbar--secondary__profile">
                 <span class="material-icons">account_circle</span>
             </a>
-            <a href="/reportes.html" class="navbar--secondary__reportes">
+            <a href="/respuestas" class="navbar--secondary__reportes">
                 <span class="material-icons">report_problem</span>
             </a>
-            <a href="/mascotas.html" class="navbar--secondary__mascotas">
+            <a href="/mascotas" class="navbar--secondary__mascotas">
                 <span class="material-icons">pets</span>
             </a>
         </div>
     </div>
+
     <div class="wrapper__editreportes">
         <div class="fondo__editreportes">
             <div class="reportes">

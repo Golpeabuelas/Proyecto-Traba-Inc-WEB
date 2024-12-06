@@ -21,12 +21,21 @@ INSERT INTO informacion_mascota (id_publicacion, imagen_mascota, nombre_mascota,
 INSERT INTO informacion_desaparicion (id_publicacion, fecha_desaparicion, descripcion_desaparicion, estatus_desaparicion, estatus_reporte) VALUES (3, '2024-11-27', 'No sé pa donde se fue, yo digo que me lo robó mi hermano, como se va a mover si es un peluche ', true, true);
 INSERT INTO ubicacion_desaparicion (id_publicacion, latitud, longitud) VALUES (3, 19.457957, -99.204662);
 
+INSERT INTO chat_publicacion (id_chat, id_publicacion) VALUES (1, 1);
+INSERT INTO usuario_chat_publicacion (id_usuario, id_chat) VALUES (1, 1);
+INSERT INTO usuario_chat_publicacion (id_usuario, id_chat) VALUES (2, 1);
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (1, 2, 'No me ande viendo peeeeerrrroooo');
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (1, 1, 'No me ande viendo usted pinche pacharrita');
 
+INSERT INTO chat_publicacion (id_chat, id_publicacion) VALUES (2, 2);
+INSERT INTO usuario_chat_publicacion (id_usuario, id_chat) VALUES (1, 2);
+INSERT INTO usuario_chat_publicacion (id_usuario, id_chat) VALUES (2, 2);
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (2, 1, 'Iralaaaaa, pierdes todooo');
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (2, 2, 'Cállateeeee :(');
 
+INSERT INTO chat_publicacion (id_chat, id_publicacion) VALUES (3, 3);
+INSERT INTO usuario_chat_publicacion (id_usuario, id_chat) VALUES (1, 3);
+INSERT INTO usuario_chat_publicacion (id_usuario, id_chat) VALUES (2, 3);
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (3, 2, 'Te lo acabo de regalaaaar >:(');
 INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (3, 1, 'Ya no me pegues');
 
@@ -93,6 +102,8 @@ WHERE
     p.id_publicacion <> 0;
     
 SELECT * FROM usuario WHERE id_usuario <> 1;
+
+SELECT * FROM mascota;
 
 SELECT * FROM publicacion;
 
