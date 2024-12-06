@@ -337,6 +337,7 @@ a:hover {
 }
 
 .upload-status {
+
     display: none;
     background-color: inherit;
     color: #000000;
@@ -550,6 +551,41 @@ footer {
     content: '■';
     margin-left: 13px;
     font-size: 15px;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateY(4vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aparecer--normal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes movimiento-y {
+    0% {
+        transform: translateY(-4vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.aparecer {
+    opacity: 0;
+    animation: aparecer 0.5s ease-out forwards;
 }
 
 

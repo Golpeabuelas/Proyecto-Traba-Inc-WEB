@@ -33,6 +33,7 @@ body{
 .wrapper__principal {
     height: 100dvh;
     width: 100dvw;
+    
     display: flex;
     justify-content: center; 
     scroll-timeline: --burbujas;
@@ -40,7 +41,7 @@ body{
 
 .mainpagelogo {
     position: absolute;
-    width: clamp(150px, 262px, 350px);
+    width: clamp(10rem, 14vw, 20vw);
     height: auto;
     filter: drop-shadow(0 4px 10px #0005);
     z-index: 20;
@@ -49,7 +50,7 @@ body{
 .wrapper__principal--burbujas{
     position: absolute;
     height: 100dvh;
-    width: clamp(1600px, 100dvw, 125dvw);
+    width: 100dvw;
 }
 
 .burbujas {
@@ -57,102 +58,104 @@ body{
     clip-path: circle(50% at 50% 50%);
     position: absolute;
     z-index: 10;
-    animation: burbujitas both;
-    animation-timeline: view();
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 .littlebubble {
-    width: clamp(80px, 115px, 120px);
-    height: clamp(80px, 115px, 120px);
+    width: clamp(5vw, 6vw, 6vw);
+    height: clamp(5vw, 6vw, 6vw);
 }
 
 .midbubble {
-    width: 205px;
-    height: 205px;
+    width: clamp(10vw, 11vw, 11vw);
+    height: clamp(10vw, 11vw, 11vw);
 }
 
 .largebubble {
-    width: 315px;
-    height: 315px;
+    width: clamp(15vw, 16.4vw, 16.4vw);
+    height: clamp(15vw, 16.4vw, 16.4vw);
 }
 
 .littlebubble1 {
-    left: 182px;
-    bottom: 754px;
+    left: 9.2dvw;
+    bottom: 74dvh;
 }
 
 .midbubble1{
-    left: 114px;
-    bottom: 436px;
+    left: 5.9dvw;
+    bottom: 40.43dvh;
 }
 
 .largebubble1 {
-    width: 205px;
-    height: 205px;
-    left: 136px;
-    bottom: 125px;
+    width: 10.6dvw;
+    height: 10.6dvw;
+    left: 7.0833dvw;
+    bottom: 11.57dvh;
 }
 
 .largebubble2{
-    left: 387px;
-    bottom: 586px;
+    left: 20.15dvw;
+    bottom: 60dvh;
 }
 
 .midbubble2{
-    left: 501px;
-    bottom: 302px;
+    left: 26.09dvw;
+    bottom: 27.06dvh;
 }
 
 .littlebubble2{
-    left: 481px;
-    bottom: 93px;
+    left: 25.05dvw;
+    bottom: 8.61dvh;
 }
 
 .littlebubble3{
-    left: 802px;
-    bottom: 733px;
+    left: 41.77dvw;
+    bottom: 74.8dvh;
 }
 
 .littlebubble4 {
-    left: 852px;
-    bottom: 340px;
+    left: 44.375dvw;
+    bottom: 34.78dvh;
 }
 
 .littlebubble5{
-    left: 960px;
-    bottom: 112px;
+    left: 50dvw;
+    bottom: 11.43dvh;
 }
 
 .littlebubble6{
-    left: 1128px;
-    bottom: 706px;
+    left: 58.75dvw;
+    bottom: 72.9dvh;
 }
 
 .largebubble3{
-    left: 1166px;
-    bottom: 381px;
+    left: 60.8dvw;
+    bottom: 38.92dvh;
 }
 
 .midbubble3{
-    left: 1278px;
+    left: 66.56dvw;
     bottom: 100px;
 }
 
 .largebubble4{
-    left: 1470px;
-    bottom: 580px;
+    left: 76.8dvw;
+    bottom: 59.18dvh;
 }
 
 .midbubble4{
-    left: 1653px;
-    bottom: 300px;
+    left: 86.8dvw;
+    bottom: 30.61dvh;
 }
 
 .littlebubble7{
-    width: 123px;
-    height: 123px;
-    left: 1630px;
-    bottom: 115px;
+    width: 6.40dvw;
+    height: 6.40dvw;
+    left: 84.89dvw;
+    bottom: 11.73dvh;
 }
 
 .wrapper__content {
@@ -169,7 +172,7 @@ body{
 .wrapper__text{
     width: 50%;
     font-weight: 700;
-    font-size: clamp(14px, 3.8rem, 4rem);
+    font-size: clamp(2rem, 3vw, 10vw);
     text-align: center;
 }
 
@@ -180,6 +183,7 @@ body{
     3px -3px 0px #FFBD59,   
     -3px 3px 0px #FFBD59;
     filter: drop-shadow(0 4px 10px #0005);
+    font-size: clamp(2rem, 3vw, 10vw);
 }
 
 .wrapper__buttons{
@@ -199,9 +203,13 @@ body{
     color: #fff;
     font-weight: 500;
     margin: 20px;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 1vw, 2vw);
     letter-spacing: 5px;
     cursor: pointer;
+}
+
+.button > span {
+    font-size: clamp(0.8rem, 1vw, 2vw);
 }
 
 .buttoniniciosesión{
@@ -223,6 +231,8 @@ body{
     animation: aparecer--normal both;
     animation-timeline: view();
     animation-range: cover 18% cover 48%;
+    text-align: center;
+    font-size: clamp(1.2rem, 1.3vw, 10vw);
 }
 
 .wrapper__descriptions {
@@ -274,6 +284,7 @@ body{
     width: 50%;
     padding: 50px 0px;
     font-size: 40px;
+    font-size: clamp(1.9rem,2vw,5vw);
     margin: auto;
     text-wrap: pretty;
     animation: aparecer--normal both;
@@ -282,7 +293,7 @@ body{
 }
 
 .wrapper__funcionamiento--text, .wrapper__funcionamientomobile--text{
-    font-size: 32px;
+    font-size: clamp(1.3rem,1.4vw,4vw);
     width: 60%;
     margin: auto;
     text-wrap: pretty;
@@ -295,8 +306,7 @@ body{
     width: 100%;
     max-width: 100%; 
     height: 100%;
-    display: block;  
-    position: relative;
+    display: flex;  
     animation: aparecer--normal both;
     animation-timeline: view();
     animation-range: cover 18% contain 48%;
@@ -338,6 +348,7 @@ body{
     background-size: cover;
     height: 500px;
     width: 100%;
+    background-position: center;
 }
 
 .logo{
@@ -376,7 +387,7 @@ footer {
 }
 
 .footer__icon--white {
-    max-width: 65%;    
+    width: clamp(2vw,12vw,15vw);  
     height: auto;       
     filter: grayscale(100%);
 }
@@ -480,24 +491,137 @@ footer {
     }
 }
 
-@keyframes burbujitas {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
+
+@media screen and (max-width: 768px) {
+    .wrapper__buttons{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(-4vh);
+
+    .button {
+        width: 30%;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    .wrapper__subtitle--subtitle{
+        width: 80%;
+    }
+
+    .wrapper__descriptions {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 5vh 13vw;
+        background-color: inherit;
+        gap: 7vh;
+        animation: aparecer--normal both;
+        animation-timeline: view();
+        animation-range: cover 5% cover 48%;
+    }
+
+    .wrapper__funcionamiento--img img{
+        width: 110%; 
+    }
+
+    .footer__content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        justify-items: center;                                       
+        align-items: center;                                         
+        width: 100%;                                                 
+        gap: 20px;                                                    
+    }
+
+    .footer__href{
+        display: flex;
+        align-items: start;
+        width: 70%;
+    }
+
+    .footer__icon--white {  
+        margin: 3vh 0;
+    }
+    
+    .largebubble1 {
+        width: 24dvw;
+        height: 24dvw;
+    }
+
+    
+    .largebubble2{
+        width: 19dvw;
+        height: 19dvw;
+        left: 20.15dvw;
+        bottom: 60dvh;
+    }
+    
+    .midbubble2{
+        width: 19dvw;
+        height: 19dvw;
+        left: 26.09dvw;
+        bottom: 27.06dvh;
+    }
+    
+    .littlebubble2{
+        left: 25.05dvw;
+        bottom: 8.61dvh;
+    }
+    
+    .littlebubble3{
+        width: 12dvw;
+        height: 12dvw;
+        left: 41.77dvw;
+        bottom: 74.8dvh;
+    }
+    
+    .littlebubble4 {
+        left: 44.375dvw;
+        bottom: 34.78dvh;
+    }
+    
+    .littlebubble5{
+        width: 10dvw;
+        height: 10dvw;
+        left: 50dvw;
+        bottom: 11.43dvh;
+    }
+    
+    .littlebubble6{
+        width: 10dvw;
+        height: 10dvw;
+        left: 58.75dvw;
+        bottom: 72.9dvh;
+    }
+    
+    .largebubble3{
+        left: 60.8dvw;
+        bottom: 38.92dvh;
+    }
+    
+    .midbubble3{
+        left: 66.56dvw;
+        bottom: 100px;
+    }
+    
+    .largebubble4{
+        left: 76.8dvw;
+        bottom: 59.18dvh;
+    }
+    
+    .midbubble4{
+        left: 86.8dvw;
+        bottom: 30.61dvh;
+    }
+    
+    .littlebubble7{
+        width: 6.40dvw;
+        height: 6.40dvw;
+        left: 84.89dvw;
+        bottom: 11.73dvh;
     }
 }
-
-.aparecer {
-    opacity: 0;
-    animation: aparecer 1s ease-out forwards;
-}
-
-.box.visible {
-    opacity: 1;
-    transform: translateY(-4vh); 
-}
-

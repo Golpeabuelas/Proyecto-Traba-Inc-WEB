@@ -265,6 +265,7 @@ h1 {
     position: absolute;
     right: 10px;
     cursor: pointer;
+    user-select: none;
 }
 
 
