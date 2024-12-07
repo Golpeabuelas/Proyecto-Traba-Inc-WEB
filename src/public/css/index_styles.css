@@ -195,6 +195,7 @@ body{
     margin: 10px 0;
 }
 
+/**BUTTONS **/
 .button {
     text-decoration: none;
     background-color: var(--verde);
@@ -206,11 +207,62 @@ body{
     font-size: clamp(1.2rem, 1vw, 2vw);
     letter-spacing: 5px;
     cursor: pointer;
+    transition: 0.8s;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.button:hover {
+    color: #000;
+    box-shadow: 0 0 10px var(--naranja), 0 0 20px var(--naranja), 0 0 30px var(--naranja);
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.buttoniniciosesión:hover {
+    color: var(--grisclaro);
+    box-shadow: 0 0 10px var(--verde), 0 0 20px var(--verde), 0 0 30px var(--verde);
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.button::before{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--naranja);
+    z-index: -1;
+    transition: 0.8s;
+}
+
+
+.buttoniniciosesión::before {
+    bottom: 0;
+}
+
+.button:hover::before {
+    width: 100%;
+}
+
+.buttoniniciosesión::before{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--verde);
+    z-index: -1;
+    transition: 0.8s;
 }
 
 .button > span {
     font-size: clamp(0.8rem, 1vw, 2vw);
 }
+
+/**END BUTTONS **/
 
 .buttoniniciosesión{
     background-color: var(--naranja);
@@ -413,6 +465,10 @@ footer {
     font-weight: 100;
 }
 
+.footer__links--item > a:hover{
+    text-decoration: underline;
+}
+
 .footer__content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
@@ -489,6 +545,11 @@ footer {
     100% {
         opacity: 1;
     }
+}
+
+.aparecer {
+    opacity: 0;
+    animation: aparecer 1s ease-out forwards;
 }
 
 

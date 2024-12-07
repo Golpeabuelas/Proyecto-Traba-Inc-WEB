@@ -283,6 +283,31 @@ footer {
     font-size: 15px;
 }
 
+.footer__links--item > a:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .footer__content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        justify-items: center;                                       
+        align-items: center;                                         
+        width: 100%;                                                 
+        gap: 20px;                                                    
+    }
+
+    .footer__href{
+        display: flex;
+        align-items: start;
+        width: 70%;
+    }
+
+    .footer__icon--white {  
+        margin: 3vh 0;
+    }
+    
+}
 
 
 
