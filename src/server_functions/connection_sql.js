@@ -3,7 +3,7 @@ import mysql from "mysql2"
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '$$I0h17eSi$$',
+    password: 'n0m3l0',
     database: 'TrabaInc'
 })
 

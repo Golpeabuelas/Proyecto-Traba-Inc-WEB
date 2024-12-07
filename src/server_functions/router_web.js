@@ -39,6 +39,25 @@ router.get('/makereporte', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/hacerReporte.html'))
 });
 
+router.get('/iniciosesion', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/iniciosesion.html'))
+});
+
+router.get('/pagprincipal', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/paginaprincipal.html'))
+});
+
+router.get('/pagprincipal', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/perfil.html'))
+});
+
+router.get('/pagprincipal', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/registrarse.html'))
+});
+
+router.get('/pagprincipal', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/verperfil.html'))
+});
 
 
 export default router;
