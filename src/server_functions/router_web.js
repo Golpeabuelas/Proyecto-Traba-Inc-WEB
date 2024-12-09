@@ -47,17 +47,15 @@ router.get('/pagprincipal', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/paginaprincipal.html'))
 });
 
-router.get('/pagprincipal', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/perfil.html'))
+router.get('/verperfil', (req, res) => {
+    res.sendFile(join(__dirname, '../public/html/verperfil.html'))
 });
 
-router.get('/pagprincipal', (req, res) => {
+router.get('/registrarse', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/registrarse.html'))
 });
 
-router.get('/pagprincipal', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/verperfil.html'))
-});
+
 
 
 export default router;
