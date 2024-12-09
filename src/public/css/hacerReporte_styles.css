@@ -32,6 +32,10 @@ body{
     justify-content: space-around;
     align-items: center;
     filter: drop-shadow(0 4px 10px #0005);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    animation: aparecer 0.4s ease-in-out forwards;
 }
 
 .navbar__image img {
@@ -39,6 +43,7 @@ body{
     height: auto;        
     filter: drop-shadow(0 4px 10px #0005);
     cursor: pointer;
+    position: relative;
 }
 
 .navbar__buscador {
@@ -54,16 +59,49 @@ body{
     height: 4.8dvh;
 }
 
-
 .navbar__link > a {
     text-decoration: none;
     color: #000;
     font-weight: 600;
-    font-size: 1em;
+    font-size: clamp(0.8rem,1vw,2vw);
 }
 
-.navbar__link:hover{
+.navbar__link:hover {
     text-decoration: underline; 
+}
+
+.nabvar__link--img {
+    background-color: white;
+    width: 4vw;
+    height: 4vw;
+    clip-path: circle(50% at 50% 50%);
+    outline: 5px solid #FD9800;
+    cursor: pointer;
+}
+
+.nabvar__link--img img {
+    width: 4vw;
+    height: 4vw;
+    cursor: pointer;
+    border-radius: 50%;    
+    object-fit: cover;    
+    z-index: 1;
+    object-fit: cover; 
+}
+
+.nabvar__link--img:hover {
+    opacity: 0.8;
+}
+
+.navbar__checkbox {
+    display: none; 
+}
+
+.navbar__menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
 }
 /*----*/
 
@@ -84,20 +122,24 @@ body{
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     display: flex;
+    animation: aparecer-with-move 1s ease-in-out forwards;
 }
 
 .previsualizacion{
     border-right: 3px solid black;
     width: 36dvw;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: aparecer 1s ease-in-out forwards;
 }
 
 .prevtitle__wrapper{
     background-color: var(--naranja);
     width: 100%;
-    height: 8dvh;
-    text-align: center;
-    text-align: center;
+    height: 9vh;
     border: 1px solid black;
     border-right: none;
     border-top-left-radius: 30px;
@@ -105,14 +147,17 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8vw;
     filter: drop-shadow(0 4px 10px #0005);
+    align-self: start;
+    justify-self: start;
 }
 
 .prev__title{
     letter-spacing: 10px;
     font-weight: 400;
     background-color: var(--naranja);
+    font-size: clamp(1rem,0.4vw,1vw);
+
 }
 
 .post__profile{
@@ -124,17 +169,6 @@ body{
     margin: 10px 0;
 }
 
-.post__profile--img {
-    position: absolute;
-    width: 4vw;          
-    height: 4vw;         
-    border-radius: 50%;    
-    object-fit: cover;    
-    left: 11.5%;
-    z-index: 1;
-    object-fit: cover; 
-}
-
 .post__profile--name{
     background-color: white;
     border-top-left-radius: 100px;
@@ -143,7 +177,7 @@ body{
     width: 85%;
     text-align: center;
     margin: 50px 0;
-    font-size: 0.95vw;
+    font-size: clamp(1.3rem,1vw,5vw);
     filter: drop-shadow(0 4px 10px #0005);
     z-index: 0;
     overflow-y: auto;
@@ -197,14 +231,14 @@ body{
 
 .prev__infoperro2--descriptiontitle{
     font-weight: 400;
-    font-size: 16px;
+    font-size: clamp(1.3rem,1vw,5vw);
 }
 
 .prev__infoperro2--description{
     background-color: #EEEEEE;
     width: 90%;
     border-radius: 20px;
-    font-size: 0.9em;
+    font-size: clamp(1.3rem,1vw,5vw);
     padding: 1vw;
     height: 15vh;
     max-height: 15vh;
@@ -222,7 +256,7 @@ body{
     padding: 1vh;
 }
 
-.prev__infoperro2 > form {
+.wrapper--description {
     width: inherit;
     display: flex;
     align-items: center;
@@ -241,12 +275,13 @@ body{
     justify-content: center;
     align-items: center;
     border-bottom-right-radius: 30px;
+    height: 100%;
 }
 
 .mkreporte__wrapper--chat{
     background-color: var(--naranja);
     width: 100%;
-    height: 8dvh;
+    height: 9dvh;
     text-align: center;
     text-align: center;
     border: 1px solid black;
@@ -256,22 +291,22 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8vw;
+    font-size: clamp(1rem,0.4vw,1vw);
     filter: drop-shadow(0 4px 10px #0005);
+    height: 10dvh;
 }
 
 .mkreporte__title--chat{
     letter-spacing: 10px;
     font-weight: 400;
     background-color: var(--naranja);
+    font-size: clamp(1rem,0.4vw,1vw);
 }
 
 .mkreporte__wrapper{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 71vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -279,22 +314,27 @@ body{
     background-color: #FFCA79;
     border-top-left-radius: 20px;
     width: 35vw;
-    height: 100%;
+    height: 85%;
     overflow-y: auto;
     overflow-x: auto;
-    margin-top: 6vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 1.4vh 0;
+    margin: auto;
+    animation: move-in-x 1.2s ease forwards;
+}
+
+.mkreporte__wrapper--fondo h2 {
+    margin: 1vh 0;
 }
 
 .mkreporte__buttonEnviar{
     width: 100%;
     text-transform: uppercase;
     padding: 3vh 0;
-    font-size: 1vw;
+    font-size: clamp(1.3rem,2vw,1.8vw);
     letter-spacing: 5px;
     border-bottom-right-radius: 20px;
     margin: none;
@@ -302,8 +342,10 @@ body{
     cursor: pointer;
     background-color: var(--naranja);
     border: 1px solid var(--naranja);
-    margin-top: 5vh;
     font-family: 'Montserrat';
+    align-self: end;
+    justify-self: end;
+    margin-top: auto;
 }
 
 .prev__infoperro1--input{
@@ -312,7 +354,7 @@ body{
     color: black;
     background-color: inherit;
     border: none;
-    font-size: 1vw;
+    font-size: clamp(0.8rem,1vw,1.8vw);
     resize: none;
     margin: 1vh 0;
 }
@@ -325,7 +367,7 @@ body{
 .mkreporte__wrapper--fondo > .prev__infoperro1--input {
     width: 85%;
     border-bottom: 2px solid black;
-    font-size: 1.1vw;
+    font-size: clamp(0.8rem,1vw,1.8vw);
 }
 
 .mkreporte__wrapper--fondo > .prev__infoperro1--input::placeholder {
@@ -336,17 +378,27 @@ body{
     border-right: 2px solid black;
 }
 
-.prev__infoperro1--inputimg {
-    border: none;
-    font-family: 'Montserrat';
-    border-right: 2px solid black;
+.prev__inputfile--label{
+    width: 85%;
     border-bottom: 2px solid black;
-    color: #7E4C00;
-    padding: 0.5vw;
+    border-right: 2px solid black;
+    text-align: center;
+    font-size: clamp(0.8rem,1vw,1.8vw);
+    cursor: pointer;
+    transition: 1s background-color, 1s color;
+}
+
+.prev__inputfile--label:hover{
+    background-color: #7E4C00;
+    color: var(--naranja);
+}
+
+#FotoMascota {
+    display: none;
 }
 
 h2 {
-    font-size: 1vw;
+    font-size: clamp(0.8rem,1vw,1.8vw);
     font-weight: 500;
     letter-spacing: 3px;
 }
@@ -354,7 +406,7 @@ h2 {
 label {
     font-family: 'Montserrat';
     color: #7E4C00;
-    font-size: 1vw;
+    font-size: clamp(0.8rem,1vw,1.8vw);
 }
 
 footer {
@@ -463,6 +515,287 @@ footer {
     width: calc(75% - 116px);            
     gap: 20px; 
 }
+
+@media screen and (max-width: 768px) {
+    .footer__content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        justify-items: center;                                       
+        align-items: center;                                         
+        width: 100%;                                                 
+        gap: 20px;                                                    
+    }
+
+    .footer__href{
+        display: flex;
+        align-items: start;
+        width: 70%;
+    }
+
+    .footer__icon--white {  
+        margin: 3vh 0;
+    }
+
+    .navbar {
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+        padding: 1vh 0;
+    }
+
+    .navbar__image img {
+        width: 15dvw;        
+    }
+    
+    .navbar__buscador {
+        width: 90%;
+    }
+    
+    .navbar__buscador > input {
+        width: 100%;
+        margin: 1vh;
+    }
+    
+    .navbar__link {
+        margin: 0.8vh;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nabvar__link--img {
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+    }
+    
+    .nabvar__link--img img {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        background-color: var(--naranja);
+        padding: 10px 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 20;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar__checkbox:checked ~ .navbar__menu {
+        display: flex;
+    }
+
+    .navbar__menu a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .fondo__reporte{
+        height: fit-content;
+        width: 100dvw;
+    }
+    
+
+    .wrapper__reporte{
+        height: fit-content;
+        width: 90%;
+        flex-direction: column;
+        margin: 3vh 0;
+        flex-direction: column-reverse;
+    }
+
+    .previsualizacion{
+        border-right: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .prevtitle__wrapper{
+        border-radius: 0;
+        border-right: 1px solid black;
+    }
+
+    .prev__infoperro1{
+        height: fit-content;
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .prev__infoperro1--image{
+        width: 95%;
+        height: 20vh;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .prev__infoperro1--content{
+        width: 60%;
+        background-color: #EEE;
+    }
+
+    .prev__infoperro1--content{
+        width: 95%;
+        height: fit-content;
+        overflow: visible;
+        margin: none;
+        padding: none;
+        margin-bottom: 2vh 0;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .prev__infoperro2{
+        height: fit-content;
+        width: 85%;
+        margin: 2vh 3vw;
+        overflow: visible;
+        padding: 3vh 0;
+    }
+
+    .wrapper--description{
+        overflow: visible;
+        height: fit-content;
+    }
+
+    .prev__infoperro2--description{
+        overflow: visible;
+        font-family: 'Montserrat';
+        text-wrap: pretty;
+        color: black;
+        height: fit-content;
+        max-height: unset;
+        width: 100%;
+    }
+    
+    .prev__infoperro2--descriptiontitle1{
+        width: 90%;
+        text-align: start;
+        padding: 1vh;
+        height: fit-content;
+    }
+    
+    .makereporte{
+        width: 100%;
+        height: 100dvh;
+        border-bottom-right-radius: 30px;
+    }
+
+    .mkreporte__content{
+        border-bottom-right-radius: 0px;
+    }
+
+    .mkreporte__wrapper--chat{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-right: 1px solid black;
+    }
+
+    .mkreporte__wrapper--fondo{
+        width: 85%;
+        height: 85%;
+    }
+
+    
+    .prev__infoperro1--input:focus {
+        border: none;
+        outline: none;
+    }
+    
+    .mkreporte__wrapper--fondo > .prev__infoperro1--input::placeholder {
+        color: #7E4C00;
+    }
+
+    .prev__infoperro1--content > .prev__infoperro1--input {
+        font-size: 1.5rem;
+    }
+
+    .prev__infoperro2--descriptiontitle{
+        font-size: 1.5rem;
+    }
+
+    .mkreporte__buttonEnviar{
+        border-bottom-right-radius: 0px;
+    }
+
+    .mkreporte__wrapper--fondo > .prev__infoperro1--input {
+        font-size: clamp(1.5rem,1vw,1.5vw);
+    }
+
+    .prev__inputfile--label{
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    label {
+        font-size: 1.5rem;
+    }
+    
+}
+
+/**ANIMACIONES **/
+
+@keyframes aparecer {
+    from {
+    opacity: 0;
+    }
+
+    to {
+    opacity: 1;
+    }
+}
+
+@keyframes traslation-y {
+    from {
+        transform: translateY(4vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes aparecer-with-move {
+    from {
+        opacity: 0;
+        transform: translateY(4vh);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes move-in-x {
+    from {
+        opacity: 0;
+        transform: translateX(4vh);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
 
 
 

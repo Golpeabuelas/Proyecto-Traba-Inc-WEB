@@ -15,16 +15,21 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar__image">
-            <img src="/imagenes/logo.png" alt="">
+        <input type="checkbox" id="toggle-navbar" class="navbar__checkbox">
+        <label for="toggle-navbar" class="navbar__image">
+            <img src="/imagenes/logo.png" alt="Logo">
+        </label>
+        <div class="navbar__menu">
+            <div class="navbar__buscador">
+                <input type="text" class="navbar__buscador--input" placeholder="Buscar...">
+            </div>
+            <div class="navbar__link"><a href="/html/paginaprincipal.html">Inicio</a></div>
+            <div class="navbar__link"><a href="/html/hacerReporte.html">Crear un reporte</a></div>
+            <div class="navbar__link"><a href="/html/index.html">Salud</a></div>
+            <div class="nabvar__link--img">
+                <a href="/verperfil"><img src="/imagenes/AxelPendejo.jpg" alt="Perfil"></a>
+            </div>
         </div>
-        <div class="navbar__buscador">
-            <input type="text" class="navbar__buscador--input" >
-        </div>
-        <div class="navbar__link"><a href="/html/paginaprincipal.html">Inicio</a></div>
-        <div class="navbar__link"><a href="/html/hacerReporte.html">Crear un reporte</a></div>
-        <div class="navbar__link"><a href="/html/index.html">Salud</a></div>
-        <div class="navbar__link"><a href="/html/verperfil.html">Perfil</a></div>
     </nav>
     <div class="paginaprincipal__title">
         <p class="paginaprincipal__title--text">
@@ -32,37 +37,24 @@
         </p>
     </div>
     <div class="paginaprincipal__aside">
-        <div class="paginaprincipal__aside--card desaparecido">
-            <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
-            </p>
-            <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/imagenChingona.jpg" alt="" class="card__wrapperimg--img">
-                </div>
-                <div class="card__wrapper--content">
-                    <p class="name">Nombre: Pugberto</p>
-                    <p class="place">Lugar de desaparición: Ciudad Peluche</p>
-                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
-                    <p class="fecha">Fecha de desaparición: 11/01/2019</p>
-                </div>
-            </div>
-            <div class="card__wrapper--content--footer">
-                <p class="card__footer--text">¿Eres el dueño de esta mascota?</p>
-            </div>
-            <input type="submit" class="card__button" value="CHATEAR">
-        </div>
         <div class="paginaprincipal__aside--card encontrado">
+            <div class="card__wrapperimg">
+                <img src="/imagenes/perroPendejo.jpg" alt="" class="card__wrapperimg--img">
+            </div>
             <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
             </p>
             <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/perroPendejo.jpg" alt="" class="card__wrapperimg--img">
-                </div>
                 <div class="card__wrapper--content">
                     <p class="name">Nombre: Pugberto</p>
                     <p class="place">Lugar de desaparición: Ciudad Peluche</p>
                     <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
                     <p class="fecha">Fecha de desaparición: 11/01/2019</p>
+                </div>
+                <div class="descripcion--wrapper">
+                    <details>
+                        <summary class="descipcion--title">Descripción</summary>
+                        <p class="descipcion--text">HTML (HyperText Markup Language) es el lenguaje de marcado principal para la creación de páginas web.</p>
+                    </details>
                 </div>
             </div>
             <div class="card__wrapper--content--footer">
@@ -71,112 +63,23 @@
             <input type="submit" class="card__button" value="CHATEAR">
         </div>
         <div class="paginaprincipal__aside--card desaparecido">
+            <div class="card__wrapperimg">
+                <img src="/imagenes/perroPendejo.jpg" alt="" class="card__wrapperimg--img">
+            </div>
             <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
             </p>
             <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/imagenChingona.jpg" alt="" class="card__wrapperimg--img">
-                </div>
                 <div class="card__wrapper--content">
                     <p class="name">Nombre: Pugberto</p>
                     <p class="place">Lugar de desaparición: Ciudad Peluche</p>
-                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
+                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuelloDistintivo: Collar azul, con un pañuelo azul en el cuelloDistintivo: Collar azul, con un pañuelo azul en el cuelloDistintivo: Collar azul, con un pañuelo azul en el cuelloDistintivo: Collar azul, con un pañuelo azul en el cuello</p>
                     <p class="fecha">Fecha de desaparición: 11/01/2019</p>
                 </div>
-            </div>
-            <div class="card__wrapper--content--footer">
-                <p class="card__footer--text">¿Eres el dueño de esta mascota?</p>
-            </div>
-            <input type="submit" class="card__button" value="CHATEAR">
-        </div>
-        <div class="paginaprincipal__aside--card encontrado">
-            <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
-            </p>
-            <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/perroPendejo.jpg" alt="" class="card__wrapperimg--img">
-                </div>
-                <div class="card__wrapper--content">
-                    <p class="name">Nombre: Pugberto</p>
-                    <p class="place">Lugar de desaparición: Ciudad Peluche</p>
-                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
-                    <p class="fecha">Fecha de desaparición: 11/01/2019</p>
-                </div>
-            </div>
-            <div class="card__wrapper--content--footer">
-                <p class="card__footer--text">¿Eres el dueño de esta mascota?</p>
-            </div>
-            <input type="submit" class="card__button" value="CHATEAR">
-        </div>
-        <div class="paginaprincipal__aside--card desaparecido">
-            <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
-            </p>
-            <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/imagenChingona.jpg" alt="" class="card__wrapperimg--img">
-                </div>
-                <div class="card__wrapper--content">
-                    <p class="name">Nombre: Pugberto</p>
-                    <p class="place">Lugar de desaparición: Ciudad Peluche</p>
-                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
-                    <p class="fecha">Fecha de desaparición: 11/01/2019</p>
-                </div>
-            </div>
-            <div class="card__wrapper--content--footer">
-                <p class="card__footer--text">¿Eres el dueño de esta mascota?</p>
-            </div>
-            <input type="submit" class="card__button" value="CHATEAR">
-        </div>
-        <div class="paginaprincipal__aside--card encontrado">
-            <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
-            </p>
-            <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/perroPendejo.jpg" alt="" class="card__wrapperimg--img">
-                </div>
-                <div class="card__wrapper--content">
-                    <p class="name">Nombre: Pugberto</p>
-                    <p class="place">Lugar de desaparición: Ciudad Peluche</p>
-                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
-                    <p class="fecha">Fecha de desaparición: 11/01/2019</p>
-                </div>
-            </div>
-            <div class="card__wrapper--content--footer">
-                <p class="card__footer--text">¿Eres el dueño de esta mascota?</p>
-            </div>
-            <input type="submit" class="card__button" value="CHATEAR">
-        </div>
-        <div class="paginaprincipal__aside--card desaparecido">
-            <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
-            </p>
-            <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/imagenChingona.jpg" alt="" class="card__wrapperimg--img">
-                </div>
-                <div class="card__wrapper--content">
-                    <p class="name">Nombre: Pugberto</p>
-                    <p class="place">Lugar de desaparición: Ciudad Peluche</p>
-                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
-                    <p class="fecha">Fecha de desaparición: 11/01/2019</p>
-                </div>
-            </div>
-            <div class="card__wrapper--content--footer">
-                <p class="card__footer--text">¿Eres el dueño de esta mascota?</p>
-            </div>
-            <input type="submit" class="card__button" value="CHATEAR">
-        </div>
-        <div class="paginaprincipal__aside--card encontrado">
-            <p class="card__title">¡A MI EL MENCHO ME PELA LA VERGA!
-            </p>
-            <div class="card__wrapper">
-                <div class="card__wrapperimg">
-                    <img src="/imagenes/perroPendejo.jpg" alt="" class="card__wrapperimg--img">
-                </div>
-                <div class="card__wrapper--content">
-                    <p class="name">Nombre: Pugberto</p>
-                    <p class="place">Lugar de desaparición: Ciudad Peluche</p>
-                    <p class="distintivo">Distintivo: Collar azul, con un pañuelo azul en el cuello</p>
-                    <p class="fecha">Fecha de desaparición: 11/01/2019</p>
+                <div class="descripcion--wrapper">
+                    <details>
+                        <summary class="descipcion--title">Descripción</summary>
+                        <p class="descipcion--text">HTML (HyperText Markup Language) es el lenguaje de marcado principal para la creación de páginas web.</p>
+                    </details>
                 </div>
             </div>
             <div class="card__wrapper--content--footer">

@@ -19,9 +19,6 @@ router.get('/perfil', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/perfil.html'))
 });
 
-router.get('/busqueda', (req, res) => {
-    res.sendFile(join(__dirname, '../public/html/busqueda.html'))
-});
 
 router.get('/busqueda', (req, res) => {
     res.sendFile(join(__dirname, '../public/html/busqueda.html'))

@@ -28,8 +28,6 @@ body{
 /*----*/
 
 .navbar {
-    position: sticky;
-    top: 0;
     width: 100dvw;
     height: 13dvh;
     background-color: var(--naranja);
@@ -37,7 +35,9 @@ body{
     justify-content: space-around;
     align-items: center;
     filter: drop-shadow(0 4px 10px #0005);
-    z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 30;
 }
 
 .navbar__image img {
@@ -45,6 +45,7 @@ body{
     height: auto;        
     filter: drop-shadow(0 4px 10px #0005);
     cursor: pointer;
+    position: relative;
 }
 
 .navbar__buscador {
@@ -60,18 +61,50 @@ body{
     height: 4.8dvh;
 }
 
-
 .navbar__link > a {
     text-decoration: none;
     color: #000;
     font-weight: 600;
-    font-size: 1em;
+    font-size: clamp(0.8rem,1vw,2vw);
 }
 
-.navbar__link:hover{
+.navbar__link:hover {
     text-decoration: underline; 
 }
 
+.nabvar__link--img {
+    background-color: white;
+    width: 4vw;
+    height: 4vw;
+    clip-path: circle(50% at 50% 50%);
+    outline: 5px solid #FD9800;
+    cursor: pointer;
+}
+
+.nabvar__link--img img {
+    width: 4vw;
+    height: 4vw;
+    cursor: pointer;
+    border-radius: 50%;    
+    object-fit: cover;    
+    z-index: 1;
+    object-fit: cover; 
+}
+
+.nabvar__link--img:hover {
+    opacity: 0.8;
+}
+
+.navbar__checkbox {
+    display: none; 
+}
+
+.navbar__menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+}
 .navbar--secondary {
     height: calc(100dvh - 13dvh);
     background-color: var(--naranja);
@@ -670,3 +703,235 @@ label {
     margin: auto;
 }
 
+
+@media screen and (max-width: 768px) {
+    .footer__content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        justify-items: center;                                       
+        align-items: center;                                         
+        width: 100%;                                                 
+        gap: 20px;                                                    
+    }
+
+    .footer__href{
+        display: flex;
+        align-items: start;
+        width: 70%;
+    }
+
+    .footer__icon--white {  
+        margin: 3vh 0;
+    }
+
+    .navbar {
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+        padding: 1vh 0;
+    }
+
+    .navbar__image img {
+        width: 15dvw;        
+    }
+    
+    .navbar__buscador {
+        width: 90%;
+    }
+    
+    .navbar__buscador > input {
+        width: 100%;
+        margin: 1vh;
+    }
+    
+    .navbar__link {
+        margin: 0.8vh;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nabvar__link--img {
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+    }
+    
+    .nabvar__link--img img {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        background-color: var(--naranja);
+        padding: 10px 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 20;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar__checkbox:checked ~ .navbar__menu {
+        display: flex;
+    }
+
+    .navbar__menu a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .fondo__reporte{
+        height: fit-content;
+        width: 100dvw;
+    }
+    
+
+    .wrapper__reporte{
+        height: fit-content;
+        width: 90%;
+        flex-direction: column;
+        margin: 3vh 0;
+        flex-direction: column-reverse;
+    }
+
+    .previsualizacion{
+        border-right: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .prevtitle__wrapper{
+        border-radius: 0;
+        border-right: 1px solid black;
+    }
+
+    .prev__infoperro1{
+        height: fit-content;
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .prev__infoperro1--image{
+        width: 95%;
+        height: 20vh;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .prev__infoperro1--content{
+        width: 60%;
+        background-color: #EEE;
+    }
+
+    .prev__infoperro1--content{
+        width: 95%;
+        height: fit-content;
+        overflow: visible;
+        margin: none;
+        padding: none;
+        margin-bottom: 2vh 0;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .prev__infoperro2{
+        height: fit-content;
+        width: 85%;
+        margin: 2vh 3vw;
+        overflow: visible;
+        padding: 3vh 0;
+    }
+
+    .wrapper--description{
+        overflow: visible;
+        height: fit-content;
+    }
+
+    .prev__infoperro2--description{
+        overflow: visible;
+        font-family: 'Montserrat';
+        text-wrap: pretty;
+        color: black;
+        height: fit-content;
+        max-height: unset;
+        width: 100%;
+    }
+    
+    .prev__infoperro2--descriptiontitle1{
+        width: 90%;
+        text-align: start;
+        padding: 1vh;
+        height: fit-content;
+    }
+    
+    .makereporte{
+        width: 100%;
+        height: 100dvh;
+        border-bottom-right-radius: 30px;
+    }
+
+    .mkreporte__content{
+        border-bottom-right-radius: 0px;
+    }
+
+    .mkreporte__wrapper--chat{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-right: 1px solid black;
+    }
+
+    .mkreporte__wrapper--fondo{
+        width: 85%;
+        height: 85%;
+    }
+
+    
+    .prev__infoperro1--input:focus {
+        border: none;
+        outline: none;
+    }
+    
+    .mkreporte__wrapper--fondo > .prev__infoperro1--input::placeholder {
+        color: #7E4C00;
+    }
+
+    .prev__infoperro1--content > .prev__infoperro1--input {
+        font-size: 1.5rem;
+    }
+
+    .prev__infoperro2--descriptiontitle{
+        font-size: 1.5rem;
+    }
+
+    .mkreporte__buttonEnviar{
+        border-bottom-right-radius: 0px;
+    }
+
+    .mkreporte__wrapper--fondo > .prev__infoperro1--input {
+        font-size: clamp(1.5rem,1vw,1.5vw);
+    }
+
+    .prev__inputfile--label{
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    label {
+        font-size: 1.5rem;
+    }
+    
+}
