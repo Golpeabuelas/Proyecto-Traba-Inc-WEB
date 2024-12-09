@@ -29,8 +29,6 @@ body{
 /*----*/
 
 .navbar {
-    position: sticky;
-    top: 0;
     width: 100dvw;
     height: 13dvh;
     background-color: var(--naranja);
@@ -38,7 +36,9 @@ body{
     justify-content: space-around;
     align-items: center;
     filter: drop-shadow(0 4px 10px #0005);
-    z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 30;
 }
 
 .navbar__image img {
@@ -46,7 +46,7 @@ body{
     height: auto;        
     filter: drop-shadow(0 4px 10px #0005);
     cursor: pointer;
-    animation: aparecer 0.6s ease-out forwards;
+    position: relative;
 }
 
 .navbar__buscador {
@@ -60,20 +60,51 @@ body{
     padding: 5px 10px;
     font-family: 'Montserrat';
     height: 4.8dvh;
-    animation: aparecer 0.6s ease-out forwards;
 }
-
 
 .navbar__link > a {
     text-decoration: none;
     color: #000;
     font-weight: 600;
-    font-size: 1em;
-    animation: aparecer 0.6s ease-out forwards;
+    font-size: clamp(0.8rem,1vw,2vw);
 }
 
-.navbar__link:hover{
+.navbar__link:hover {
     text-decoration: underline; 
+}
+
+.nabvar__link--img {
+    background-color: white;
+    width: 4vw;
+    height: 4vw;
+    clip-path: circle(50% at 50% 50%);
+    outline: 5px solid #FD9800;
+    cursor: pointer;
+}
+
+.nabvar__link--img img {
+    width: 4vw;
+    height: 4vw;
+    cursor: pointer;
+    border-radius: 50%;    
+    object-fit: cover;    
+    z-index: 1;
+    object-fit: cover; 
+}
+
+.nabvar__link--img:hover {
+    opacity: 0.8;
+}
+
+.navbar__checkbox {
+    display: none; 
+}
+
+.navbar__menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
 }
 
 .paginaprincipal__title{
@@ -96,7 +127,7 @@ body{
 }
 
 .paginaprincipal__title--text{
-    font-size: 1.2vw;
+    font-size: clamp(1.5rem,1.2vw,2vw);
     letter-spacing: 2px;
 }
 
@@ -107,12 +138,12 @@ body{
     background-color: var(--verde);
     padding: 1vh;
     border-radius: 15px;
-    width: 10vw;
+    width: clamp(10rem,10vw,15vw);
     height: 5vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 1vw;
+    font-size: clamp(1rem,1vw,2vw);
     cursor: pointer;
     transition: 0.8s;
     position: relative;
@@ -160,7 +191,7 @@ body{
 .paginaprincipal__aside--card{
     height: fit-content;
     height: clamp(82vh,fit-content,85vh);
-    width: 31vw;
+    width: clamp(31vw,31vw,31vw);
     border-bottom-right-radius: 30px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -180,9 +211,6 @@ body{
     overflow-x: auto;
 }
 
-.card__wrapper--text{
-    
-}
 
 .desaparecido{
     background-color: #788284;
@@ -229,6 +257,8 @@ body{
     background-color: white;
     text-align: center;
     font-size: 1.5vw;
+    font-size: clamp(1.2rem,1.5vw,2.5vw);
+    padding: 0 1vh;
     height: 9vh;
     overflow-y: auto;
     overflow-x: auto;
@@ -250,8 +280,8 @@ body{
 .card__wrapper--content{
     background-color: white;
     border-radius: 20px;
-    font-size: 1vw;
-    width: 25vw;
+    font-size: clamp(1.2rem,1vw,2vw);
+    width: 90%;
     height: 32vh;
     overflow-y: auto;
     overflow-x: auto;
@@ -263,7 +293,6 @@ body{
     margin-top: 1vh 0;
 }
 
-
 .descripcion--wrapper {
     width: 100%;
     height: fit-content;
@@ -273,8 +302,35 @@ body{
     background-color: var(--naranja);
     margin: 1vh 0;
     width: 90%;
-    overflow: hidden;  /* Asegura que la animación no sea cortada */
-    transition: height 0.5s ease, padding 0.3s ease;  /* Añade transición suave */
+    overflow: hidden;  
+    transition: height 0.5s ease, padding 0.3s ease;  
+}
+
+.descripcion--wrapper {
+    position: relative;
+    transition: background-color 0.2s ease, color 0.5s ease;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.descripcion--wrapper:hover {
+    color: #66A485;
+}
+
+.descripcion--wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--verde);
+    z-index: -1;
+    transition: width 0.8s ease;
+    width: 0%;
+}
+
+.descripcion--wrapper:hover::before {
+    width: 100%;
 }
 
 details {
@@ -290,10 +346,13 @@ summary {
     cursor: pointer;
     width: 100%;
     height: fit-content;
-    font-size: 1.2vw;
+    font-size: clamp(1.2rem,1vw,2vw);
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     user-select: none;
+    text-transform: uppercase;
+    letter-spacing: 0.4vw;
+    font-weight: 600;
 }
 
 .descipcion--text {
@@ -328,10 +387,10 @@ details[open] .descripcion--wrapper {
     justify-content: center;
     color: white;
     letter-spacing: 3px;
-    font-size: 0.9vw;
+    font-size: clamp(1.2rem,1vw,2vw);
 }
 
-.card__button {
+.card__button{
     position: relative;
     width: 100%;
     font-family: 'Montserrat';
@@ -341,7 +400,7 @@ details[open] .descripcion--wrapper {
     border-bottom-right-radius: 30px;
     height: 4vh;
     letter-spacing: 6px;
-    font-size: 1vw;
+    font-size: clamp(1.2rem,1vw,2vw);
     bottom: 0;
     cursor: pointer;
     z-index: 0;
@@ -356,17 +415,20 @@ details[open] .descripcion--wrapper {
 
 .card__button::before {
     content: "";
-
-    height: 100vh;
-    width: 10vw;
-    z-index: 100000000000;
-    background-color: var(--verde);  
-    transition: 0.8s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--verde);
+    z-index: -1;
+    transition: width 0.8s ease;
+    width: 0%;
 }
 
 .card__button:hover::before {
-    width: 200%;  
+    width: 100%;  
 }
+
 
 
 footer {
@@ -465,6 +527,155 @@ footer {
     content: '■';
     margin-left: 13px;
     font-size: 15px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .footer__content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        justify-items: center;                                       
+        align-items: center;                                         
+        width: 100%;                                                 
+        gap: 20px;                                                    
+    }
+
+    .footer__href{
+        display: flex;
+        align-items: start;
+        width: 70%;
+    }
+
+    .footer__icon--white {  
+        margin: 3vh 0;
+    }
+
+    .navbar {
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+        padding: 1vh 0;
+    }
+
+    .navbar__image img {
+        width: 15dvw;        
+    }
+    
+    .navbar__buscador {
+        width: 90%;
+    }
+    
+    .navbar__buscador > input {
+        width: 100%;
+        margin: 1vh;
+    }
+    
+    .navbar__link {
+        margin: 0.8vh;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nabvar__link--img {
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+    }
+    
+    .nabvar__link--img img {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        background-color: var(--naranja);
+        padding: 10px 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 20;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar__checkbox:checked ~ .navbar__menu {
+        display: flex;
+    }
+
+    .navbar__menu a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .paginaprincipal__title--text{
+        width: 100%;
+        text-align: center;
+    }
+
+    .paginaprincipal__title--buttons{
+        flex-direction: column;
+    }
+
+    .paginaprincipal__title{
+        width: 90dvw;
+        height: fit-content;
+        padding: 1vh 0;
+    }
+
+    .button {
+        margin: 1vh 0;
+        width: 70%;
+    }
+
+    .paginaprincipal__aside {
+        grid-template-columns: repeat(1, 1fr); 
+        min-height: 100dvh;
+        padding: 0 5rem;
+        height: fit-content;
+        width: 100%;
+    }
+
+    
+    
+    .descripcion--wrapper {
+        width: 100%;
+        height: fit-content;
+        padding: 1vh;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        background-color: var(--naranja);
+        margin: 1vh 0;
+        width: 90%;
+        overflow: hidden;  
+        transition: height 0.5s ease, padding 0.3s ease;  
+    }
+
+    .card__wrapper--content{
+        overflow-y: visible;
+        overflow-x: visible;
+        height: fit-content;
+    }
+
+    .paginaprincipal__aside--card{
+        width: 100%;
+    }
+
+    .card__title {
+        height: fit-content;
+        padding: 3.5vh;
+        overflow: visible;
+    }
+    
 }
 
 
