@@ -10,7 +10,7 @@ mensajeLoader.post('/crearMensaje', (req, res) => {
 
     connection.query('INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (?, ?, ?)', [id_chat, id_usuario, mensaje], (error, response) => {
         if ( error ) {
-            return res.status(400).send(console.log('No pudimos enviar tu mensaje'))
+            return res.status(400).send(console.log('No pudimos enviar tu mensaje', error))
         }
 
         res.send(console.log('acaba w'))
@@ -35,12 +35,12 @@ mensajeLoader.post('/cargarMensajes', (req, res) => {
         for (let i = 0; i < response.length; i++) {
             if ( response[i].id_usuario === id_usuario_owner ) {
                 mensaje.mensaje.push({ Mensaje: response[i].mensaje })
-                mensaje.reader.push({ Propietario: false })
+                mensaje.reader.push({ Propietario: true })
             }
 
             if ( response[i].id_usuario === id_usuario_reader ) {
                 mensaje.mensaje.push({ Mensaje: response[i].mensaje })
-                mensaje.reader.push({ Propietario: true })
+                mensaje.reader.push({ Propietario: false })
             }
         }
 

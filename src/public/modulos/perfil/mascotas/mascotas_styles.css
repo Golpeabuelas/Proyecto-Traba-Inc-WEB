@@ -170,7 +170,7 @@ body{
 .mascota__content{
     width: 80%;
     background-color: white;
-    height: 8vh;
+    height: 4vw;
     margin: 3vh 0;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
@@ -181,9 +181,16 @@ body{
     cursor: pointer;
 }
 
+.mascota__content--img{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5px;
+}
+
 .mascota__content--img img {
-    width: 4vw;          
-    height: 4vw;         
+    width: calc(4vw - 5px);          
+    height: calc(4vw - 5px);         
     border-radius: 50%;    
     object-fit: cover;    
     z-index: 1;

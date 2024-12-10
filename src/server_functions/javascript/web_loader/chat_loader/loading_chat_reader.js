@@ -1,4 +1,4 @@
-export async function procesoAbrirChat(id_publicacion, correo, contenedor) {
+export async function procesoAbrirChatReader(id_publicacion, correo, contenedor) {
     const id_usuario_reader = await getIdUserReader(correo) || null
     const id_usuario_owner = await getIdUserOwner(id_publicacion) || null
 
@@ -6,14 +6,11 @@ export async function procesoAbrirChat(id_publicacion, correo, contenedor) {
     
     if ( existe === true ) {
         const id_chat = await verificarIdChat(id_usuario_reader, id_usuario_owner, id_publicacion)
-        const mensajes = await cargarMensajes(id_usuario_owner, id_usuario_reader, id_chat)
-
-        const contenedorMensajes = mostrarChat(contenedor)
-
-        mostrarMensajes(contenedorMensajes, mensajes)
+        mostrarChat(contenedor)
 
         const datos = {
-            idUser: id_usuario_reader,
+            idReader: id_usuario_reader,
+            idOwner: id_usuario_owner,
             idChat: id_chat
         }
     
@@ -28,6 +25,7 @@ export async function procesoAbrirChat(id_publicacion, correo, contenedor) {
 
         const datos = {
             idUser: id_usuario_reader,
+            idOwner: id_usuario_owner,
             idChat: id_chat
         }
     
@@ -136,27 +134,4 @@ function mostrarChat(contenedor) {
             </div>
         </div>
     `
-    const contenedorMensajes = document.getElementById('mensajes')
-    return contenedorMensajes
-}
-
-async function cargarMensajes(id_usuario_owner_post, id_usuario_reader_post, id_chat) {
-    const response = await fetch('/cargarMensajes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }, 
-        body: JSON.stringify({ id_usuario_owner_post, id_usuario_reader_post, id_chat })
-    })
-
-    const mensajes = response.json()
-    return mensajes
-}
-
-function mostrarMensajes(contenedor, mensajes) {
-    for (let i = 0; i < mensajes.reader.length; i++) {
-        contenedor.innerHTML += `
-            <div class="chat__msg ${mensajes.reader[i].Propietario === true ? 'msgEnviado' : 'msgRecibido'}">${mensajes.mensaje[i].Mensaje}</div>
-        `
-    }
 }

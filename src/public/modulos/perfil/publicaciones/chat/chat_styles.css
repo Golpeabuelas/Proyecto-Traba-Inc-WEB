@@ -102,7 +102,7 @@ body{
 .post__title {
     letter-spacing: 10px;
     font-weight: 400;
-    background-color: var(--naranja);
+    background-color: transparent
 }
 
 .posttitle__wrapper{
