@@ -1,4 +1,4 @@
-const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: ""}
+const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: "" }
 
 export async function postLoader(contenedor) {
     const id_usuario = await getUserID()
@@ -8,21 +8,32 @@ export async function postLoader(contenedor) {
         const postOwner = await getOwnerName(resPublicaciones.informacion_Publicacion[i].id_usuario) 
 
         contenedor.innerHTML += `
-            <div class="card" style="margin-inline: 40px">
-                <img src="${resPublicaciones.informacion_Mascota[i].imagen_mascota}" alt="Pugberto" class="card-image">
-                
-                <div class="card-content">
-                    <h3>${resPublicaciones.informacion_Publicacion[i].titulo_publicacion}</h3>
-                    <p><strong>Dueño:</strong> ${postOwner}</p>
-                    <p><strong>Nombre:</strong> ${resPublicaciones.informacion_Mascota[i].nombre_mascota}</p>
-                    <p><strong>Distintivo:</strong> ${resPublicaciones.informacion_Mascota[i].distintivo_mascota}</p>
-                    <p><strong>Fecha de desaparición:</strong> ${new Date(resPublicaciones.informacion_Desaparicion[i].fecha_desaparicion).toLocaleDateString()}</p>
-                    <p><strong>Descripcion:</strong> ${resPublicaciones.informacion_Desaparicion[i].descripcion_desaparicion}</p>
-                    <p>¿Tienes información de su paradero?</p>
-                    
-                    <button class="chat-button" value="${resPublicaciones.informacion_Publicacion[i].id_publicacion}">CHATEAR</button>
+            <div class="paginaprincipal__aside--card desaparecido">
+            <div class="card__wrapperimg">
+                <img src="${resPublicaciones.informacion_Mascota[i].imagen_mascota}" alt="" class="card__wrapperimg--img">
+            </div>
+            <p class="card__title">${resPublicaciones.informacion_Publicacion[i].titulo_publicacion}</p>
+            <div class="card__wrapper">
+                <div class="card__wrapper--content">
+                    <p class="name">Nombre:  ${resPublicaciones.informacion_Mascota[i].nombre_mascota}</p>
+                    <p class="place">Dueño:  ${postOwner}</p>
+                    <p class="distintivo">Distintivo: ${resPublicaciones.informacion_Mascota[i].distintivo_mascota}</p>
+                    <p class="fecha">Fecha de desaparición: ${new Date(resPublicaciones.informacion_Desaparicion[i].fecha_desaparicion).toLocaleDateString()}</p>
+                </div>
+                <div class="descripcion--wrapper">
+                    <details>
+                        <summary class="descipcion--title">Descripción</summary>
+                        <p class="descipcion--text aparecer">
+                            ${resPublicaciones.informacion_Publicacion[i].descripcion_desaparicion}
+                        </p>
+                    </details>
                 </div>
             </div>
+            <div class="card__wrapper--content--footer">
+                <p class="card__footer--text">¿Eres el dueño de esta mascota?</p>
+            </div>
+            <button class="chat-button" value="${resPublicaciones.informacion_Publicacion[i].id_publicacion}">CHATEAR</button>
+        </div>
         `
     }
 }
@@ -31,9 +42,6 @@ export function userDataLoader (contenedor, session) {
     if ( session == true ){ 
         contenedor.href = '/perfil'
         contenedor.innerHTML = `<img src="${usedUser.foto_usuario}" alt="">`
-    } else {
-        contenedor.href = '/sign_in'
-        contenedor.innerHTML = 'Inicio Sesión'
     }
 }
 

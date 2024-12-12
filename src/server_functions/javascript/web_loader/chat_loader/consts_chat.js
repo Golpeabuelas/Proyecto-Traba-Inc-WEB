@@ -2,7 +2,8 @@ import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
 import { cargarPublicacion, userDataLoader } from "./loading_post_chat.js";
 import { procesoAbrirChatReader } from "./loading_chat_reader.js";
 import { procesoAbrirChatOwner } from "./loading_chat_owner.js";
-import { cargarMensajes, crearMensaje, mostrarMensajes } from "./send_message.js";
+import { cargarMensajes, mostrarMensajes } from "./send_message.js";
+import { longitud300Cadena } from '../../validaciones_inputs.js';
 
 const socket = io()
 
@@ -13,7 +14,7 @@ const chatEncapsulado = {
 }
 
 const id_publicacion = localStorage.getItem('Publicacion') || 0
-const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: "" };
+const usedUser = JSON.parse(localStorage.getItem('usuario')) || null
 const chatCreado = JSON.parse(localStorage.getItem('Chat')) || null
 
 localStorage.removeItem('Publicacion')
@@ -21,7 +22,7 @@ localStorage.removeItem('Chat')
 
 const contenedorAcceso = document.getElementById('enlace_perfil')
 
-    if ( usedUser.correo !== "" ) {
+    if ( usedUser ) {
         userDataLoader(contenedorAcceso, true)
     } else {
         window.location.href = 'sign_in'
@@ -42,7 +43,6 @@ if ( chatCreado ) {
 
         const btnEnviar = document.getElementById('btnSendMessage')
         const mensaje = document.getElementById('input')
-
         chatEncapsulado.id_owner = chatCreado.idOwner
         chatEncapsulado.id_reader = chatCreado.idReader
         chatEncapsulado.id_chat = chatCreado.idChat
@@ -66,6 +66,10 @@ if ( chatCreado ) {
 
         const btnEnviar = document.getElementById('btnSendMessage')
         const mensaje = document.getElementById('input')
+
+        mensaje.addEventListener('input', () => {
+            longitud300Cadena(mensaje)
+        })
 
         chatEncapsulado.id_owner = datos.idReader
         chatEncapsulado.id_reader = datos.idOwner

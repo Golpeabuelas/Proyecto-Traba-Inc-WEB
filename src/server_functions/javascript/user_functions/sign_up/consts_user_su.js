@@ -1,4 +1,4 @@
-import { etiquetasFixerEmail, soloLetras } from "../../validaciones_inputs.js"
+import { etiquetasFixerEmail, longitud50Cadena, soloLetras, validarCorreo } from "../../validaciones_inputs.js"
 import { getImage, fullRegister, otorgarPermisos, signUp, verificarCorreo } from "./sign_up.js"
 import { newUser } from "./new_user.js"
 
@@ -29,14 +29,17 @@ window.addEventListener('click', function(event) {
 
 nombre.addEventListener('input', () => {
     soloLetras(nombre)
+    longitud50Cadena(nombre)
 })
 
 correo.addEventListener('input', () => {
     etiquetasFixerEmail(correo)
+    longitud50Cadena(correo)
 })
 
 password.addEventListener('input', () => {
     etiquetasFixerEmail(password)
+    longitud50Cadena(password)
 })
 
 fotoUsuario.addEventListener('change', async (e) => {
@@ -70,8 +73,9 @@ btnSignUp.addEventListener('click', async (event) => {
     event.preventDefault()
 
     const registroLleno = fullRegister(inputsRequeridos)
+    const estructuraEmail = validarCorreo(correo)
 
-    if ( registroLleno ) {
+    if ( (registroLleno  && estructuraEmail) === true ) {
         newUser.nombre = nombre.value
         newUser.correo = correo.value
         newUser.password = password.value

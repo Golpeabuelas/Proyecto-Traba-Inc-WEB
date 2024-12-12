@@ -3,7 +3,7 @@ import connection from "../../connection_sql.js";
 
 const postLoader = Router()
 
-postLoader.post('/readOwnPosts', (req, res) => {
+postLoader.post('/readOwnPosts', async (req, res) => {
     const id_usuario = req.body.id_usuario
     
     const respuesta = {
@@ -12,133 +12,61 @@ postLoader.post('/readOwnPosts', (req, res) => {
         informacion_Desaparicion: []
     }
 
-    connection.query('SELECT * FROM publicacion WHERE id_usuario = ?', [id_usuario], async (error, response) => {
-        if ( error ) {
-            return res.send(console.log('No pudimos traer tus publicaciones'));
+    try {
+        const response = await connection.execute('SELECT * FROM publicacion WHERE id_usuario = ?', [id_usuario])
+
+        for(let i = 0; i < response.rows.length; i++) {
+            const informacionPublicacion = response.rows[i]
+            const id_publicacion = response.rows[i].id_publicacion
+
+            const informacionMascota = await connection.execute('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion])
+            const informacionDesaparicion = await connection.execute('SELECT * FROM informacion_desaparicion WHERE id_publicacion = ?', [id_publicacion])
+
+            respuesta.informacion_Publicacion.push(informacionPublicacion)
+            respuesta.informacion_Mascota.push(informacionMascota.rows[0])
+            respuesta.informacion_Desaparicion.push(informacionDesaparicion.rows[0])
         }
 
-        if ( response.length === 0 ) {
-            res.send(console.log('No tienes publicaciones'));
-        }
-
-        for(let i = 0; i < response.length; i++) {
-            const informacionPublicacion = response[i]
-            const id_publicacion = response[i].id_publicacion
-
-            try {
-                const [informacionMascota, informacionDesaparicion] = await Promise.all([
-                    new Promise((resolve, reject) => {
-                        connection.query('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion], (errorIM, responseIM) => {
-                            if ( errorIM ) {
-                                reject(console.log('No pudimos traer esa información de desaparición'))
-                            }
-
-                            if ( responseIM.length === 0 ) {
-                                reject(console.log('No tienes publicaciones'));
-                            }
-
-                            resolve(responseIM[0]);
-                        })
-                    }), 
-
-                    new Promise((resolve, reject) => {
-                        connection.query('SELECT * FROM informacion_desaparicion WHERE id_publicacion = ?', [id_publicacion], (errorID, responseID) => {
-                            if ( errorID ) {
-                                reject('No pudimos traer esa información de desaparición')
-                            }
-                            if ( responseID.length === 0 ) {
-                                reject('No tienes publicaciones')
-                            }
-
-                            resolve(responseID[0]);
-                        });
-                    })
-                ])
-                
-            
-                respuesta.informacion_Publicacion.push(informacionPublicacion)
-                respuesta.informacion_Mascota.push(informacionMascota)
-                respuesta.informacion_Desaparicion.push(informacionDesaparicion)
-            } catch (error) {
-                console.log('No pudimos traer la información de tu publicación', error)
-            }
-        }
-        
         return res.json(respuesta)
-    })
-});
+    } catch (error) {
+        return res.send(console.log('No pudimos traer tus publicaciones'));
+    }
+})
 
-postLoader.post('/readOtherPosts', (req, res) => {
+postLoader.post('/readOtherPosts', async (req, res) => {
     const id_usuario = req.body.id_usuario
-
+    
     const respuesta = {
         informacion_Publicacion: [],
         informacion_Mascota: [],
         informacion_Desaparicion: []
     }
 
-    connection.query('SELECT * FROM publicacion WHERE id_usuario <> ?', [id_usuario], async (error, response) => {
-        if ( error ) {
-            return res.send(console.log('No pudimos traer tus publicaciones'));
-        }
+    try {
+        const response = await connection.execute('SELECT * FROM publicacion WHERE id_usuario <> ?', [id_usuario])
 
-        if ( response.length === 0 ) {
-            return res.send(console.log('No tienes publicaciones'));
-        }
+        for(let i = 0; i < response.rows.length; i++) {
+            const informacionPublicacion = response.rows[i]
+            const id_publicacion = response.rows[i].id_publicacion
 
-        for(let i = 0; i < response.length; i++) {
-            const informacionPublicacion = response[i]
-            const id_publicacion = response[i].id_publicacion
+            const informacionMascota = await connection.execute('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion])
+            const informacionDesaparicion = await connection.execute('SELECT * FROM informacion_desaparicion WHERE id_publicacion = ?', [id_publicacion])
 
-            try {
-                const [informacionMascota, informacionDesaparicion] = await Promise.all([
-                    new Promise((resolve, reject) => {
-                        connection.query('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion], (errorIM, responseIM) => {
-                            if ( errorIM ) {
-                                reject(console.log('No pudimos traer esa información de desaparición'))
-                            }
-
-                            if ( responseIM.length === 0 ) {
-                                reject(console.log('No tienes publicaciones'))
-                            }
-
-                            resolve(responseIM[0]);
-                        })
-                    }), 
-
-                    new Promise((resolve, reject) => {
-                        connection.query('SELECT * FROM informacion_desaparicion WHERE id_publicacion = ?', [id_publicacion], (errorID, responseID) => {
-                            if ( errorID ) {
-                                reject('No pudimos traer esa información de desaparición');
-                            }
-                            if ( responseID.length === 0 ) {
-                                reject('No tienes publicaciones');
-                            }
-
-                            resolve(responseID[0]);
-                        });
-                    })
-                ])
-                
-            
-                respuesta.informacion_Publicacion.push(informacionPublicacion)
-                respuesta.informacion_Mascota.push(informacionMascota)
-                respuesta.informacion_Desaparicion.push(informacionDesaparicion)
-
-
-            } catch (e) {
-                console.log('No pudimos traer la información de tu publicación', e)
-            }
+            respuesta.informacion_Publicacion.push(informacionPublicacion)
+            respuesta.informacion_Mascota.push(informacionMascota.rows[0])
+            respuesta.informacion_Desaparicion.push(informacionDesaparicion.rows[0])
         }
 
         return res.json(respuesta)
-    })
+    } catch (error) {
+        return res.send(console.log('No pudimos traer tus publicaciones'));
+    }
 });
 
 postLoader.post('/readAPost', async (req, res) => {
     const id_publicacion = req.body.id_publicacion
 
-    const response = {
+    const respuesta = {
         informacion_publicacion: '',
         informacion_mascota: '',
         informacion_desaparicion: '',
@@ -146,73 +74,20 @@ postLoader.post('/readAPost', async (req, res) => {
     }
 
     try {
-        const [informacionPublicacion, informacionMascota, informacionDesaparicion, ubicacionDesaparicion] = await Promise.all([
-            new Promise((resolve, reject) => {
-                connection.query('SELECT * FROM publicacion WHERE id_publicacion = ?', [id_publicacion], (errorIP, responseIP) => {
-                    if ( errorIP ) {
-                        reject('No pudimos traer tu publicación')
-                    }
+        const informacionPublicacion = await connection.execute('SELECT * FROM publicacion WHERE id_publicacion = ?', [id_publicacion])
+        const informacionMascota = await connection.execute('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion])
+        const informacionDesaparicion = await connection.execute('SELECT * FROM informacion_desaparicion WHERE id_publicacion = ?', [id_publicacion])
+        const ubicacionDesaparicion = await connection.execute('SELECT * FROM ubicacion_desaparicion WHERE id_publicacion = ?', [id_publicacion])
 
-                    if ( responseIP.length === 0 ) {
-                        reject('Publicación no encontrada')
-                    }
+        respuesta.informacion_publicacion = informacionPublicacion.rows[0]
+        respuesta.informacion_mascota = informacionMascota.rows[0]
+        respuesta.informacion_desaparicion = informacionDesaparicion.rows[0]
+        respuesta.ubicacion_desaparicion = ubicacionDesaparicion.rows[0]
 
-                    resolve(responseIP[0])
-                })
-            }),
-            
-            new Promise((resolve, reject) => {
-                connection.query('SELECT * FROM informacion_mascota WHERE id_publicacion = ?', [id_publicacion], (errorIM, responseIM) => {
-                    if ( errorIM ) {
-                        reject('No pudimos traer la informacion');
-                    }
-
-                    if ( response.length === 0 ) {
-                        reject('No tienes publicaciones');
-                    }
-
-                    resolve(responseIM[0]);
-                })
-            }), 
-
-            new Promise((resolve, reject) => {
-                connection.query('SELECT * FROM informacion_desaparicion WHERE id_publicacion = ?', [id_publicacion], (errorID, responseID) => {
-                    if ( errorID ) {
-                        reject('No pudimos traer esa información de desaparición');
-                    } 
-                    if ( responseID.length === 0 ) {
-                        reject('No tienes publicaciones');
-                    }
-
-                    resolve(responseID[0]);
-                });
-            }),
-
-            new Promise((resolve, reject) => {
-                connection.query('SELECT * FROM ubicacion_desaparicion WHERE id_publicacion = ?', [id_publicacion], (errorUD, responseUD) => {
-                    if ( errorUD ) {
-                        reject('No pudimos traer esa información de desaparición');
-                    } 
-                    if ( responseUD.length === 0 ) {
-                        reject('No tienes publicaciones');
-                    }
-
-                    resolve(responseUD[0]);
-                });
-
-            })
-        ])
-        
-        response.informacion_publicacion = informacionPublicacion
-        response.informacion_mascota = informacionMascota
-        response.informacion_desaparicion = informacionDesaparicion
-        response.ubicacion_desaparicion = ubicacionDesaparicion
-
+        return res.json(respuesta)
     } catch (error) {
-        console.log('No pudimos traer la información de tu publicación')
+        return res.send(console.log('No pudimos traer la información de tu publicación'))
     }
-
-    res.json(response)
 })
 
 export default postLoader

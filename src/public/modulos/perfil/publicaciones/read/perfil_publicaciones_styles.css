@@ -68,6 +68,12 @@ body{
     font-size: 1em;
 }
 
+.navbar__link a img{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
+
 .navbar__link:hover{
     text-decoration: underline; 
 }

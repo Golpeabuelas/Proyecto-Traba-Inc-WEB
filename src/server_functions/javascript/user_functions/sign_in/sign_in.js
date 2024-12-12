@@ -21,6 +21,7 @@ export async function iniciarSesion (Correo, Password) {
             permisos: respuesta.Response.permisos 
         }
 
+        localStorage.removeItem('usuario')
         localStorage.setItem('usuario', JSON.stringify( usedUser ))
 
         window.location.href = '/index'

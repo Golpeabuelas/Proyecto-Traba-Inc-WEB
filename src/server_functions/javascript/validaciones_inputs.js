@@ -107,3 +107,41 @@ export function fechaAnterior (fecha, hoy, idFecha) {
     idFecha.setCustomValidity('');
     idFecha.reportValidity();
 }
+
+export function longitud50Cadena(idInput) {
+    let valorInput = idInput.value;
+
+    if (valorInput.length > 50) {
+        idInput.setCustomValidity('Longitud máxima de 50 caracteres');
+        idInput.reportValidity();
+        idInput.value = valorInput.substring(0, 50);
+    } else {
+        idInput.setCustomValidity('');
+        idInput.reportValidity();
+    }
+}
+
+
+export function longitud300Cadena(idInput) {
+    let valorInput = idInput.value;
+
+    if (valorInput.length > 300) {
+        idInput.setCustomValidity('Longitud máxima de 300 caracteres');
+        idInput.reportValidity();
+        idInput.value = valorInput.substring(0, 300);
+    } else {
+        idInput.setCustomValidity('');
+        idInput.reportValidity();
+    }
+}
+
+export function validarCorreo(correo) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if ( regex.test(correo.value) === false ) {
+        correo.setCustomValidity('Pon una estructura de correo válida')
+        correo.reportValidity()
+        return false
+    } else {
+        return true
+    }
+}

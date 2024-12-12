@@ -4,9 +4,6 @@ export function userDataLoader (contenedor, session) {
     if ( session == true ){ 
         contenedor.href = '/perfil'
         contenedor.innerHTML = `<img src="${usedUser.foto_usuario}" alt="">`
-    } else {
-        contenedor.href = '/sign_in'
-        contenedor.innerHTML = 'Inicio Sesión'
     }
 }
 

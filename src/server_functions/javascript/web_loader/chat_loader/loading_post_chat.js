@@ -9,7 +9,7 @@ export async function cargarPublicacion (contenedor, id_publicacion) {
         const btn = fillPost(usuario, publicacion, contenedor)
         return btn
     } else {
-        alert('entra desde la card de la publicacion')
+        window.location.href = '/inicio'
     }
 }
 
@@ -17,10 +17,7 @@ export function userDataLoader (contenedor, session) {
     if ( session == true ){ 
         contenedor.href = '/perfil'
         contenedor.innerHTML = `<img src="${usedUser.foto_usuario}" alt="">`
-    } else {
-        contenedor.href = '/sign_in'
-        contenedor.innerHTML = 'Inicio Sesión'
-    }
+    } 
 }
 
 function fillPost (datosUsuario, datosPublicacion, contenedor) {

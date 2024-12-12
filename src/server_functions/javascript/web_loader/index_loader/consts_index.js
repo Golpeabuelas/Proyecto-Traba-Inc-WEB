@@ -6,7 +6,5 @@ const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: "" };
 
     if ( usedUser.correo !== "" ) {
         userDataLoader(contenedorAcceso, true)
-    } else {
-        userDataLoader(contenedorAcceso, false)
-    }
+    } 
 

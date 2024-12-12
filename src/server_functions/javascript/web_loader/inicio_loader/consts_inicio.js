@@ -20,8 +20,7 @@ if( usedUser.correo !== '') {
         }
     })
 } else {
-    alert('inicia sesion')
-    userDataLoader(contenedorAcceso, false)
+    window.location.href = '/sign_in'
 }
 
 

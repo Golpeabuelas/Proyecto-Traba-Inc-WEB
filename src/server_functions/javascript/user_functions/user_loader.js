@@ -3,22 +3,22 @@ import connection from "../../connection_sql.js";
 
 const userLoader = Router()
 
-userLoader.post('/buscarSesionExistente', (req, res) => {
+userLoader.post('/buscarSesionExistente', async (req, res) => {
     const correo = req.body.correo
 
-    connection.query('SELECT * FROM usuario WHERE correo = ?', [correo], (error, response, fields) => {
-        if ( error ) {
-            return res.status(400).send(console.log('Error al buscar sesión', error))
-        }
-        
-        if ( response.length === 0) { 
+    try {
+        const response = await connection.execute('SELECT * FROM usuario WHERE correo = ?', [correo])
+
+        if ( response.rows.length === 0) { 
             return res.json({ correoDisponible: true })
         }
 
-        if ( response.length !== 0) {
+        if ( response.rows.length > 0) {
             return res.json({ correoDisponible: false })
         }
-    })
+    } catch (error) {
+        return res.send(console.log('Error al buscar sesión'))
+    }
 })
 
 userLoader.post('/otorgarPermisos', (req, res) => {
@@ -31,59 +31,51 @@ userLoader.post('/otorgarPermisos', (req, res) => {
     return res.json({ permisos: false })
 })
 
-userLoader.post('/iniciarSesion', (req, res) => {
+userLoader.post('/iniciarSesion', async (req, res) => {
     const correo = req.body.correo
     const password = req.body.password
 
-    connection.query('SELECT * FROM usuario WHERE correo = ?', [correo], (error, response) => {
-        if ( error ) {
-            return res.status(400).send(console.log('Error al iniciar sesión', error))
-        }
+    try {
+        const response = await connection.execute('SELECT * FROM usuario WHERE correo = ?', [correo])
 
-        if ( response.length === 0 ) {
+        if ( response.rows.length === 0 ) {
             return res.json({ Correo: false, Acceso: false})
         }
 
-        if ( password === response[0].password) {
-            res.json({ Response: response[0], Acceso: true })
+        if ( password === response.rows[0].password) {
+            return res.json({ Response: response.rows[0], Acceso: true })
         }
 
-        if ( password !== response[0].password) {
-            res.json({ Acceso: false })
+        if ( password !== response.rows[0].password) {
+            return res.json({ Acceso: false })
         }
-    })
+    } catch (error) {
+        return console.log('Ocurrió un error al iniciar sesión')
+    }
 })
 
-userLoader.post('/getUserID', (req, res) => {
+userLoader.post('/getUserID', async (req, res) => {
     const correo = req.body.correo
 
-    connection.query('SELECT * FROM usuario WHERE correo = ?', [correo], (error, response) => {
-        if ( error ) {
-            return res.status(400).send(console.log('Error al buscar la información del usuario', error))
-        }
+    try {
+        const response = await connection.execute('SELECT * FROM usuario WHERE correo = ?', [correo])
 
-        if ( response.length === 0 ) {
-            return res.status(404).send(console.log('Usuario no encontrado'))
-        }
-
-        return res.json({ id_usuario: response[0].id_usuario })
-    })
+        return res.json({ id_usuario: response.rows[0].id_usuario })
+    } catch (error) {
+        return res.send(console.log('Error al buscar la id del usuario'))
+    }
 })
 
-userLoader.post('/getUserInformation', (req, res) => {
+userLoader.post('/getUserInformation', async (req, res) => {
     const id_usuario = req.body.id_usuario
     
-    connection.query('SELECT * FROM usuario WHERE id_usuario = ?', [id_usuario], (error, response) => {
-        if ( error ) {
-            return res.status(400).send(console.log('No pudimos traer tu información', error))
-        }
+    try {
+        const response = await connection.execute('SELECT * FROM usuario WHERE id_usuario = ?', [id_usuario])
 
-        if ( response.length === 0 ) {
-            return res.status(400).send(console.log('Usuario no encontrado'))            
-        }
-
-        return res.json({ nombre: response[0].nombre, foto: response[0].foto_usuario, id_dueño: id_usuario })
-    })
+        return res.json({ nombre: response.rows[0].nombre, foto: response.rows[0].foto_usuario, id_dueño: id_usuario })
+    } catch (error) {
+        return res.send(console.log('Error al buscar la información del usuario'))
+    }
 })
 
 export default userLoader

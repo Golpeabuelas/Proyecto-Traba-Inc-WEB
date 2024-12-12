@@ -2,6 +2,13 @@ import { newPost } from "./new_post.js"
 
 const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: '' }
 
+export function userDataLoader (contenedor, session) {
+    if ( session == true ) { 
+        contenedor.href = '/perfil'
+        contenedor.innerHTML = `<img src="${usedUser.foto_usuario}" alt="">`
+    }
+}
+
 export function getImage (cargarImagen, imageDefault, e) {
     return new Promise ((resolve) => {
         let image64x = ""

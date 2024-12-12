@@ -19,6 +19,7 @@ import chatLoader from './src/server_functions/javascript/chat_functions/chat_lo
 import mensajeLoader from './src/server_functions/javascript/chat_functions/mensaje_loader.js';
 
 import mascotasLoader from './src/server_functions/javascript/mascotas_functions/mascotas_loader.js';
+import connection from './src/server_functions/connection_sql.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -39,13 +40,13 @@ app.use('/scripts', express.static(join(__dirname, './src/server_functions/')))
 app.use(router)
 
 app.use(sesiones)
-app.use(userLoader)
+app.use(userLoader) 
 
-app.use(publicaciones)
-app.use(postLoader)
+app.use(publicaciones) 
+app.use(postLoader) 
 
-app.use(chatLoader)
-app.use(mensajeLoader)
+app.use(chatLoader) 
+app.use(mensajeLoader) 
 
 app.use(mascotasLoader)
 

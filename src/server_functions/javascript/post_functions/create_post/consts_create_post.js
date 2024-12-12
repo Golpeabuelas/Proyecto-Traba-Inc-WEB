@@ -1,9 +1,16 @@
-import { soloLetras, etiquetasFixer, fechaPosterior } from "../../validaciones_inputs.js";
+import { soloLetras, etiquetasFixer, fechaPosterior, longitud50Cadena, longitud300Cadena } from "../../validaciones_inputs.js";
 import { formularioPerdidoMascota, formularioPerdidoDesaparicion, formularioEncontrado, formularioEncontradoDesaparicion } from "./show_forms.js";
 import { newPost } from "./new_post.js";
-import { getImage, fullRegister, añadirMarcador, createPost } from "./create_post.js";
+import { getImage, fullRegister, añadirMarcador, createPost, userDataLoader } from "./create_post.js";
 
 const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: null }
+const contenedorAcceso = document.getElementById('enlace_perfil')
+
+if( usedUser.correo !== '') {     
+    userDataLoader(contenedorAcceso, true)
+} else {
+    window.location.href = '/sign_in'
+}
 
 const radios = document.getElementsByName('mascota')
 const contenedor = document.getElementById('contenedor_formulario')
@@ -35,18 +42,22 @@ const contenedor = document.getElementById('contenedor_formulario')
             
             nombre_mascota.addEventListener('input', () => {
                 soloLetras(nombre_mascota)
+                longitud50Cadena(nombre_mascota)
             })
             
             especie_mascota.addEventListener('input', () => {
                 soloLetras(especie_mascota)
+                longitud50Cadena(especie_mascota)
             })
             
             color_mascota.addEventListener('input', () => {
                 soloLetras(color_mascota)
+                longitud50Cadena(color_mascota)
             })
 
             distintivo_mascota.addEventListener('input', () => {
                 soloLetras(distintivo_mascota)
+                longitud300Cadena(distintivo_mascota)
             })
             
             imagen_mascota.addEventListener('change', async (e) => {
@@ -90,6 +101,7 @@ const contenedor = document.getElementById('contenedor_formulario')
 
                     descripcion_desaparicion.addEventListener('input', () => {
                         etiquetasFixer(descripcion_desaparicion)
+                        longitud300Cadena(descripcion_desaparicion)
                     })
 
                     const inputsNecesariosD = document.getElementsByClassName('required')
@@ -134,22 +146,27 @@ const contenedor = document.getElementById('contenedor_formulario')
 
             titulo_publicacion.addEventListener('input', () => {
                 soloLetras(titulo_publicacion)
+                longitud50Cadena(titulo_publicacion)
             })
             
             nombre_mascota.addEventListener('input', () => {
                 soloLetras(nombre_mascota)
+                longitud50Cadena(nombre_mascota)
             })
             
             especie_mascota.addEventListener('input', () => {
                 soloLetras(especie_mascota)
+                longitud50Cadena(especie_mascota)
             })
             
             color_mascota.addEventListener('input', () => {
                 soloLetras(color_mascota)
+                longitud50Cadena(color_mascota)
             })
 
             distintivo_mascota.addEventListener('input', () => {
                 soloLetras(distintivo_mascota)
+                longitud50Cadena(distintivo_mascota)
             })
             
             imagen_mascota.addEventListener('change', async (e) => {
@@ -193,6 +210,7 @@ const contenedor = document.getElementById('contenedor_formulario')
 
                     descripcion_desaparicion.addEventListener('input', () => {
                         etiquetasFixer(descripcion_desaparicion)
+                        longitud300Cadena(descripcion_desaparicion)
                     })
 
                     const inputsNecesariosD = document.getElementsByClassName('required')

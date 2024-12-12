@@ -10,6 +10,5 @@ if( usedUser.correo !== '') {
     
     postLoader(contenedorPublicaciones)
 } else {
-    alert('inicia sesion')
-    userDataLoader(contenedorAcceso, false)
+    window.location.href = 'sign_in'
 }

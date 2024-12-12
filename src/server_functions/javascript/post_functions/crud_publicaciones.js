@@ -3,7 +3,7 @@ import connection from "../../connection_sql.js"
 
 const publicaciones = Router()
 
-publicaciones.post('/crearPublicacion', (req, res) => {
+publicaciones.post('/crearPublicacion', async (req, res) => {
     const id_usuario = req.body.id_usuario
     const titulo_publicacion = req.body.titulo_publicacion
     const fecha_publicacion = req.body.fecha_publicacion
@@ -18,33 +18,21 @@ publicaciones.post('/crearPublicacion', (req, res) => {
     const latitud = req.body.latitud
     const longitud = req.body.longitud
 
-    connection.query('INSERT INTO publicacion (id_usuario, titulo_publicacion, fecha_publicacion) VALUES (?, ?, ?)', [id_usuario, titulo_publicacion, fecha_publicacion], (errorP, responseP) => {
-        if ( errorP ) {
-            res.status(400).send(console.log('Error al crear tu publicación', errorP))
-        }
+    try {
+        const response = await connection.execute('INSERT INTO publicacion (id_usuario, titulo_publicacion, fecha_publicacion) VALUES (?, ?, ?)', [id_usuario, titulo_publicacion, fecha_publicacion])
 
-        const id_publicacion = responseP.insertId
+        const id_publicacion = response.lastInsertRowid
 
-        connection.query('INSERT INTO informacion_mascota (id_publicacion, imagen_mascota, nombre_mascota, especie_mascota, color_mascota, distintivo_mascota) VALUES (?, ?, ?, ?, ?, ?)', [id_publicacion, imagen_mascota, nombre_mascota, especie_mascota, color_mascota, distintivo_mascota], (errorIM, responseIM) => {
-            if ( errorIM ) {
-                res.status(400).send(console.log('Error al crear tu publicación', errorIM))
-            }
-        })
+        await connection.execute('INSERT INTO informacion_mascota (id_publicacion, imagen_mascota, nombre_mascota, especie_mascota, color_mascota, distintivo_mascota) VALUES (?, ?, ?, ?, ?, ?)', [id_publicacion, imagen_mascota, nombre_mascota, especie_mascota, color_mascota, distintivo_mascota])
 
-        connection.query('INSERT INTO informacion_desaparicion (id_publicacion, fecha_desaparicion, descripcion_desaparicion, estatus_desaparicion, estatus_reporte) VALUES (?, ?, ?, ?, ?)', [id_publicacion, fecha_desaparicion, descripcion_desaparicion, true, estatus_reporte], (errorID, responseID) => {
-            if ( errorID ) {
-                res.status(400).send(console.log('Error al crear tu publicación', errorID))
-            }
-        })
+        await connection.execute('INSERT INTO informacion_desaparicion (id_publicacion, fecha_desaparicion, descripcion_desaparicion, estatus_desaparicion, estatus_reporte) VALUES (?, ?, ?, ?, ?)', [id_publicacion, fecha_desaparicion, descripcion_desaparicion, true, estatus_reporte])
 
-        connection.query('INSERT INTO ubicacion_desaparicion (id_publicacion, latitud, longitud) VALUES (?, ?, ?)', [id_publicacion, latitud, longitud], (errorU, responseU) => {
-            if ( errorU ) {
-                res.status(400).send(console.log('Error al crear tu publicación', errorID))
-            }
-        })
+        await connection.execute('INSERT INTO ubicacion_desaparicion (id_publicacion, latitud, longitud) VALUES (?, ?, ?)', [id_publicacion, latitud, longitud])
 
-        res.send('Todo bien apá')
-    })
+        return res.send(console.log('Publicacion y relaciones hechas correctamente'))
+    } catch (error) {
+        return res.send(console.log('Error al crear tu publicación'))
+    }
 })
 
 export default publicaciones

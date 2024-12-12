@@ -2,7 +2,6 @@ export async function procesoCargarChats(contenedor, id_publicacion, correo) {
     const chats = await cargarChatsPublicacion(id_publicacion)
     const id_usuario = await cargarIdUsuario(correo)
 
-    contenedor.innerHTML = ''
     await mostrarChats(contenedor, chats, id_usuario)
 }
 
@@ -15,7 +14,8 @@ async function cargarChatsPublicacion(id_publicacion) {
         body: JSON.stringify({ id_publicacion })
     })
 
-    return response.json()
+    const respuesta = await response.json()
+    return respuesta
 }
 
 export async function cargarIdUsuario(correo) {
@@ -32,6 +32,8 @@ export async function cargarIdUsuario(correo) {
 }
 
 async function mostrarChats (contenedor, chats, id_owner) {
+    contenedor.innerHTML = ''
+
     for (let i = 0; i < chats.length; i++) {
         const idReader = await cargarIntegranteChat(id_owner, chats[i].id_chat)
         const datosReader = await cargarInformacionReader(idReader)
@@ -62,7 +64,7 @@ export async function cargarIntegranteChat(id_usuario, id_chat) {
     })
 
     const id_reader = await response.json()
-    
+   
     return id_reader.id_reader
 }
 

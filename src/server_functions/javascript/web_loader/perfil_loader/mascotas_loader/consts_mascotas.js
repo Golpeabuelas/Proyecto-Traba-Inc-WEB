@@ -1,5 +1,5 @@
 import { userDataLoader, procesoCargarMascotas } from "./loading_mascotas.js"
-import { soloLetras } from "../../../validaciones_inputs.js"
+import { longitud50Cadena, soloLetras } from "../../../validaciones_inputs.js"
 import { getImage, fullRegister, agregarMascota  } from "../../../mascotas_functions/agregar_mascota.js"
 
 const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: null }
@@ -7,10 +7,10 @@ const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: null }
 const contenedorAcceso = document.getElementById('enlace_perfil')
 const contenedorMascotas = document.getElementById('contenedor_mascotas')
 
-    if ( usedUser.correo !== "" ) {
+    if ( usedUser.correo ) {
         userDataLoader(contenedorAcceso, true)
     } else {
-        window.location.href = 'sign_in'
+        window.location.href = '/sign_in'
     }
 
 await procesoCargarMascotas(contenedorMascotas, usedUser.correo)
@@ -35,10 +35,12 @@ const inputsNecesarios = document.getElementsByClassName('required')
 
 nombreMascota.addEventListener('input', () => {
     soloLetras(nombreMascota)
+    longitud50Cadena(nombreMascota)
 })
 
 especieMascota.addEventListener('input', () => {
     soloLetras(especieMascota)
+    longitud50Cadena(especieMascota)
 })
 
 btnAñadir.addEventListener('click', (e) => {

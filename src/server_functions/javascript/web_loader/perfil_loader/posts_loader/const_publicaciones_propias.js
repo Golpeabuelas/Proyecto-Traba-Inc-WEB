@@ -1,13 +1,20 @@
-import { procesoCargarPublicaciones } from "./loading_publicaciones.js"
+import { procesoCargarPublicaciones, userDataLoader } from "./loading_publicaciones.js"
 import { procesoCargarChats, cargarIdUsuario, cargarIntegranteChat } from "./loading_chats_publicaciones.js"
 
 const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: null }
 
+const contenedorAcceso = document.getElementById('enlace_perfil')
 const contenedorPublicaciones = document.getElementById('contenedor_publicaciones')
 const contenedorChats = document.getElementById('contenedor_chats')
 
 let reportes = null
 let chats = null
+
+if ( usedUser.correo ) {
+    userDataLoader(contenedorAcceso, true)
+} else {
+    window.location.href = 'sign_in'
+}
 
 if ( usedUser ) {
     await procesoCargarPublicaciones(contenedorPublicaciones, usedUser.correo)

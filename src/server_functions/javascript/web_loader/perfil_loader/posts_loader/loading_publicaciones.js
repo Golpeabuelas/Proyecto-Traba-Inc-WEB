@@ -1,3 +1,12 @@
+const usedUser = JSON.parse(localStorage.getItem('usuario')) || { correo: "" }
+
+export function userDataLoader (contenedor, session) {
+    if ( session == true ) { 
+        contenedor.href = '/perfil'
+        contenedor.innerHTML = `<img src="${usedUser.foto_usuario}" alt="">`
+    }
+}
+
 export async function procesoCargarPublicaciones(contenedor, correo) {
     const id_usuario = await cargarIdUsuario(correo)
     const publicaciones = await cargarPublicacionesUsuario(id_usuario)

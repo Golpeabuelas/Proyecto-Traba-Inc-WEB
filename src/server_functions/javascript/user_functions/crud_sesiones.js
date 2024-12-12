@@ -3,7 +3,7 @@ import connection from "../../connection_sql.js"
 
 const sesiones = Router()
 
-sesiones.post('/aniadirUsuario', (req, res) => {
+sesiones.post('/aniadirUsuario', async  (req, res) => {
     const nombre = req.body.nombre
     const correo = req.body.correo
     const password = req.body.password
@@ -12,22 +12,17 @@ sesiones.post('/aniadirUsuario', (req, res) => {
     const latitud = req.body.latitud
     const longitud = req.body.longitud
 
-    console.log('si entra pero no sale')
-    connection.query('INSERT INTO usuario (nombre, correo, password, foto_usuario, permisos) VALUES (?, ?, ?, ?, ?)', [nombre, correo, password, foto_usuario, permisos], (error, response) => {
-        if ( error ) {
-            console.log('Error al añadir nueva sesión')
-        }
+    try {
+        const response = await connection.execute('INSERT INTO usuario (nombre, correo, password, foto_usuario, permisos) VALUES (?, ?, ?, ?, ?)', [nombre, correo, password, foto_usuario, permisos])
 
-        const id_usuario = response.insertId
-        
-        connection.query('INSERT INTO ubicacion_usuario (id_usuario, latitud, longitud) VALUES (?, ?, ?)', [id_usuario, latitud, longitud], (errorU, responseU) => {
-            if ( errorU ) {
-                console.log('Error al añadir su ubicación')
-            }
-        })
-    })
+        const id_usuario = response.lastInsertRowid
 
-    res.send(console.log('chido'))
+        await connection.execute('INSERT INTO ubicacion_usuario (id_usuario, latitud, longitud) VALUES (?, ?, ?)', [id_usuario, latitud, longitud])
+
+        return console.log('Sesión agregada correctamente')
+    } catch (error) {
+        return res.send(console.log('Error al añadir nueva sesión'))
+    }
 })
 
 sesiones.post('/editarUsuario', (req, res) => {

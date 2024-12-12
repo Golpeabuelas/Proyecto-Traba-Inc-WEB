@@ -83,11 +83,12 @@ export async function signUp() {
         nombre: nombre,
         correo: correo,
         password: password,
-        fotoUsuario: foto_usuario,
+        foto_usuario: foto_usuario,
         permisos: permisos
     }
 
-    localStorage.setItem('usedUser', JSON.stringify(usedUser));
+    localStorage.removeItem('usuario')
+    localStorage.setItem('usuario', JSON.stringify(usedUser));
 
     window.location.href = 'index'     
 }
