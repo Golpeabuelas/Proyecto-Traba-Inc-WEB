@@ -102,7 +102,7 @@ chatLoader.post('/obtenerParticipantesChat', async (req, res) => {
         console.log(response)
         if ( response.rows[0].id_usuario === id_usuario ) {
             return res.json({ id_reader: response.rows[1].id_usuario })
-        } else if ( response[1].id_usuario === id_usuario ) {
+        } else if ( response.rows[1].id_usuario === id_usuario ) {
             return res.json({ id_reader: response.rows[0].id_usuario })
         }
     } catch (error) {

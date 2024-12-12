@@ -8,6 +8,8 @@ mensajeLoader.post('/crearMensaje', async (req, res) => {
     const id_chat = req.body.id_chat
     const mensaje = req.body.mensaje
 
+    console.log(id_chat, id_usuario, mensaje)
+
     try {
         await connection.execute('INSERT INTO mensaje_chat (id_chat, id_usuario, mensaje) VALUES (?, ?, ?)', [id_chat, id_usuario, mensaje])
 

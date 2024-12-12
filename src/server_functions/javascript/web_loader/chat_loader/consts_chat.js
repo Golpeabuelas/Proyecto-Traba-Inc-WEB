@@ -78,7 +78,7 @@ if ( chatCreado ) {
         btnEnviar.addEventListener('click', (e) => {
             e.preventDefault()
 
-            if ( mensaje.value !== mensaje.defaultValue ) {
+            if ( mensaje.value.trim() !== '' ) {
                 socket.emit('chat message', { id_owner: chatEncapsulado.id_owner, id_reader: chatEncapsulado.id_reader, id_chat: chatEncapsulado.id_chat, mensaje: mensaje.value })
                 mensaje.value = ''
             }
