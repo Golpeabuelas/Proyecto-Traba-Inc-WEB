@@ -12,7 +12,7 @@ export function formularioPerdidoMascota (contenedor) {
 
 export function formularioPerdidoDesaparicion (contenedor) {
     contenedor.innerHTML = `
-        <label for="fecha_desaparicion" class="prev__infoperro1--input">¿Cuándo se perdió tu perro?</label>
+        <label for="fecha_desaparicion" class="prev__infoperro1--input">¿Cuándo se perdió tu mascota?</label>
         <input type="date" class="prev__infoperro1--input required" id="fecha_desaparicion">
         <textarea class="prev__infoperro1--input required" placeholder="Más información que puede ayudar a encontrar a tu amigo" id="descripcion_desaparicion"></textarea>
         

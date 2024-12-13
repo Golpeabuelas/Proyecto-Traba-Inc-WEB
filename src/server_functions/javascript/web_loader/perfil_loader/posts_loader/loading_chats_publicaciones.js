@@ -34,6 +34,17 @@ export async function cargarIdUsuario(correo) {
 async function mostrarChats (contenedor, chats, id_owner) {
     contenedor.innerHTML = ''
 
+    if ( chats.length === 0 ) {
+        contenedor.innerHTML = `
+            <div class="reporte__content reporte__contentchat">
+                <div class="reporte__content--name">
+                    Aún no tienes respuestas
+                </div>
+            </div>
+        
+        `
+    }
+
     for (let i = 0; i < chats.length; i++) {
         const idReader = await cargarIntegranteChat(id_owner, chats[i].id_chat)
         const datosReader = await cargarInformacionReader(idReader)

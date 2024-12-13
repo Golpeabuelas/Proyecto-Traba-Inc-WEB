@@ -22,7 +22,7 @@ export function mostrarMensajes(contenedor, mensajes) {
 }
 
 export async function crearMensaje(id_usuario, id_chat, mensaje) {
-    const response = await fetch('http://localhost:3000/crearMensaje', {
+    const response = await fetch('https://proyecto-traba-inc-web.onrender.com/crearMensaje', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
